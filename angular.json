@@ -23,10 +23,11 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+            "styles" : [ "src/styles.css" ,
+              "node_modules/bootstrap/dist/css/bootstrap.min.css" ],
+              "scripts" : [ "node_modules/popper.js/dist/umd/popper.js" ,
+                "node_modules/jquery/jquery.js" ,
+                "node_modules/bootstrap/dist/js/bootstrap.bundle.js" ]
           },
           "configurations": {
             "production": {
@@ -86,10 +87,11 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+            "styles" : [ "src/styles.css" ,
+              "node_modules/bootstrap/dist/css/bootstrap.min.css" ],
+              "scripts" : [ "node_modules/popper.js/dist/umd/popper.js" ,
+                "node_modules/jquery/jquery.js" ,
+                "node_modules/bootstrap/dist/js/bootstrap.bundle.js" ]
           }
         },
         "lint": {
