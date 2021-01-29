@@ -24,9 +24,11 @@
               "src/assets"
             ],
             "styles" : [ "src/styles.css" ,
+              "node_modules/animate.css/animate.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css" ],
-              "scripts" : [ "node_modules/popper.js/dist/umd/popper.js" ,
-                "node_modules/jquery/jquery.js" ,
+              "scripts" :
+              [ "node_modules/popper.js/dist/umd/popper.js" ,
+                "node_modules/jquery/dist/jquery.js" ,
                 "node_modules/bootstrap/dist/js/bootstrap.bundle.js" ]
           },
           "configurations": {
