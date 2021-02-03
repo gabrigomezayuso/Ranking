@@ -1,7 +1,7 @@
 <?php
  global $enlace; //variable de tipo global para llamarla en cualquier parte de la aplicacion donde se llame
 function conexion(){
-  $enlace = mysqli_connect('localhost', 'root', 'usbw', 'test'); //conexion con la base de datos
+  $enlace = mysqli_connect('localhost', 'root', 'usbw', 'ranking'); //conexion con la base de datos
     mysqli_set_charset($enlace,"utf8");
 
     if(!$enlace){

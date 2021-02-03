@@ -85,6 +85,7 @@ onSubmit() {
 }
 
     loginUsuario() {
+      console.log('test');
       this.authService.loginUsuario(this.alumno).subscribe (
         datos => {
           if(datos['resultado'] == 'OK') {

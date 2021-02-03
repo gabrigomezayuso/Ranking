@@ -7,7 +7,7 @@ import { alumno } from '../models/alumno';
 })
 export class AuthService {
 
-  URL = "http://localhost:4200";
+  URL = "http://localhost/";
 
   constructor(private http: HttpClient) {
 
