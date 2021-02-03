@@ -79,7 +79,7 @@ onSubmit() {
       this.authService.loginUsuario(this.alumno).subscribe (
         datos => {
           if(datos['resultado'] == 'OK') {
-            alert(datos['mensaje']);
+            this.router.navigate(['/home']);
           } else {
             alert(datos['mensaje']);
           }
