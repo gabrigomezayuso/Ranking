@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { profesor } from 'src/app/models/profesor';
-
+import {CustomValidators} from '../custom-validators'
 
 @Component({ templateUrl: 'register-admin.component.html' })
 export class RegisterAdminComponent implements OnInit {
@@ -26,11 +26,16 @@ export class RegisterAdminComponent implements OnInit {
         this.myForm = this.formBuilder.group({
           usuario: ['', [Validators.minLength(2), Validators.maxLength(30), Validators.required]],
           contrasena: ['', [Validators.minLength(2), Validators.maxLength(15), Validators.required]],
-          email: ['', [Validators.minLength(2), Validators.maxLength(15), Validators.required]],
+          confirmPassword : [null, Validators.required],
+          email: ['', [Validators.email, Validators.required]],
           nombre: ['', [Validators.minLength(2), Validators.maxLength(15), Validators.required]],
           apellido: ['', [Validators.minLength(2), Validators.maxLength(15), Validators.required]],
-          centro: ['', [Validators.minLength(2), Validators.maxLength(15), Validators.required]],
-        });
+          centro: ['', [Validators.required]],
+        },
+
+
+
+        );
 
     }
 
@@ -38,18 +43,11 @@ export class RegisterAdminComponent implements OnInit {
 
     }
 
-    // convenience getter for easy access to form fields
-    get f() { return this.registerForm.controls; }
+
 
     onSubmit() {
         this.submitted = true;
 
-        // reset alerts on submit
-
-        // stop here if form is invalid
-        if (this.registerForm.invalid) {
-            return;
-        }
 
         this.loading = true;
 
