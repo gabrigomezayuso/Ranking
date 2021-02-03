@@ -5,9 +5,6 @@ import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/services/auth.service';
 import { alumno } from 'src/app/models/alumno';
 
-
-
-
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
     loading = false;
@@ -26,7 +23,7 @@ export class LoginComponent implements OnInit {
       this.authService = authService;
         // redirect to home if already logged in
         this.myForm = this.formBuilder.group({
-          nombre: ['', [Validators.minLength(2), Validators.maxLength(30), Validators.required]],
+          usuario: ['', [Validators.minLength(2), Validators.maxLength(30), Validators.required]],
           contrasena: ['', [Validators.minLength(8), Validators.maxLength(15), Validators.required]],
 
         });
