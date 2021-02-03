@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/services/auth.service';
 import { alumno } from 'src/app/models/alumno';
+import { AuthGuard} from '../../auth/auth.guard';
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
@@ -11,14 +12,15 @@ export class LoginComponent implements OnInit {
     submitted = false;
     returnUrl: string;
     authService: AuthService;
-
+    authGuard:AuthGuard;
     myForm: FormGroup;
     alumno = new alumno
 
     constructor(
         private formBuilder: FormBuilder,
         private router: Router, private route: ActivatedRoute,
-        authService: AuthService
+        authService: AuthService,
+        AuthGuard: AuthGuard
     ) {
       this.authService = authService;
         // redirect to home if already logged in
@@ -79,8 +81,10 @@ onSubmit() {
       this.authService.loginUsuario(this.alumno).subscribe (
         datos => {
           if(datos['resultado'] == 'OK') {
+            this.authGuard.canActivate(true);
             this.router.navigate(['/home']);
           } else {
+            this.authService.isLogged(false);
             alert(datos['mensaje']);
           }
         }

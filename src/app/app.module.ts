@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RegisterAdminComponent } from './components/register-admin/register-admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './auth/auth.guard';
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { AuthService } from './services/auth.service';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard], //Agregamos a los providers el guard
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -15,6 +15,15 @@ export class AuthService {
   }
   loginUsuario(alumno) {
     return this.http.post(`${this.URL}Login.php`, JSON.stringify(alumno));
+
+  }
+
+  isLogged(user){
+    return user;
+  }
+
+  isNotLogged(){
+    return false
   }
 
   registerProfesor(profesor) {
