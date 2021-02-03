@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
         // redirect to home if already logged in
         this.myForm = this.formBuilder.group({
           usuario: ['', [Validators.minLength(2), Validators.maxLength(30), Validators.required]],
-          contrasena: ['', [Validators.minLength(8), Validators.maxLength(15), Validators.required]],
+          contrasena: ['', [Validators.minLength(2), Validators.maxLength(15), Validators.required]],
 
         });
 
