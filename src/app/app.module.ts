@@ -8,6 +8,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterAdminComponent } from './components/register-admin/register-admin.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
+
 
 @NgModule({
   declarations: [
@@ -21,8 +24,9 @@ import { RegisterAdminComponent } from './components/register-admin/register-adm
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
