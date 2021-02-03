@@ -1,25 +1,34 @@
-<h2>Login</h2>
-<form [formGroup]="myForm" (ngSubmit)="loginUsuario()">
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" [(ngModel)]="alumno.usuario" formControlName="usuario" class="form-control" />
+<div class="jumbotron">
+    <div class="container">
+        <div class="row"> -->
+            <div class="col-sm-8 offset-sm-2">
 
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" [(ngModel)]="alumno.contrasena"  formControlName="contrasena" class="form-control"  />
+                <h2>Login</h2>
+                <form [formGroup]="myForm" (ngSubmit)="loginUsuario()">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" [(ngModel)]="alumno.usuario" formControlName="usuario" class="form-control" />
 
-    </div>
-    <div class="form-group">
-      <button  [disabled]="myForm.invalid"  type="submit" class="btn btn-primary">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" [(ngModel)]="alumno.contrasena" formControlName="contrasena" class="form-control" />
+
+                    </div>
+                    <div class="form-group">
+                        <button [disabled]="myForm.invalid" type="submit" class="btn btn-primary">
         Iniciar Sesion
       </button>
 
 
-        <!-- <button [disabled]="loading" class="btn btn-primary">
+                        <!-- <button [disabled]="loading" class="btn btn-primary">
             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
             Login
         </button> -->
-        <a (click)="register()" class="btn btn-link">Register</a>
+                        <a (click)="register()" class="btn btn-link">Register</a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-</form>
+</div>
