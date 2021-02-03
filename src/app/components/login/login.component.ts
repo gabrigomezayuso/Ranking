@@ -10,12 +10,13 @@ import { alumno } from 'src/app/models/alumno';
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
-    loginForm: FormGroup;
     loading = false;
     submitted = false;
     returnUrl: string;
     authService: AuthService;
-    alumno: alumno;
+
+    myForm: FormGroup;
+    alumno = new alumno
 
     constructor(
         private formBuilder: FormBuilder,
@@ -24,22 +25,20 @@ export class LoginComponent implements OnInit {
     ) {
       this.authService = authService;
         // redirect to home if already logged in
+        this.myForm = this.formBuilder.group({
+          nombre: ['', [Validators.minLength(2), Validators.maxLength(30), Validators.required]],
+          contrasena: ['', [Validators.minLength(8), Validators.maxLength(15), Validators.required]],
+
+        });
 
     }
 
     ngOnInit() {
-        this.loginForm = this.formBuilder.group({
-            username: ['', Validators.required],
-            password: ['', Validators.required]
-        });
 
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
 
-// convenience getter for easy access to form fields
-get f() { return this.loginForm.controls; }
+
 
 register(){
   Swal.fire({
@@ -74,12 +73,6 @@ register(){
 
 onSubmit() {
     this.submitted = true;
-
-    // stop here if form is invalid
-    if (this.loginForm.invalid) {
-        return;
-    }
-
     this.loading = true;
 
 }
