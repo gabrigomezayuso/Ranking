@@ -81,10 +81,8 @@ onSubmit() {
       this.authService.loginUsuario(this.alumno).subscribe (
         datos => {
           if(datos['resultado'] == 'OK') {
-            this.authGuard.canActivate(true);
             this.router.navigate(['/home']);
           } else {
-            this.authService.isLogged(false);
             alert(datos['mensaje']);
           }
         }
