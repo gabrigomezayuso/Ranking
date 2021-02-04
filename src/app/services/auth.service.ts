@@ -16,17 +16,10 @@ export class AuthService {
 
   }
   loginUsuario(alumno) {
+
+    //cuando loguea le pasamos el valor al authState que es una variable de BehaviorSubject, que nos ayudara a comunicarnos de componente a servidor
     this.authState.next(true);
     return this.http.post(`${this.URL}Login.php`, JSON.stringify(alumno));
-
-  }
-
-  isLogged(user){
-    this.authState.next(true);
-  }
-
-  isNotLogged(){
-    this.authState.next(false);
   }
 
   registerProfesor(profesor) {
@@ -34,6 +27,7 @@ export class AuthService {
   }
 
   isAuthenticated() {
+    //en caso de ser logueado y hacer el return correcto de la funcion loginUsuario, este devolvera el valor, en este caso "true" en caso de ser logueado
     return this.authState.value;
   }
 
