@@ -4,89 +4,96 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/services/auth.service';
 import { alumno } from 'src/app/models/alumno';
-import { AuthGuard} from '../../auth/auth.guard';
+import { AuthGuard } from '../../auth/auth.guard';
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
-    loading = false;
-    submitted = false;
-    returnUrl: string;
-    authService: AuthService;
-    authGuard:AuthGuard;
-    myForm: FormGroup;
-    alumno = new alumno
+  loading = false;
+  submitted = false;
+  returnUrl: string;
+  authService: AuthService;
+  authGuard: AuthGuard;
+  myForm: FormGroup;
+  alumno = new alumno();
 
-    constructor(
-        private formBuilder: FormBuilder,
-        private router: Router, private route: ActivatedRoute,
-        authService: AuthService,
-        AuthGuard: AuthGuard
-    ) {
-      this.authService = authService;
-        // redirect to home if already logged in
-        this.myForm = this.formBuilder.group({
-          usuario: ['', [Validators.minLength(2), Validators.maxLength(30), Validators.required]],
-          contrasena: ['', [Validators.minLength(2), Validators.maxLength(15), Validators.required]],
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
+    authService: AuthService,
+    AuthGuard: AuthGuard
+  ) {
+    this.authService = authService;
+    // redirect to home if already logged in
+    this.myForm = this.formBuilder.group({
+      usuario: [
+        '',
+        [
+          Validators.minLength(2),
+          Validators.maxLength(30),
+          Validators.required,
+        ],
+      ],
+      contrasena: [
+        '',
+        [
+          Validators.minLength(2),
+          Validators.maxLength(15),
+          Validators.required,
+        ],
+      ],
+    });
+  }
 
-        });
+  ngOnInit() {}
 
-    }
+  register() {
+    Swal.fire({
+      title: 'A que registro desea acceder?',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown',
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp',
+      },
+      text: "You won't be able to revert this!",
+      icon: 'question',
 
-    ngOnInit() {
+      showDenyButton: true,
+      confirmButtonText: 'Professor',
+      denyButtonText: 'Alumno',
+      confirmButtonColor: '#1967F8',
+      denyButtonColor: '#19F859',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/register-admin']);
+        console.log('Profesor');
+      } if(result.isDenied) {
+        this.router.navigate(['/register']);
+        console.log('user');
+      }
+    });
+  }
 
-    }
-
-
-
-
-register(){
-  Swal.fire({
-    title: 'A que registro desea acceder?',
-    showClass: {
-      popup: 'animate__animated animate__fadeInDown'
-    },
-    hideClass: {
-      popup: 'animate__animated animate__fadeOutUp'
-    },
-    text: "You won't be able to revert this!",
-    icon: 'warning',
-
-    showCancelButton: true,
-    confirmButtonText: 'Professor',
-    cancelButtonText: 'Alumno',
-    confirmButtonColor: '#1967F8',
-    cancelButtonColor: '#19F859',
-  }).then((result) => {
-    if (result.isConfirmed) {
-
-      this.router.navigate(['/register-admin']);
-      console.log('Profesor');
-
-    }else {
-      this.router.navigate(['/register']);
-      console.log('user');
-    }
-  })
-}
-
-
-onSubmit() {
+  onSubmit() {
     this.submitted = true;
     this.loading = true;
+  }
 
-}
-
-    loginUsuario() {
-      console.log('test');
-      this.authService.loginUsuario(this.alumno).subscribe (
-        datos => {
-          if(datos['resultado'] == 'OK') {
-            this.router.navigate(['/home']);
-          } else {
-            alert(datos['mensaje']);
-          }
-        }
-      )
+  loginUsuario() {
+    console.log('Login');
+    this.authService.loginUsuario(this.alumno).subscribe((datos) => {
+      if (datos['resultado'] == 'OK') {
+        console.log('Login realizado');
+        this.router.navigate(['/home']);
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Login incorrecto',
+          text: 'Revisa tus datos',
+        });
+        console.log('Login fallido');
       }
-
-    }
+    });
+  }
+}
