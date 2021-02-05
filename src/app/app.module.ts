@@ -13,6 +13,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './auth/auth.guard';
 import { PerfilProfesorComponent } from './components/perfiles/perfil-profesor/perfil-profesor.component';
 import { PerfilAlumnoComponent } from './components/perfiles/perfil-alumno/perfil-alumno.component';
+import { LoginProfessorComponent } from './components/app/login-professor/login-professor.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { PerfilAlumnoComponent } from './components/perfiles/perfil-alumno/perfi
     HomeComponent,
     RegisterAdminComponent,
     PerfilProfesorComponent,
-    PerfilAlumnoComponent
+    PerfilAlumnoComponent,
+    LoginProfessorComponent
   ],
   imports: [
     BrowserModule,
