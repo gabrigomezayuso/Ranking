@@ -9,7 +9,7 @@ import { PerfilProfesorComponent } from './components/perfiles/perfil-profesor/p
 import { PerfilAlumnoComponent } from './components/perfiles/perfil-alumno/perfil-alumno.component';
 
 const routes: Routes = [
- {path: '', component: PerfilAlumnoComponent},
+ {path: '', component: LoginComponent},
  { path: 'login', component: LoginComponent },
  { path: 'register', component: RegisterComponent },
  { path: 'register-admin', component: RegisterAdminComponent },

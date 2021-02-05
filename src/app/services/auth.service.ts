@@ -28,6 +28,12 @@ export class AuthService {
     return this.http.post(`${this.URL}register-profesor.php`, JSON.stringify(profesor));
 
   }
+  registerAlumno(alumno) {
+
+
+    return this.http.post(`${this.URL}register-alumno.php`, JSON.stringify(alumno));
+
+  }
 
   isAuthenticated() {
     //en caso de ser logueado y hacer el return correcto de la funcion loginUsuario, este devolvera el valor, en este caso "true" en caso de ser logueado

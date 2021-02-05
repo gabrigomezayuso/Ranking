@@ -2,44 +2,58 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
-
+import { AuthService } from 'src/app/services/auth.service';
+import { ConfirmedValidator } from '../confirmed.validator';
+import { alumno } from 'src/app/models/alumno';
 @Component({ templateUrl: 'register.component.html' })
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
+    authService: AuthService;
     submitted = false;
+    myForm: FormGroup;
+  alumno =new alumno;
 
-    constructor(
+     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
+        authService: AuthService,
 
     ) {
+      this.authService = authService;
+        // redirect to home if already logged in
+        this.myForm = this.formBuilder.group({
+          usuario: ['', [Validators.minLength(2), Validators.maxLength(30), Validators.required]],
+          contrasena: ['', [Validators.minLength(2), Validators.maxLength(15), Validators.required]],
+          confirm_password: [null, Validators.required],
+          email: ['', [Validators.email, Validators.required]],
+          nombre: ['', [Validators.minLength(2), Validators.maxLength(15), Validators.required]],
+          apellido: ['', [Validators.minLength(2), Validators.maxLength(15), Validators.required]],
+        },
+        {
+          validator: ConfirmedValidator('contrasena', 'confirm_password')
+        }
+        );
 
     }
+    registerAlumno() {
+      this.authService.registerAlumno(this.alumno).subscribe (
+        datos => {
+          if(datos['resultado'] == 'OK') {
+            alert(datos['mensaje']);
+          } else {
+            alert(datos['mensaje']);
+          }
+        }
+      )
+      }
+    ngOnInit() { }
 
-    ngOnInit() {
-        this.registerForm = this.formBuilder.group({
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
-            username: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]]
-        });
+    get f(){
+      return this.myForm.controls;
     }
-
-    // convenience getter for easy access to form fields
-    get f() { return this.registerForm.controls; }
-
     onSubmit() {
         this.submitted = true;
-
-        // reset alerts on submit
-
-        // stop here if form is invalid
-        if (this.registerForm.invalid) {
-            return;
-        }
-
         this.loading = true;
 
     }
