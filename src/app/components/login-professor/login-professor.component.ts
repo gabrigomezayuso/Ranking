@@ -1,20 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import Swal from 'sweetalert2';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthGuard } from 'src/app/auth/auth.guard';
+import { profesor } from 'src/app/models/profesor';
 import { AuthService } from 'src/app/services/auth.service';
-import { alumno } from 'src/app/models/alumno';
-import { AuthGuard } from '../../auth/auth.guard';
+import Swal from 'sweetalert2';
 
-@Component({ templateUrl: 'login.component.html' })
-export class LoginComponent implements OnInit {
+@Component({
+  selector: 'app-login-professor',
+  templateUrl: './login-professor.component.html',
+  styleUrls: ['./login-professor.component.css']
+})
+export class LoginProfessorComponent implements OnInit {
+
   loading = false;
   submitted = false;
   returnUrl: string;
   authService: AuthService;
   authGuard: AuthGuard;
   myForm: FormGroup;
-  alumno = new alumno();
+  profesor = new profesor();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -80,13 +85,12 @@ export class LoginComponent implements OnInit {
     this.loading = true;
   }
 
-  loginUsuario() {
+  loginProfessor() {
     console.log('Login');
-    this.authService.loginUsuario(this.alumno).subscribe((datos) => {
+    this.authService.loginUsuario(this.profesor).subscribe((datos) => {
       if (datos['resultado'] == 'OK') {
-        console.log(datos['resultado'])
         console.log('Login realizado');
-        this.router.navigate(['/home']);
+        this.router.navigate(['profesor']);
       } else {
         Swal.fire({
           icon: 'error',

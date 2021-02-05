@@ -19,8 +19,9 @@
     $response = new Result();
 
     if($resultado->num_rows > 0) {
-        $response->resultado = 'OK';
-        $response->mensaje = 'LOGIN EXITOSO';
+      $response->resultado = 'OK';
+      $response->nombre = $params->usuario;
+      $response->mensaje = 'LOGIN EXITOSO';
     } else {
         $response->resultado = 'FAIL';
         $response->mensaje = 'LOGIN FALLIDO';
