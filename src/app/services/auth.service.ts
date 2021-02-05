@@ -19,11 +19,14 @@ export class AuthService {
 
     //cuando loguea le pasamos el valor al authState que es una variable de BehaviorSubject, que nos ayudara a comunicarnos de componente a servidor
     this.authState.next(true);
-    return this.http.post(`${this.URL}Login.php`, JSON.stringify(alumno));
+    return this.http.post(`${this.URL}login-alumno.php`, JSON.stringify(alumno));
   }
 
   registerProfesor(profesor) {
-    return this.http.post(`${this.URL}register.php`, JSON.stringify(profesor));
+
+
+    return this.http.post(`${this.URL}register-profesor.php`, JSON.stringify(profesor));
+
   }
 
   isAuthenticated() {

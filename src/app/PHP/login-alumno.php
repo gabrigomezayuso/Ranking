@@ -11,7 +11,7 @@
   $conexion = conexion(); // CREA LA CONEXION
 
   // REALIZA LA QUERY A LA DB
-  $resultado = mysqli_query($conexion, "SELECT * FROM usuarios WHERE usuario='$params->usuario' AND contrasena='$params->contrasena'");
+  $resultado = mysqli_query($conexion, "SELECT * FROM alumnos WHERE usuario='$params->usuario' AND contrasena='$params->contrasena'");
 
     class Result {}
 

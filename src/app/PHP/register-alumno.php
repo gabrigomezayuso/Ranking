@@ -2,29 +2,33 @@
   header('Access-Control-Allow-Origin: *');
   header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
+
+
   $json = file_get_contents('php://input'); // RECIBE EL JSON DE ANGULAR
 
   $params = json_decode($json); // DECODIFICA EL JSON Y LO GUARADA EN LA VARIABLE
+
 
   require("db.php"); // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
 
   $conexion = conexion(); // CREA LA CONEXION
 
+
   // REALIZA LA QUERY A LA DB
-  $resultado = mysqli_query($conexion, "INSERT INTO usuarios(usuario='$params->usuario' contrasena='$params->contrasena'email='$params->contrasena'
-  nombre='$params->contrasena'apellido='$params->contrasena'centro='$params->contrasena')");
+  $resultado = mysqli_query($conexion, "INSERT INTO `alumnos`(`usuario`, `contrasena`, `email`, `nombre`, `apellido`)
+  VALUES ('$params->usuario','$params->contrasena','$params->email','$params->nombre','$params->apellido')");
 
     class Result {}
 
     // GENERA LOS DATOS DE RESPUESTA
     $response = new Result();
 
-    if($resultado->num_rows > 0) {
+    if($resultado) {
         $response->resultado = 'OK';
-        $response->mensaje = 'LOGIN EXITOSO';
+        $response->mensaje = 'REGISTER EXITOSO';
     } else {
         $response->resultado = 'FAIL';
-        $response->mensaje = 'LOGIN FALLIDO';
+        $response->mensaje = 'REGISTER FALLIDO';
     }
 
     header('Content-Type: application/json');
