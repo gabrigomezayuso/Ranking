@@ -14,6 +14,8 @@ import { AuthGuard } from './auth/auth.guard';
 import { PerfilProfesorComponent } from './components/perfiles/perfil-profesor/perfil-profesor.component';
 import { PerfilAlumnoComponent } from './components/perfiles/perfil-alumno/perfil-alumno.component';
 import { LoginProfessorComponent } from './components/login-professor/login-professor.component';
+import { NavUsuariosComponent } from './components/navbars/nav-usuarios/nav-usuarios.component';
+import { NavProfesoresComponent } from './components/navbars/nav-profesores/nav-profesores.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { LoginProfessorComponent } from './components/login-professor/login-prof
     RegisterAdminComponent,
     PerfilProfesorComponent,
     PerfilAlumnoComponent,
-    LoginProfessorComponent
+    LoginProfessorComponent,
+    NavUsuariosComponent,
+    NavProfesoresComponent
   ],
   imports: [
     BrowserModule,
