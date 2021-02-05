@@ -11,7 +11,7 @@ const routes: Routes = [
  { path: 'login', component: LoginComponent },
  { path: 'register', component: RegisterComponent },
  { path: 'register-admin', component: RegisterAdminComponent },
- { path: 'home', component: HomeComponent, canActivate: [AuthGuard]} ,
+ { path: 'home', component: HomeComponent, canActivate: [AuthGuard]} , //HOME es un componente que requiere ser identificado, debido a esto, le introducimos un "guardian" para controlar su acceso
  { path: '**', redirectTo: 'login' }
 
 ];
