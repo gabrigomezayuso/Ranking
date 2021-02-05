@@ -27,8 +27,11 @@
 
                         <div class="form-group">
                             <label for="password2">Repetir Contraseña</label>
-                            <input type="password"  formControlName="confirmPassword" class="form-control"  />
-
+                            <input type="password"  id="confirm_password"  formControlName="confirm_password" class="form-control"  />
+                            <div *ngIf="f.confirm_password.touched && f.confirm_password.invalid" class="alert alert-danger">
+                              <div *ngIf="f.confirm_password.errors.required">Repetir la contraseña es requerido.</div>
+                              <div *ngIf="f.confirm_password.errors.confirmedValidator">Las contraseñas deben ser iguales.</div>
+                          </div>
                         </div>
 
                         <label for="firstName">Nombre</label>

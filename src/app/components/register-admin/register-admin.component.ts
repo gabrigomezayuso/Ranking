@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { profesor } from 'src/app/models/profesor';
 import {CustomValidators} from '../custom-validators'
+import { ConfirmedValidator } from '../confirmed.validator';
 
 @Component({ templateUrl: 'register-admin.component.html' })
 export class RegisterAdminComponent implements OnInit {
@@ -26,15 +27,15 @@ export class RegisterAdminComponent implements OnInit {
         this.myForm = this.formBuilder.group({
           usuario: ['', [Validators.minLength(2), Validators.maxLength(30), Validators.required]],
           contrasena: ['', [Validators.minLength(2), Validators.maxLength(15), Validators.required]],
-          confirmPassword : [null, Validators.required],
+          confirm_password: [null, Validators.required],
           email: ['', [Validators.email, Validators.required]],
           nombre: ['', [Validators.minLength(2), Validators.maxLength(15), Validators.required]],
           apellido: ['', [Validators.minLength(2), Validators.maxLength(15), Validators.required]],
           centro: ['', [Validators.required]],
         },
-
-
-
+        {
+          validator: ConfirmedValidator('contrasena', 'confirm_password')
+        }
         );
 
     }
@@ -43,12 +44,12 @@ export class RegisterAdminComponent implements OnInit {
 
     }
 
-
+    get f(){
+      return this.myForm.controls;
+    }
 
     onSubmit() {
         this.submitted = true;
-
-
         this.loading = true;
 
     }
