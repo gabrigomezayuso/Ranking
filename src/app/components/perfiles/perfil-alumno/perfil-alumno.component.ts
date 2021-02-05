@@ -9,7 +9,14 @@ export class PerfilAlumnoComponent implements OnInit {
 
   constructor() { }
 
+  Modificar:boolean=true
+  Modificar1:boolean=false
   ngOnInit(): void {
+  }
+
+  BotonModificar(){
+    this.Modificar=false
+    this.Modificar1=true
   }
 
 }
