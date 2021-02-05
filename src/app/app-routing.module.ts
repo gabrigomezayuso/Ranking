@@ -6,9 +6,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { RegisterAdminComponent } from './components/register-admin/register-admin.component';
 import { AuthGuard} from '../app/auth/auth.guard';
 import { PerfilProfesorComponent } from './components/perfiles/perfil-profesor/perfil-profesor.component';
+import { PerfilAlumnoComponent } from './components/perfiles/perfil-alumno/perfil-alumno.component';
 
 const routes: Routes = [
- {path: '', component: PerfilProfesorComponent},
+ {path: '', component: PerfilAlumnoComponent},
  { path: 'login', component: LoginComponent },
  { path: 'register', component: RegisterComponent },
  { path: 'register-admin', component: RegisterAdminComponent },
