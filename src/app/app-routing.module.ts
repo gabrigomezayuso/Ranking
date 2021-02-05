@@ -5,9 +5,10 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RegisterAdminComponent } from './components/register-admin/register-admin.component';
 import { AuthGuard} from '../app/auth/auth.guard';
+import { PerfilProfesorComponent } from './components/perfiles/perfil-profesor/perfil-profesor.component';
 
 const routes: Routes = [
- {path: '', component: LoginComponent},
+ {path: '', component: PerfilProfesorComponent},
  { path: 'login', component: LoginComponent },
  { path: 'register', component: RegisterComponent },
  { path: 'register-admin', component: RegisterAdminComponent },
