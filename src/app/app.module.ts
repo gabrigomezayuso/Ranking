@@ -11,6 +11,8 @@ import { RegisterAdminComponent } from './components/register-admin/register-adm
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './auth/auth.guard';
+import { PerfilProfesorComponent } from './components/perfiles/perfil-profesor/perfil-profesor.component';
+import { PerfilAlumnoComponent } from './components/perfiles/perfil-alumno/perfil-alumno.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { AuthGuard } from './auth/auth.guard';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    RegisterAdminComponent
+    RegisterAdminComponent,
+    PerfilProfesorComponent,
+    PerfilAlumnoComponent
   ],
   imports: [
     BrowserModule,
