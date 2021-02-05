@@ -87,9 +87,8 @@ export class LoginProfessorComponent implements OnInit {
 
   loginProfessor() {
     console.log('Login');
-    this.authService.loginUsuario(this.profesor).subscribe((datos) => {
+    this.authService.loginProfesor(this.profesor).subscribe((datos) => {
       if (datos['resultado'] == 'OK') {
-        console.log('Login realizado');
         this.router.navigate(['profesor']);
       } else {
         Swal.fire({

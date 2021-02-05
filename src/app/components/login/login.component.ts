@@ -84,9 +84,9 @@ export class LoginComponent implements OnInit {
     console.log('Login');
     this.authService.loginUsuario(this.alumno).subscribe((datos) => {
       if (datos['resultado'] == 'OK') {
-        console.log(datos['resultado'])
+        console.log(datos['nombre'])
         console.log('Login realizado');
-        this.router.navigate(['/home']);
+        this.router.navigate(['alumno']);
       } else {
         Swal.fire({
           icon: 'error',

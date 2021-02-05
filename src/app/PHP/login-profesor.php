@@ -20,6 +20,7 @@
 
     if($resultado->num_rows > 0) {
         $response->resultado = 'OK';
+        $response->nombre = $params->usuario;
         $response->mensaje = 'LOGIN EXITOSO';
     } else {
         $response->resultado = 'FAIL';
