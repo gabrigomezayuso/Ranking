@@ -2,30 +2,54 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { alumno } from '../models/alumno';
 import { profesor } from '../models/profesor';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  authState = new BehaviorSubject(false);
-  authStateAdmin = new BehaviorSubject(false);
+
+  private currentUserSubject: BehaviorSubject<alumno>;
+    public currentUser: Observable<alumno>;
+
 
   URL = "http://localhost/";
   constructor(private http: HttpClient) {
+    this.currentUserSubject = new BehaviorSubject<alumno>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUser = this.currentUserSubject.asObservable();
   }
+
+  public get currentUserValue(): alumno {
+    return this.currentUserSubject.value;
+}
 
   loginUsuario(alumno) {
     //cuando loguea le pasamos el valor al authState que es una variable de BehaviorSubject, que nos ayudara a comunicarnos de componente a servidor
-    this.authState.next(true);
-    this.authStateAdmin.next(false);
     return this.http.post(`${this.URL}login-alumno.php`, JSON.stringify(alumno));
   }
+  login(username: string, password: string) {
+    return this.http.post<any>(`${this.URL}login-alumno.php`, { username, password })
+        .pipe(map(alumno => {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('currentUser', JSON.stringify(alumno));
+            this.currentUserSubject.next(alumno);
+            return alumno;
+        }));
+
+}
+
+
+logout() {
+  // remove user from local storage to log user out
+  localStorage.removeItem('currentUser');
+  this.currentUserSubject.next(null);
+}
+
 
   loginProfesor(profesor) {
     //cuando loguea le pasamos el valor al authState que es una variable de BehaviorSubject, que nos ayudara a comunicarnos de componente a servidor
-    this.authState.next(true);
-    this.authStateAdmin.next(true);
+
     return this.http.post(`${this.URL}login-profesor.php`, JSON.stringify(profesor));
   }
 
@@ -39,12 +63,12 @@ export class AuthService {
 
   isAuthenticated() {
     //en caso de ser logueado y hacer el return correcto de la funcion loginUsuario, este devolvera el valor, en este caso "true" en caso de ser logueado
-    return this.authState.value;
+
   }
 
   isAdmin() {
     //en caso de ser logueado como admin y hacer el return correcto de la funcion loginUsuario, este devolvera el valor, en este caso "true" en caso de ser logueado
-    return this.authStateAdmin.value;
+
   }
 
 }

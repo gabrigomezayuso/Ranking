@@ -4,5 +4,6 @@ export class alumno {
   email: string;
   nombre: string;
   apellido: string;
+  token?: string;
 }
 

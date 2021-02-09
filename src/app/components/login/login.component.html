@@ -4,10 +4,10 @@
             <div class="col-sm-8 offset-sm-2">
 
                 <h2>Login</h2>
-                <form [formGroup]="myForm" (ngSubmit)="loginUsuario()">
+                <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" [(ngModel)]="alumno.usuario" formControlName="usuario" class="form-control" />
+                        <input type="text" formControlName="username" [(ngModel)]="alumno.usuario" formControlName="usuario" class="form-control" />
 
                     </div>
                     <div class="form-group">

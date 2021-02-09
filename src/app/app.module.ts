@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -10,10 +9,9 @@ import { HomeComponent } from './components/home/home.component';
 import { RegisterAdminComponent } from './components/register-admin/register-admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
-import { AuthGuard } from './auth/auth.guard';
+import { AuthGuard } from './_helpers/auth.guard';
 import { PerfilProfesorComponent } from './components/perfiles/perfil-profesor/perfil-profesor.component';
 import { PerfilAlumnoComponent } from './components/perfiles/perfil-alumno/perfil-alumno.component';
-import { LoginProfessorComponent } from './components/login-professor/login-professor.component';
 import { NavUsuariosComponent } from './components/navbars/nav-usuarios/nav-usuarios.component';
 import { NavProfesoresComponent } from './components/navbars/nav-profesores/nav-profesores.component';
 
@@ -27,7 +25,6 @@ import { NavProfesoresComponent } from './components/navbars/nav-profesores/nav-
     RegisterAdminComponent,
     PerfilProfesorComponent,
     PerfilAlumnoComponent,
-    LoginProfessorComponent,
     NavUsuariosComponent,
     NavProfesoresComponent
   ],

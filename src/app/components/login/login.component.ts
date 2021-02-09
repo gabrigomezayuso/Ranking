@@ -4,7 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/services/auth.service';
 import { alumno } from 'src/app/models/alumno';
-import { AuthGuard } from '../../auth/auth.guard';
+import { first } from 'rxjs/operators';
+
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
@@ -12,40 +13,36 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   authService: AuthService;
-  authGuard: AuthGuard;
   myForm: FormGroup;
   alumno = new alumno();
+  error = '';
 
   constructor(
+
+
+    private AuthService: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    authService: AuthService,
-    AuthGuard: AuthGuard
+
   ) {
-    this.authService = authService;
     // redirect to home if already logged in
+    if (this.AuthService.currentUserValue) {
+        this.router.navigate(['/']);
+    }}
+
+  ngOnInit() {
     this.myForm = this.formBuilder.group({
-      usuario: [
-        '',
-        [
-          Validators.minLength(2),
-          Validators.maxLength(30),
-          Validators.required,
-        ],
-      ],
-      contrasena: [
-        '',
-        [
-          Validators.minLength(2),
-          Validators.maxLength(15),
-          Validators.required,
-        ],
-      ],
-    });
+
+  });
+
+  // get return url from route parameters or default to '/'
+  this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
   }
 
-  ngOnInit() {}
+  // convenience getter for easy access to form fields
+  get f() { return this.myForm.controls; }
 
   register() {
     Swal.fire({
@@ -77,9 +74,25 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.loading = true;
-  }
 
+    // stop here if form is invalid
+    if (this.myForm.invalid) {
+        return;
+    }
+
+    this.loading = true;
+    this.AuthService.login(this.f.username.value, this.f.password.value)
+        .pipe(first())
+        .subscribe(
+            data => {
+                this.router.navigate([this.returnUrl]);
+            },
+            error => {
+                this.error = error;
+                this.loading = false;
+            });
+  }
+/*
   loginUsuario() {
     console.log('Login');
     this.authService.loginUsuario(this.alumno).subscribe((datos) => {
@@ -97,4 +110,6 @@ export class LoginComponent implements OnInit {
       }
     });
   }
+  */
 }
+
