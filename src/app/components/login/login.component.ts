@@ -34,6 +34,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.myForm = this.formBuilder.group({
 
+      usuario: ['', [Validators.minLength(2), Validators.maxLength(30), Validators.required]],
+          contrasena: ['', [Validators.minLength(2), Validators.maxLength(15), Validators.required]],
   });
 
   // get return url from route parameters or default to '/'
