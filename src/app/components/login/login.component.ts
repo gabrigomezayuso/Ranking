@@ -83,7 +83,6 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.loading = true;
     this.AuthService.login(alumno)
       .pipe(first())
       .subscribe(

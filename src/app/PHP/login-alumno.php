@@ -13,9 +13,9 @@
   // REALIZA LA QUERY A LA DB
   $resultado = mysqli_query($conexion, "SELECT * FROM alumnos WHERE usuario='$params->usuario' AND contrasena='$params->contrasena'");
 
-  while ($resultado = mysqli_fetch_array($registros))
+  while ($registros = mysqli_fetch_array($resultado))
   {
-    $datos[] = $resultado;
+    $datos[] = $registros;
   }
 
     class Result {}

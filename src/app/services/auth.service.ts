@@ -24,10 +24,7 @@ export class AuthService {
     return this.currentUserSubject.value;
 }
 
-  loginUsuario(alumno) {
-    //cuando loguea le pasamos el valor al authState que es una variable de BehaviorSubject, que nos ayudara a comunicarnos de componente a servidor
-    return this.http.post(`${this.URL}login-alumno.php`, JSON.stringify(alumno));
-  }
+
   login(alumno) {
     return this.http.post<any>(`${this.URL}login-alumno.php`, { alumno})
         .pipe(map(alumno => {
