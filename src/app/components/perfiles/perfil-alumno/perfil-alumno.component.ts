@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { alumno } from 'src/app/models/alumno';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-perfil-alumno',
@@ -6,12 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./perfil-alumno.component.css']
 })
 export class PerfilAlumnoComponent implements OnInit {
-
+  public user: any;
   constructor() { }
 
   Modificar:boolean=true
   Modificar1:boolean=false
   ngOnInit(): void {
+
+
+    console.log(sessionStorage.getItem('currentUser'),'test');
   }
 
   BotonModificar(){

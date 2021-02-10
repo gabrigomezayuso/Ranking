@@ -27,6 +27,7 @@ export class AuthService {
 
 
   login(alumno) {
+    console.log(alumno)
     return this.http.post<alumno>(`${environment.apiUrl}/login-alumno.php`, JSON.stringify(alumno))
         .pipe(map(alumno => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -34,8 +35,10 @@ export class AuthService {
             this.currentUserSubject.next(alumno);
             return alumno;
         }));
-
 }
+
+
+
 
 
 logout() {

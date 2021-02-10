@@ -73,7 +73,9 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         (data) => {
-          console.log(data['nombre'])
+          console.log(this.alumno)
+          console.log(data[0])
+
           if (data[0][0] == this.alumno.usuario) {
             console.log('Login realizado');
             this.router.navigate(['alumno']);
@@ -82,9 +84,16 @@ export class LoginComponent implements OnInit {
               icon: 'error',
               title: 'Login incorrecto',
               text: 'Revisa tus datos',
-
           })
-        }});
+        }
+        console.log(localStorage.getItem('currentUser'));
+
+        data [0]=localStorage.getItem('currentUser');
+        console.log(data[0])
+
+      }
+
+        );
   }
   /*cdfbvcdfcdvb
     loginUsuario() {
