@@ -28,18 +28,19 @@ export class LoginComponent implements OnInit {
   ) {
     // redirect to home if already logged in
     if (this.AuthService.currentUserValue) {
-        this.router.navigate(['/']);
-    }}
+      this.router.navigate(['/']);
+    }
+  }
 
   ngOnInit() {
     this.myForm = this.formBuilder.group({
 
       usuario: ['', [Validators.minLength(2), Validators.maxLength(30), Validators.required]],
-          contrasena: ['', [Validators.minLength(2), Validators.maxLength(15), Validators.required]],
-  });
+      contrasena: ['', [Validators.minLength(2), Validators.maxLength(15), Validators.required]],
+    });
 
-  // get return url from route parameters or default to '/'
-  this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    // get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
   }
 
@@ -67,7 +68,7 @@ export class LoginComponent implements OnInit {
       if (result.isConfirmed) {
         this.router.navigate(['/register-admin']);
         console.log('Profesor');
-      } if(result.isDenied) {
+      } if (result.isDenied) {
         this.router.navigate(['/register']);
         console.log('user');
       }
@@ -79,39 +80,44 @@ export class LoginComponent implements OnInit {
 
     // stop here if form is invalid
     if (this.myForm.invalid) {
-        return;
+      return;
     }
 
     this.loading = true;
-    this.AuthService.login(this.f.username.value, this.f.password.value)
-        .pipe(first())
-        .subscribe(
-            data => {
-                this.router.navigate([this.returnUrl]);
-            },
-            error => {
-                this.error = error;
-                this.loading = false;
-            });
+    this.AuthService.login(alumno)
+      .pipe(first())
+      .subscribe(
+        data => {
+          if (data[0][0] == this.alumno.usuario) {
+
+            console.log('Login realizado');
+            this.router.navigate(['alumno']);
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Login incorrecto',
+              text: 'Revisa tus datos',
+
+          });
   }
-/*cdfbvcdfcdvb
-  loginUsuario() {
-    console.log('Login');
-    this.authService.loginUsuario(this.alumno).subscribe((datos) => {
-      if (datos['resultado'] == 'OK') {
-        console.log(datos['nombre'])
-        console.log('Login realizado');
-        this.router.navigate(['alumno']);
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Login incorrecto',
-          text: 'Revisa tus datos',
-        });
-        console.log('Login fallido');
-      }
-    });
-  }
-  */
+  /*cdfbvcdfcdvb
+    loginUsuario() {
+      console.log('Login');
+      this.authService.loginUsuario(this.alumno).subscribe((datos) => {
+        if (datos['resultado'] == 'OK') {
+          console.log(datos['nombre'])
+          console.log('Login realizado');
+          this.router.navigate(['alumno']);
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Login incorrecto',
+            text: 'Revisa tus datos',
+          });
+          console.log('Login fallido');
+        }
+      });
+    }
+    */
 }
 
