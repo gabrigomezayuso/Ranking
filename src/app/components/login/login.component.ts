@@ -98,7 +98,8 @@ export class LoginComponent implements OnInit {
               title: 'Login incorrecto',
               text: 'Revisa tus datos',
 
-          });
+          })
+        }});
   }
   /*cdfbvcdfcdvb
     loginUsuario() {
