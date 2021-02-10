@@ -92,7 +92,7 @@ export class LoginComponent implements OnInit {
                 this.loading = false;
             });
   }
-/*
+/*cdfbvcdfcdvb
   loginUsuario() {
     console.log('Login');
     this.authService.loginUsuario(this.alumno).subscribe((datos) => {
