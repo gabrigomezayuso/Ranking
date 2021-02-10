@@ -12,17 +12,12 @@
 
   // REALIZA LA QUERY A LA DB
   $resultado = mysqli_query($conexion, "SELECT * FROM alumnos WHERE usuario='$params->usuario' AND contrasena='$params->contrasena'");
-  $query = "SELECT * FROM alumnos WHERE usuario='seryi' AND contrasena='123'";
 
-  $stmt = $conexion->prepare($resultado);
-  $stmt->execute();
-  $userData = array();
+  while ($resultado = mysqli_fetch_array($registros))
+  {
+    $datos[] = $resultado;
+  }
 
-while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
-
-      $userData['AllUsers'][] = $row;
-
-}
     class Result {}
 
     // GENERA LOS DATOS DE RESPUESTA
@@ -38,7 +33,7 @@ while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
     }
 
     header('Content-Type: application/json');
-    echo json_encode($userData);
+    echo json_encode($datos);
 
     // echo json_encode($response); // MUESTRA EL JSON GENERADO
 
