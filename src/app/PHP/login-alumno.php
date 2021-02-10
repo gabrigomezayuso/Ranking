@@ -26,10 +26,11 @@
     if($resultado->num_rows > 0) {
       $response->resultado = 'OK';
       $response->nombre = $params->usuario;
-      $response->mensaje = 'LOGIN EXITOSO';
+      $response->mensaje = 'LOGIN EXITOSO'.$params->usuario;
     } else {
         $response->resultado = 'FAIL';
         $response->mensaje = 'LOGIN FALLIDO';
+        $response->nombre = $params->usuario;
     }
 
     header('Content-Type: application/json');

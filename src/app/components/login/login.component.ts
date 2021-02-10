@@ -18,13 +18,10 @@ export class LoginComponent implements OnInit {
   error = '';
 
   constructor(
-
-
     private AuthService: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-
   ) {
     // redirect to home if already logged in
     if (this.AuthService.currentUserValue) {
@@ -34,7 +31,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.myForm = this.formBuilder.group({
-
       usuario: ['', [Validators.minLength(2), Validators.maxLength(30), Validators.required]],
       contrasena: ['', [Validators.minLength(2), Validators.maxLength(15), Validators.required]],
     });
@@ -43,9 +39,6 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
   }
-
-  // convenience getter for easy access to form fields
-  get f() { return this.myForm.controls; }
 
   register() {
     Swal.fire({
@@ -75,20 +68,13 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    this.submitted = true;
-
-    // stop here if form is invalid
-    if (this.myForm.invalid) {
-      return;
-    }
-
-    this.AuthService.login(alumno)
+  login() {
+    this.AuthService.login(this.alumno)
       .pipe(first())
       .subscribe(
-        data => {
+        (data) => {
+          console.log(data['nombre'])
           if (data[0][0] == this.alumno.usuario) {
-
             console.log('Login realizado');
             this.router.navigate(['alumno']);
           } else {

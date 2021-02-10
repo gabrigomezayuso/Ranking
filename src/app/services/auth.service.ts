@@ -4,6 +4,7 @@ import { alumno } from '../models/alumno';
 import { profesor } from '../models/profesor';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class AuthService {
 
 
   login(alumno) {
-    return this.http.post<any>(`${this.URL}login-alumno.php`, { alumno})
+    return this.http.post<alumno>(`${environment.apiUrl}/login-alumno.php`, JSON.stringify(alumno))
         .pipe(map(alumno => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('currentUser', JSON.stringify(alumno));

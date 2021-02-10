@@ -4,7 +4,7 @@
             <div class="col-sm-8 offset-sm-2">
 
                 <h2>Login</h2>
-                <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                <form [formGroup]="myForm" (ngSubmit)="login()">
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input type="text" formControlName="usuario" [(ngModel)]="alumno.usuario" formControlName="usuario" class="form-control" />
