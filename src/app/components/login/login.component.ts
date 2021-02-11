@@ -73,34 +73,33 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         (data) => {
-          console.log(this.alumno)
-          console.log(data[0])
-          console.log(data['nombre'])
-
-          if (data[0][0] == this.alumno.usuario) {
-            console.log('Login realizado');
-            this.router.navigate(['alumno']);
-            localStorage.setItem('currentUser', JSON.stringify(data[0]));
-            localStorage.setItem('usernameUser', data[0]['usuario']);
-            localStorage.setItem('nameUser',data[0]['nombre']);
-            localStorage.setItem('apellidoUser',data[0]['apellido']);
-            localStorage.setItem('correoUser',data[0]['email'] );
-            localStorage.setItem('idUser',data[0]['idUsuario']);
-          } else {
+          if (data == null) {
             Swal.fire({
               icon: 'error',
               title: 'Login incorrecto',
-              text: 'Revisa tus datos',
-          })
-        }
-        console.log(localStorage.getItem('currentUser'));
+              text: 'Datos introducidos incorrectos, revisa tus datos',
+            })
+          } else {
+            if (data[0][0] == this.alumno.usuario) {
+              console.log('Login realizado');
+              this.router.navigate(['alumno']);
+              localStorage.setItem('currentUser', JSON.stringify(data[0]));
+              localStorage.setItem('usernameUser', data[0]['usuario']);
+              localStorage.setItem('nameUser', data[0]['nombre']);
+              localStorage.setItem('apellidoUser', data[0]['apellido']);
+              localStorage.setItem('correoUser', data[0]['email']);
+              localStorage.setItem('idUser', data[0]['idUsuario']);
+            }else{
+              Swal.fire({
+                icon: 'error',
+                title: 'Login incorrecto',
+                text: 'Revisa tus datos',
+              })
+            }
+          }
+        });
 
-        data [0]=localStorage.getItem('currentUser');
-        console.log(data[0])
 
-      }
-
-        );
   }
   /*cdfbvcdfcdvb
     loginUsuario() {
