@@ -89,6 +89,7 @@ export class LoginComponent implements OnInit {
               localStorage.setItem('apellidoUser', data[0]['apellido']);
               localStorage.setItem('correoUser', data[0]['email']);
               localStorage.setItem('idUser', data[0]['idUsuario']);
+              localStorage.setItem('role', 'ee11cbb19052e40b07aac0ca060c23ee');
             }else{
               Swal.fire({
                 icon: 'error',

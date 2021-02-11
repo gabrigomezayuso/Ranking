@@ -92,6 +92,7 @@ export class LoginProfesorComponent implements OnInit {
               localStorage.setItem('apellidoUser', data[0]['apellido']);
               localStorage.setItem('correoUser', data[0]['email']);
               localStorage.setItem('idUser', data[0]['idUsuario']);
+              localStorage.setItem('role', '21232f297a57a5a743894a0e4a801fc3');
             }
             // }else{
             //   Swal.fire({
