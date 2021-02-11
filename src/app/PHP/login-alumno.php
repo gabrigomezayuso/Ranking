@@ -13,16 +13,24 @@
 
   //  $password2 = mysqli_query($conexion, "SELECT contrasena FROM alumnos WHERE usuario='$params->usuario'");
 
-  // if (password_verify ($params->contrasena, '$2y$10$4y564lanrG7uWt3B1WfKTOA9isg3SNOHVjT0qKrg5xe')){
+  $instruccion = "SELECT contrasena FROM alumnos WHERE usuario = '$params->usuario'";
+	$resultado = mysqli_query($conexion, $instruccion);
+
+	while ($fila = $resultado->fetch_assoc()) {
+		$password2=$fila["contrasena"];
+	}
+
+   if (!password_verify ($params->contrasena, $password2)){
 
 
-  // }else{
-    $resultado = mysqli_query($conexion, "SELECT * FROM alumnos WHERE usuario='$params->usuario' AND contrasena='$2y$10$4y564lanrG7uWt3B1WfKTOA9isg3SNOHVjT0qKrg5xe'");
+  }else{
+    $resultado = mysqli_query($conexion, "SELECT * FROM alumnos WHERE usuario='$params->usuario' AND contrasena='$password2'");
     while ($registros = mysqli_fetch_array($resultado))
     {
       $datos[] = $registros;
     }
-  // }
+  }
+
 
   // }
 
