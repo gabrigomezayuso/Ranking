@@ -8,6 +8,7 @@
 
   $params = json_decode($json); // DECODIFICA EL JSON Y LO GUARADA EN LA VARIABLE
 
+  $passwordc = password_hash($params->contrasena, PASSWORD_DEFAULT);
 
   require("db.php"); // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
 
@@ -16,7 +17,7 @@
 
   // REALIZA LA QUERY A LA DB
   $resultado = mysqli_query($conexion, "INSERT INTO `profesores`(`usuario`, `contrasena`, `email`, `nombre`, `apellido`, `centro`)
-  VALUES ('$params->usuario','$params->contrasena','$params->email','$params->nombre','$params->apellido','$params->centro')");
+  VALUES ('$params->usuario','$passwordc','$params->email','$params->nombre','$params->apellido','$params->centro')");
 
     class Result {}
 

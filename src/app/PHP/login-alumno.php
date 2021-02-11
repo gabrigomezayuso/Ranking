@@ -11,7 +11,6 @@
   $conexion = conexion(); // CREA LA CONEXION
 
 
-  //  $password2 = mysqli_query($conexion, "SELECT contrasena FROM alumnos WHERE usuario='$params->usuario'");
 
   $instruccion = "SELECT contrasena FROM alumnos WHERE usuario = '$params->usuario'";
 	$resultado = mysqli_query($conexion, $instruccion);

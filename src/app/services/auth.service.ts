@@ -27,7 +27,6 @@ export class AuthService {
 
 
   login(alumno) {
-    console.log(alumno)
     return this.http.post<alumno>(`${environment.apiUrl}/login-alumno.php`, JSON.stringify(alumno))
         .pipe(map(alumno => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -55,8 +54,13 @@ logout() {
 
   loginProfesor(profesor) {
     //cuando loguea le pasamos el valor al authState que es una variable de BehaviorSubject, que nos ayudara a comunicarnos de componente a servidor
-
-    return this.http.post(`${this.URL}login-profesor.php`, JSON.stringify(profesor));
+    return this.http.post<profesor>(`${environment.apiUrl}/login-profesor.php`, JSON.stringify(profesor))
+    .pipe(map(profesor => {
+      // store user details and jwt token in local storage to keep user logged in between page refreshes
+      localStorage.setItem('currentUser', JSON.stringify(alumno));
+      this.currentUserSubject.next(profesor);
+      return profesor;
+  }));
   }
 
   registerProfesor(profesor) {

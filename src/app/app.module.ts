@@ -14,6 +14,7 @@ import { PerfilProfesorComponent } from './components/perfiles/perfil-profesor/p
 import { PerfilAlumnoComponent } from './components/perfiles/perfil-alumno/perfil-alumno.component';
 import { NavUsuariosComponent } from './components/navbars/nav-usuarios/nav-usuarios.component';
 import { NavProfesoresComponent } from './components/navbars/nav-profesores/nav-profesores.component';
+import { LoginProfesorComponent } from './components/login-profesor/login-profesor.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { NavProfesoresComponent } from './components/navbars/nav-profesores/nav-
     PerfilProfesorComponent,
     PerfilAlumnoComponent,
     NavUsuariosComponent,
-    NavProfesoresComponent
+    NavProfesoresComponent,
+    LoginProfesorComponent
   ],
   imports: [
     BrowserModule,

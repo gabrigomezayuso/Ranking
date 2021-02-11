@@ -7,11 +7,13 @@ import { RegisterAdminComponent } from './components/register-admin/register-adm
 import { AuthGuard } from '../app/_helpers/auth.guard';
 import { PerfilProfesorComponent } from './components/perfiles/perfil-profesor/perfil-profesor.component';
 import { PerfilAlumnoComponent } from './components/perfiles/perfil-alumno/perfil-alumno.component';
+import { LoginProfesorComponent } from './components/login-profesor/login-profesor.component';
 
 
 const routes: Routes = [
  {path: 'login', component: LoginComponent},
  { path: 'login', component: LoginComponent },
+ { path: 'login-profesor', component: LoginProfesorComponent },
  { path: 'register', component: RegisterComponent },
  { path: 'register-admin', component: RegisterAdminComponent },
  { path: 'alumno', component: PerfilAlumnoComponent, canActivate: [AuthGuard] },
