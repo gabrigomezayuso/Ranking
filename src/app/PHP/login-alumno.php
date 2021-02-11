@@ -10,32 +10,40 @@
 
   $conexion = conexion(); // CREA LA CONEXION
 
-  // REALIZA LA QUERY A LA DB
-  $resultado = mysqli_query($conexion, "SELECT * FROM alumnos WHERE usuario='$params->usuario' AND contrasena='$params->contrasena'");
 
-  while ($registros = mysqli_fetch_array($resultado))
-  {
-    $datos[] = $registros;
-  }
+  //  $password2 = mysqli_query($conexion, "SELECT contrasena FROM alumnos WHERE usuario='$params->usuario'");
+
+  // if (password_verify ($params->contrasena, '$2y$10$4y564lanrG7uWt3B1WfKTOA9isg3SNOHVjT0qKrg5xe')){
+
+
+  // }else{
+    $resultado = mysqli_query($conexion, "SELECT * FROM alumnos WHERE usuario='$params->usuario' AND contrasena='$2y$10$4y564lanrG7uWt3B1WfKTOA9isg3SNOHVjT0qKrg5xe'");
+    while ($registros = mysqli_fetch_array($resultado))
+    {
+      $datos[] = $registros;
+    }
+  // }
+
+  // }
+
+
 
     class Result {}
 
     // GENERA LOS DATOS DE RESPUESTA
     $response = new Result();
+    $response->nombre = $params->contrasena;
 
     if($resultado->num_rows > 0) {
       $response->resultado = 'OK';
-      $response->nombre = $params->usuario;
       $response->mensaje = 'LOGIN EXITOSO'.$params->usuario;
     } else {
         $response->resultado = 'FAIL';
         $response->mensaje = 'LOGIN FALLIDO';
-        $response->nombre = $params->usuario;
-    }
+        $response->nombre = $params->contrasena;
+      }
 
     header('Content-Type: application/json');
-    echo json_encode($datos);
+     echo json_encode($datos);
 
     // echo json_encode($response); // MUESTRA EL JSON GENERADO
-
-?>

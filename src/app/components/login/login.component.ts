@@ -75,6 +75,7 @@ export class LoginComponent implements OnInit {
         (data) => {
           console.log(this.alumno)
           console.log(data[0])
+          console.log(data['nombre'])
 
           if (data[0][0] == this.alumno.usuario) {
             console.log('Login realizado');

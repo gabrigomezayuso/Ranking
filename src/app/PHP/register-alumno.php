@@ -13,10 +13,11 @@
 
   $conexion = conexion(); // CREA LA CONEXION
 
+  $passwordc = password_hash($params->contrasena, PASSWORD_DEFAULT);
 
   // REALIZA LA QUERY A LA DB
   $resultado = mysqli_query($conexion, "INSERT INTO `alumnos`(`usuario`, `contrasena`, `email`, `nombre`, `apellido`)
-  VALUES ('$params->usuario','$params->contrasena','$params->email','$params->nombre','$params->apellido')");
+  VALUES ('$params->usuario','$passwordc','$params->email','$params->nombre','$params->apellido')");
 
     class Result {}
 

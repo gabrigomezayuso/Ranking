@@ -18,12 +18,14 @@ export class PerfilAlumnoComponent implements OnInit {
   apellidos: string;
   usuario: string;
   correo: string;
+  contrasena: string;
 
   Modificar:boolean=true
   Modificar1:boolean=false
   ngOnInit(): void {
     this.usuario=localStorage.getItem('usernameUser');
     this.nombre=localStorage.getItem('nameUser');
+    this.contrasena=localStorage.getItem('contrasenaUser');
     this.apellidos=localStorage.getItem('apellidoUser');
     this.correo=localStorage.getItem('correoUser');
   }
