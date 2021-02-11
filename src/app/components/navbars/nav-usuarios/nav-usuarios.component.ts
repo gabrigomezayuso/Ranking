@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-nav-usuarios',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavUsuariosComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private AuthService: AuthService,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  logout(){
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('usernameUser');
+    localStorage.removeItem('nameUser');
+    localStorage.removeItem('apellidoUser');
+    localStorage.removeItem('correoUser');
+    localStorage.removeItem('idUser');
+    this.AuthService.logout
   }
 
 }

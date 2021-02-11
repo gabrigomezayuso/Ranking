@@ -9,7 +9,11 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class PerfilAlumnoComponent implements OnInit {
   public user: any;
-  constructor() { }
+  constructor(
+    private AuthService: AuthService,
+  ) {
+
+   }
   nombre: string;
   apellidos: string;
   usuario: string;
@@ -23,6 +27,8 @@ export class PerfilAlumnoComponent implements OnInit {
     this.apellidos=localStorage.getItem('apellidoUser');
     this.correo=localStorage.getItem('correoUser');
   }
+
+
 
   BotonModificar(){
     this.Modificar=false

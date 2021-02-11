@@ -10,14 +10,14 @@ import { PerfilAlumnoComponent } from './components/perfiles/perfil-alumno/perfi
 
 
 const routes: Routes = [
- {path: '', component: LoginComponent},
+ {path: 'login', component: LoginComponent},
  { path: 'login', component: LoginComponent },
  { path: 'register', component: RegisterComponent },
  { path: 'register-admin', component: RegisterAdminComponent },
  { path: 'alumno', component: PerfilAlumnoComponent, canActivate: [AuthGuard] },
  { path: 'profesor', component: PerfilProfesorComponent, canActivate: [AuthGuard] },
  { path: 'home', component: HomeComponent, canActivate: [AuthGuard]} , //HOME es un componente que requiere ser identificado, debido a esto, le introducimos un "guardian" para controlar su acceso
- { path: '**', redirectTo: '' }
+ { path: '**', redirectTo: 'login' }
 
 ];
 
