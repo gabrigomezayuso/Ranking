@@ -79,7 +79,12 @@ export class LoginComponent implements OnInit {
           if (data[0][0] == this.alumno.usuario) {
             console.log('Login realizado');
             this.router.navigate(['alumno']);
-            localStorage.setItem('currentUser', JSON.stringify(data[0]) );
+            localStorage.setItem('currentUser', JSON.stringify(data[0]));
+            localStorage.setItem('usernameUser', data[0]['usuario']);
+            localStorage.setItem('nameUser',data[0]['nombre']);
+            localStorage.setItem('apellidoUser',data[0]['apellido']);
+            localStorage.setItem('correoUser',data[0]['email'] );
+            localStorage.setItem('idUser',data[0]['idUsuario']);
           } else {
             Swal.fire({
               icon: 'error',

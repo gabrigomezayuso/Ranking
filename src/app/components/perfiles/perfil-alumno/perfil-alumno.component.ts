@@ -10,13 +10,18 @@ import { AuthService } from 'src/app/services/auth.service';
 export class PerfilAlumnoComponent implements OnInit {
   public user: any;
   constructor() { }
+  nombre: string;
+  apellidos: string;
+  usuario: string;
+  correo: string;
 
   Modificar:boolean=true
   Modificar1:boolean=false
   ngOnInit(): void {
-
-
-    console.log(sessionStorage.getItem('currentUser'),'test');
+    this.usuario=localStorage.getItem('usernameUser');
+    this.nombre=localStorage.getItem('nameUser');
+    this.apellidos=localStorage.getItem('apellidoUser');
+    this.correo=localStorage.getItem('correoUser');
   }
 
   BotonModificar(){
