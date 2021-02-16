@@ -47,7 +47,10 @@ export class AuthService {
     localStorage.removeItem('nameUser');
     localStorage.removeItem('apellidoUser');
     localStorage.removeItem('correoUser');
+    localStorage.removeItem('centroUser');
     localStorage.removeItem('idUser');
+    localStorage.removeItem('currentProfesor');
+    localStorage.removeItem('centroUser');
     this.currentUserSubject.next(null);
   }
 
@@ -57,7 +60,7 @@ export class AuthService {
     return this.http.post<profesor>(`${environment.apiUrl}/login-profesor.php`, JSON.stringify(profesor))
       .pipe(map(profesor => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('currentUser', JSON.stringify(alumno));
+        localStorage.setItem('currentProfesor', JSON.stringify(profesor));
         this.currentUserSubject.next(profesor);
         return profesor;
       }));

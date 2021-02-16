@@ -34,22 +34,22 @@
               <div *ngIf="Modificar">
 
                 <div class="col-xs-12">
-                  <label for="first_name"><h4>Usuario</h4></label>
+                  <label for="first_name"><h4>Usuario:</h4></label>
+                  {{this.usuario}}
               </div>
                       <div class="col-xs-6">
                           <label for="first_name"><h4>Nombre</h4></label>
+                          {{this.nombre}}
                       </div>
 
                       <div class="col-xs-6">
                         <label for="last_name"><h4>Apellidos</h4></label>
+                        {{this.apellidos}}
                       </div>
 
                       <div class="col-xs-6">
                           <label for="email"><h4>Email</h4></label>
-                      </div>
-
-                      <div class="col-xs-6">
-                          <label><h4>Centro</h4></label>
+                          {{this.correo}}
                       </div>
 
 
@@ -66,14 +66,14 @@
 
                           <div class="col-xs-6">
                               <label for="first_name"><h4>Nombre</h4></label>
-                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                              <input type="text" class="form-control" name="first_name" id="first_name" value=" {{this.usuario}}" title="enter your first name if any.">
                           </div>
                       </div>
                       <div class="form-group">
 
                           <div class="col-xs-6">
                             <label for="last_name"><h4>Apellidos</h4></label>
-                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
+                              <input type="text" class="form-control" name="last_name" id="last_name"value=" {{this.nombre}}"  title="enter your last name if any.">
                           </div>
                       </div>
 
@@ -82,25 +82,25 @@
 
                           <div class="col-xs-6">
                               <label for="email"><h4>Email</h4></label>
-                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
+                              <input type="email" class="form-control" name="email" id="email"value=" {{this.correo}}"  title="enter your email.">
                           </div>
                       </div>
                       <div class="col-xs-6">
 
-                      <div class="form-group">
+                      <!-- <div class="form-group">
                               <label for="centro"><h4>Centro</h4></label>
                               <select  id="centro"  class="form-control" >
                                 <option>Ilerna</option>
                                  <option>Caparrella</option>
                                   <option>UCAM</option>
                                </select>
-                          </div>
-                      </div>
+                          </div> -->
+                  </div>
                       <div class="form-group">
 
                           <div class="col-xs-6">
                               <label for="password"><h4>Password</h4></label>
-                              <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
+                              <input type="password" class="form-control" name="password" id="password" placeholder="password"  title="enter your password.">
                           </div>
                       </div>
                       <div class="form-group">
