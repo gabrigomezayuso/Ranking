@@ -10,18 +10,17 @@
 
   $conexion = conexion(); // CREA LA CONEXION
 
+  $passwordc = password_hash($params->contrasena, PASSWORD_DEFAULT);
 
-  $instruccion = "UPDATE alumnos (contrasena,email,nombre,apellido) VALUES ( '$params->contrasena','$params->email', '$params->nombre', '$params->apellido')";
-
-
+  $instruccion = "UPDATE daw2_gamifikg6.alumnos SET contrasena = '$passwordc', email = '$params->email', nombre = '$params->nombre', apellido = '$params->apellido' WHERE idUsuario= $params->id";
+  // UPDATE alumnos  WHERE idUsuario = ";
   $resultado = mysqli_query($conexion, $instruccion);
-
 
    if (!$resultado){
 
 
   }else{
-    $resultado = mysqli_query($conexion, "SELECT * FROM alumnos WHERE usuario='$params->usuario'");
+    $resultado = mysqli_query($conexion, "SELECT * FROM alumnos WHERE idUsuario='$params->id'");
     while ($registros = mysqli_fetch_array($resultado))
     {
       $datos[] = $registros;
