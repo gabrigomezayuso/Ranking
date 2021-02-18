@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ConfirmedValidator } from '../confirmed.validator';
 import { perfilAlumno } from 'src/app/models/perfilAlumno';
+import { AlumnosService } from 'src/app/services/alumnos.service';
 
 
 
@@ -15,7 +16,7 @@ import { perfilAlumno } from 'src/app/models/perfilAlumno';
 export class PerfilAlumnoComponent implements OnInit {
   public user: any;
   constructor(
-    private AuthService: AuthService,
+    private AlumnosService: AlumnosService,
     private formBuilder: FormBuilder
 
   ) {
@@ -71,10 +72,10 @@ export class PerfilAlumnoComponent implements OnInit {
 
 
 
-   registerAlumno() {
+   GetModificarAlumno() {
      console.log(this.perfilalumno);
 
-      this.AuthService.registerAlumno(this.perfilalumno).subscribe (
+      this.AlumnosService.actualizarPerfil(this.perfilalumno).subscribe (
         datos => {
           if(datos['resultado'] == 'OK') {
             alert(datos['mensaje']);
@@ -98,7 +99,7 @@ export class PerfilAlumnoComponent implements OnInit {
   }
   EnviarDatos() {
     this.ModificarValores()
-    this.registerAlumno()
+    this.GetModificarAlumno()
 
   }
 

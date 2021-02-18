@@ -49,6 +49,6 @@
       }
 
     header('Content-Type: application/json');
-     echo json_encode($datos);
+    echo json_encode($datos);
 
     // echo json_encode($response); // MUESTRA EL JSON GENERADO
