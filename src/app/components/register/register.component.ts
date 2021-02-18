@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
     authService: AuthService;
     submitted = false;
     myForm: FormGroup;
-  alumno =new alumno;
+    alumno =new alumno('','','','','','');
 
      constructor(
         private formBuilder: FormBuilder,

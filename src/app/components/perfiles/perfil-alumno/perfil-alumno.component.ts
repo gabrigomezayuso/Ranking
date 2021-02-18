@@ -3,6 +3,8 @@ import { alumno } from 'src/app/models/alumno';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ConfirmedValidator } from '../confirmed.validator';
+import { perfilAlumno } from 'src/app/models/perfilAlumno';
+
 
 
 @Component({
@@ -15,7 +17,11 @@ export class PerfilAlumnoComponent implements OnInit {
   constructor(
     private AuthService: AuthService,
     private formBuilder: FormBuilder
-  ) { }
+
+  ) {
+
+  }
+
 
   nombre: string;
   apellidos: string;
@@ -23,29 +29,37 @@ export class PerfilAlumnoComponent implements OnInit {
   correo: string;
   contrasena: string;
   myForm: FormGroup;
-  alumno = new alumno();
+  perfilalumno =new perfilAlumno('','','','','','');
   Modificar: boolean = true
   Modificar1: boolean = false
 
+
   ngOnInit(): void {
+
 
     this.usuario = localStorage.getItem('usernameUser');
     this.nombre = localStorage.getItem('nameUser');
     this.contrasena = localStorage.getItem('contrasenaUser');
     this.apellidos = localStorage.getItem('apellidoUser');
     this.correo = localStorage.getItem('correoUser');
+    this.perfilalumno =new perfilAlumno(this.usuario ,this.nombre,this.apellidos,this.correo,this.contrasena,'');
 
     this.myForm = new FormGroup({
       nombre: new FormControl(this.nombre, [Validators.minLength(2), Validators.maxLength(15), Validators.required]),
       apellido:  new FormControl(this.apellidos, [Validators.minLength(2), Validators.maxLength(15), Validators.required]),
       email: new FormControl(this.correo, [Validators.email, Validators.required]),
-      contrasena: new FormControl(this.correo, [Validators.minLength(2), Validators.maxLength(15), Validators.required]),
-      confirm_password:new FormControl(this.correo, Validators.required),
-    }
-    );
+      contrasena: new FormControl(this.contrasena, [Validators.minLength(2), Validators.maxLength(15), Validators.required]),
+      confirm_password:new FormControl('', Validators.required),
+    }, passwordMatchValidator);
+
+    function passwordMatchValidator(g: FormGroup) {
+      return g.get('contrasena').value === g.get('confirm_password').value
+         ? null : {'mismatch': true};
+   }
 
 
-    console.log(this.myForm.controls);
+
+
 
 
     // this.myForm = this.formBuilder.group({
@@ -54,12 +68,38 @@ export class PerfilAlumnoComponent implements OnInit {
   }
 
 
+
+
+
+   registerAlumno() {
+     console.log(this.perfilalumno);
+
+      this.AuthService.registerAlumno(this.perfilalumno).subscribe (
+        datos => {
+          if(datos['resultado'] == 'OK') {
+            alert(datos['mensaje']);
+          } else {
+            alert(datos['mensaje']);
+          }
+        }
+      )
+      }
+
   get f() {
     return this.myForm.controls;
   }
 
+  ModificarValores(){
+    this.nombre=this.myForm.controls.nombre.value
+    this.apellidos=this.myForm.controls.apellido.value
+    this.correo=this.myForm.controls.email.value
+    this.contrasena=this.myForm.controls.contrasena.value
+    this.perfilalumno =new perfilAlumno(this.usuario ,this.nombre,this.apellidos,this.correo,this.contrasena,'');
+  }
   EnviarDatos() {
-    console.log(this.alumno);
+    this.ModificarValores()
+    this.registerAlumno()
+
   }
 
   BotonModificar() {
