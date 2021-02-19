@@ -10,19 +10,45 @@
                           <label for="username">Mote o "Nick"</label>
                           <input type="text" [(ngModel)]="alumno.usuario" formControlName="usuario" class="form-control"  />
 
+                          <div *ngIf="myForm.get('usuario').hasError('required') && myForm.get('usuario').touched" class="alert alert-danger">
+                            Este campo es obligatorio
+                          </div>
+
+                          <div *ngIf="myForm.get('usuario').hasError('maxlength') && myForm.get('usuario').touched" class="alert alert-danger">
+                            El nombre es demasiado largo
+                          </div>
+                          <div *ngIf="myForm.get('usuario').hasError('minlength') && myForm.get('usuario').touched" class="alert alert-danger">
+                            El nombre es demasiado corto
+                          </div>
                           </div>
                       </div>
 
                       <div class="form-group">
                           <label for="email">Email</label>
                           <input type="text" [(ngModel)]="alumno.email" formControlName="email" class="form-control"  />
-
+                          <div *ngIf="myForm.get('email').hasError('required') && myForm.get('email').touched" class="alert alert-danger">
+                            Es necesario introducir un email valido
+                          </div>
+                          <div *ngIf="myForm.get('email').hasError('email') && myForm.get('email').touched" class="alert alert-danger">
+                            Es necesario introducir un email valido
+                          </div>
                       </div>
 
                       <div class="form-group">
                           <label for="password">Contraseña</label>
                           <input type="password" [(ngModel)]="alumno.contrasena" formControlName="contrasena" class="form-control"  />
-
+                          <div *ngIf="myForm.get('contrasena').hasError('required') && myForm.get('contrasena').touched"
+                          class="alert alert-danger">
+                          Este campo es obligatorio
+                        </div>
+                        <div *ngIf="myForm.get('contrasena').hasError('maxlength') && myForm.get('contrasena').touched"
+                          class="alert alert-danger">
+                          La contraseña es demasiado larga
+                        </div>
+                        <div *ngIf="myForm.get('contrasena').hasError('minlength') && myForm.get('contrasena').touched"
+                          class="alert alert-danger">
+                          La contraseña es demasiado corta
+                        </div>
                       </div>
 
                       <div class="form-group">
@@ -36,12 +62,30 @@
 
                       <label for="firstName">Nombre</label>
                       <input type="text" [(ngModel)]="alumno.nombre" formControlName="nombre" class="form-control"  />
+                      <div *ngIf="myForm.get('nombre').hasError('required') && myForm.get('nombre').touched" class="alert alert-danger">
+                        Este campo es obligatorio
+                      </div>
 
+                      <div *ngIf="myForm.get('nombre').hasError('maxlength') && myForm.get('nombre').touched" class="alert alert-danger">
+                        El nombre es demasiado largo
+                      </div>
+                      <div *ngIf="myForm.get('nombre').hasError('minlength') && myForm.get('nombre').touched" class="alert alert-danger">
+                        El nombre es demasiado corto
+                      </div>
 
                   <div class="form-group">
                       <label for="lastName">Apellidos</label>
                       <input type="text" [(ngModel)]="alumno.apellido" formControlName="apellido" class="form-control"  />
+                      <div *ngIf="myForm.get('apellido').hasError('required') && myForm.get('apellido').touched" class="alert alert-danger">
+                        Este campo es obligatorio
+                      </div>
 
+                      <div *ngIf="myForm.get('apellido').hasError('maxlength') && myForm.get('apellido').touched" class="alert alert-danger">
+                        El nombre es demasiado largo
+                      </div>
+                      <div *ngIf="myForm.get('apellido').hasError('minlength') && myForm.get('apellido').touched" class="alert alert-danger">
+                        El nombre es demasiado corto
+                      </div>
                   </div>
 
 
