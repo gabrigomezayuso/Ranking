@@ -51,6 +51,7 @@ export class AuthService {
     localStorage.removeItem('idUser');
     localStorage.removeItem('currentProfesor');
     localStorage.removeItem('centroUser');
+    localStorage.removeItem('role');
     this.currentUserSubject.next(null);
   }
 

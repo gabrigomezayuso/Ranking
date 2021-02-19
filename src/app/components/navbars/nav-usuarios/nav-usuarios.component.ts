@@ -22,7 +22,9 @@ export class NavUsuariosComponent implements OnInit {
     localStorage.removeItem('apellidoUser');
     localStorage.removeItem('correoUser');
     localStorage.removeItem('idUser');
+    localStorage.removeItem('role');
     this.AuthService.logout
+    window.location.reload();
   }
 
 }

@@ -102,6 +102,11 @@ export class LoginComponent implements OnInit {
 
 
   }
+
+  cambiarRol(){
+    window.location.reload();
+    this.router.navigate(['/login-profesor']);
+  }
   /*cdfbvcdfcdvb
     loginUsuario() {
       console.log('Login');

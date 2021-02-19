@@ -11,7 +11,7 @@ import { LoginProfesorComponent } from './components/login-profesor/login-profes
 import { AdminGuard } from '../app/_helpers/admin.guard';
 
 const routes: Routes = [
- {path: 'login', component: LoginComponent},
+ { path: 'login', component: LoginComponent},
  { path: 'login', component: LoginComponent },
  { path: 'login-profesor', component: LoginProfesorComponent },
  { path: 'register', component: RegisterComponent },
