@@ -65,7 +65,10 @@ export class RegisterAdminComponent implements OnInit {
               title: datos['mensaje'],
               showConfirmButton: false,
               timer: 1500
-          })} else {
+          })
+          this.router.navigate['login-profesor']
+
+        } else {
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
