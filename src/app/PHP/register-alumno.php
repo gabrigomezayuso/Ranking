@@ -15,21 +15,31 @@
 
   $passwordc = password_hash($params->contrasena, PASSWORD_DEFAULT);
 
+  $resultadoNoRepetir = mysqli_query($conexion, "SELECT * FROM alumnos WHERE usuario='$params->usuario'");
+if($resultadoNoRepetir){
+
+
+
+}else{
+
+
   // REALIZA LA QUERY A LA DB
   $resultado = mysqli_query($conexion, "INSERT INTO `alumnos`(`usuario`, `contrasena`, `email`, `nombre`, `apellido`)
   VALUES ('$params->usuario','$passwordc','$params->email','$params->nombre','$params->apellido')");
-
+}
     class Result {}
 
     // GENERA LOS DATOS DE RESPUESTA
     $response = new Result();
 
-    if($resultado) {
+    if(!$resultadoNoRepetir) {
         $response->resultado = 'OK';
         $response->mensaje = 'REGISTER EXITOSO';
+
     } else {
         $response->resultado = 'FAIL';
-        $response->mensaje = 'REGISTER FALLIDO';
+        $response->mensaje = 'REGISTER FALLIDO USUARIO YA CREADO';
+
     }
 
     header('Content-Type: application/json');

@@ -15,9 +15,17 @@
   $conexion = conexion(); // CREA LA CONEXION
 
 
+  $resultadoNoRepetir = mysqli_query($conexion, "SELECT * FROM profesores WHERE usuario='$params->usuario'");
+  if($resultadoNoRepetir){
+
+
+
+  }else{
+
   // REALIZA LA QUERY A LA DB
   $resultado = mysqli_query($conexion, "INSERT INTO `profesores`(`usuario`, `contrasena`, `email`, `nombre`, `apellido`, `centro`)
   VALUES ('$params->usuario','$passwordc','$params->email','$params->nombre','$params->apellido','$params->centro')");
+  }
 
     class Result {}
 
@@ -29,7 +37,7 @@
         $response->mensaje = 'REGISTER EXITOSO';
     } else {
         $response->resultado = 'FAIL';
-        $response->mensaje = 'REGISTER FALLIDO'.$params->usuario.$params->contrasena.$params->email.$params->nombre.$params->apellido.$params->centro;
+        $response->mensaje = 'REGISTER FALLIDO USUARIO YA CREADO';
     }
 
     header('Content-Type: application/json');

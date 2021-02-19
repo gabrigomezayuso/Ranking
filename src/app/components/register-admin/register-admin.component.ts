@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { profesor } from 'src/app/models/profesor';
 import {CustomValidators} from '../custom-validators'
 import { ConfirmedValidator } from '../confirmed.validator';
+import Swal from 'sweetalert2';
 
 @Component({ templateUrl: 'register-admin.component.html' })
 export class RegisterAdminComponent implements OnInit {
@@ -58,9 +59,19 @@ export class RegisterAdminComponent implements OnInit {
       this.authService.registerProfesor(this.profesor).subscribe (
         datos => {
           if(datos['resultado'] == 'OK') {
-            alert(datos['mensaje']);
-          } else {
-            alert(datos['mensaje']);
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: datos['mensaje'],
+              showConfirmButton: false,
+              timer: 1500
+          })} else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: datos['mensaje']
+
+            })
           }
         }
       )
