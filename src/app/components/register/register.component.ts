@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { ConfirmedValidator } from '../confirmed.validator';
 import { alumno } from 'src/app/models/alumno';
+import Swal from 'sweetalert2';
 @Component({ templateUrl: 'register.component.html' })
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
@@ -40,10 +41,22 @@ export class RegisterComponent implements OnInit {
       this.authService.registerAlumno(this.alumno).subscribe (
         datos => {
           if(datos['resultado'] == 'OK') {
-            alert(datos['mensaje']);
-            this.router.navigate(['login-alumno'])
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: datos['mensaje'],
+              showConfirmButton: false,
+              timer: 1500
+            })
+
           } else {
-            alert(datos['mensaje']);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: datos['mensaje']
+
+            })
+
           }
         }
       )

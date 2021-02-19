@@ -11,15 +11,15 @@ import { LoginProfesorComponent } from './components/login-profesor/login-profes
 import { AdminGuard } from '../app/_helpers/admin.guard';
 
 const routes: Routes = [
- { path: 'login', component: LoginComponent},
+ { path: '', component: HomeComponent },
  { path: 'login', component: LoginComponent },
  { path: 'login-profesor', component: LoginProfesorComponent },
  { path: 'register', component: RegisterComponent },
  { path: 'register-admin', component: RegisterAdminComponent },
  { path: 'alumno', component: PerfilAlumnoComponent, canActivate: [AuthGuard] },
  { path: 'profesor', component: PerfilProfesorComponent, canActivate: [AuthGuard, AdminGuard] },
- { path: 'home', component: HomeComponent, canActivate: [AuthGuard]} , //HOME es un componente que requiere ser identificado, debido a esto, le introducimos un "guardian" para controlar su acceso
- { path: '**', redirectTo: 'login' }
+ { path: 'home', component: HomeComponent} , //HOME es un componente que requiere ser identificado, debido a esto, le introducimos un "guardian" para controlar su acceso
+ { path: '**', redirectTo: 'home' }
 
 ];
 
