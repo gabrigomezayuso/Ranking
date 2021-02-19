@@ -59,6 +59,7 @@ export class RegisterAdminComponent implements OnInit {
         datos => {
           if(datos['resultado'] == 'OK') {
             alert(datos['mensaje']);
+            this.router.navigate(['login-profesor'])
           } else {
             alert(datos['mensaje']);
           }

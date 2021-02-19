@@ -41,6 +41,7 @@ export class RegisterComponent implements OnInit {
         datos => {
           if(datos['resultado'] == 'OK') {
             alert(datos['mensaje']);
+            this.router.navigate(['login-alumno'])
           } else {
             alert(datos['mensaje']);
           }

@@ -146,6 +146,8 @@ export class PerfilProfesorComponent implements OnInit {
       'Los valores han cambiado',
       'success'
     )
+    this.Modificar = true;
+    this.Modificar1 = false;
   }
 
   BotonModificar() {
