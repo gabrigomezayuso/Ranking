@@ -16,8 +16,8 @@
 
 
   $resultadoNoRepetir = mysqli_query($conexion, "SELECT * FROM profesores WHERE usuario='$params->usuario'");
-  if($resultadoNoRepetir){
 
+  if($resultadoNoRepetir->num_rows >= 1) {
 
 
   }else{
@@ -38,6 +38,9 @@
     } else {
         $response->resultado = 'FAIL';
         $response->mensaje = 'REGISTER FALLIDO USUARIO YA CREADO';
+        if($resultadoNoRepetir->num_rows >= 1) {
+          $response->mensaje = 'REGISTER FALLIDO USUARIO YA CREADO';
+      }
     }
 
     header('Content-Type: application/json');

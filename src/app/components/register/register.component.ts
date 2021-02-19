@@ -47,7 +47,9 @@ export class RegisterComponent implements OnInit {
               title: datos['mensaje'],
               showConfirmButton: false,
               timer: 1500
+
             })
+            this.router.navigate['login']
 
           } else {
             Swal.fire({
