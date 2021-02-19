@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { alumno } from 'src/app/models/alumno';
-import { AuthService } from 'src/app/services/auth.service';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ConfirmedValidator } from '../confirmed.validator';
 import { perfilAlumno } from 'src/app/models/perfilAlumno';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import Swal from 'sweetalert2';
@@ -22,7 +19,7 @@ export class PerfilAlumnoComponent implements OnInit {
   constructor(
     private AlumnosService: AlumnosService,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   nombre: string;
   apellidos: string;
@@ -108,24 +105,24 @@ export class PerfilAlumnoComponent implements OnInit {
     console.log(this.perfilalumno);
     this.AlumnosService.actualizarPerfil(this.perfilalumno).subscribe(
       (datos) => {
-          //borramos los datos actuales
-          localStorage.removeItem('currentUser');
-          localStorage.removeItem('usernameUser');
-          localStorage.removeItem('nameUser');
-          localStorage.removeItem('apellidoUser');
-          localStorage.removeItem('correoUser');
-          localStorage.removeItem('idUser');
-          localStorage.removeItem('role');
+        //borramos los datos actuales
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('usernameUser');
+        localStorage.removeItem('nameUser');
+        localStorage.removeItem('apellidoUser');
+        localStorage.removeItem('correoUser');
+        localStorage.removeItem('idUser');
+        localStorage.removeItem('role');
 
-          //introducimos los nuevos
-          localStorage.setItem('currentUser', JSON.stringify(datos[0]));
-          localStorage.setItem('usernameUser', datos[0]['usuario']);
-          localStorage.setItem('nameUser', datos[0]['nombre']);
-          localStorage.setItem('apellidoUser', datos[0]['apellido']);
-          localStorage.setItem('correoUser', datos[0]['email']);
-          localStorage.setItem('idUser', datos[0]['idUsuario']);
-          localStorage.setItem('role', 'ee11cbb19052e40b07aac0ca060c23ee');
-        }
+        //introducimos los nuevos
+        localStorage.setItem('currentUser', JSON.stringify(datos[0]));
+        localStorage.setItem('usernameUser', datos[0]['usuario']);
+        localStorage.setItem('nameUser', datos[0]['nombre']);
+        localStorage.setItem('apellidoUser', datos[0]['apellido']);
+        localStorage.setItem('correoUser', datos[0]['email']);
+        localStorage.setItem('idUser', datos[0]['idUsuario']);
+        localStorage.setItem('role', 'ee11cbb19052e40b07aac0ca060c23ee');
+      }
     );
   }
 

@@ -14,7 +14,6 @@ export class AlumnosService {
   private currentUserSubject: BehaviorSubject<perfilAlumno>;
   public currentUser: Observable<perfilAlumno>;
 
-  URL = "http://localhost/";
   constructor(private http: HttpClient) {
 
     this.currentUserSubject = new BehaviorSubject<perfilAlumno>(JSON.parse(localStorage.getItem('currentUser')));

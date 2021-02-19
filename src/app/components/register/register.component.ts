@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { ConfirmedValidator } from '../confirmed.validator';
-import { alumno } from 'src/app/models/alumno';
+import { Alumno } from 'src/app/models/Alumno';
 import Swal from 'sweetalert2';
 @Component({ templateUrl: 'register.component.html' })
 export class RegisterComponent implements OnInit {
@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
     authService: AuthService;
     submitted = false;
     myForm: FormGroup;
-    alumno =new alumno('','','','','','');
+    alumno = new Alumno('','','','','','');
 
      constructor(
         private formBuilder: FormBuilder,
@@ -38,6 +38,10 @@ export class RegisterComponent implements OnInit {
 
     }
     registerAlumno() {
+
+      let alumn = new Alumno(this.myForm.controls.usuario.value,
+                             this.myForm.controls.contrasena.value)
+
       this.authService.registerAlumno(this.alumno).subscribe (
         datos => {
           if(datos['resultado'] == 'OK') {
@@ -47,9 +51,9 @@ export class RegisterComponent implements OnInit {
               title: datos['mensaje'],
               showConfirmButton: false,
               timer: 1500
-
+            }).then((result) => {
+              this.router.navigate['login']
             })
-            this.router.navigate['login']
 
           } else {
             Swal.fire({

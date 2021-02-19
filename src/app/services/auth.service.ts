@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { alumno } from '../models/alumno';
+import { Alumno } from '../models/Alumno';
 import { profesor } from '../models/profesor';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -11,23 +11,22 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
 
-  private currentUserSubject: BehaviorSubject<alumno>;
-  public currentUser: Observable<alumno>;
+  private currentUserSubject: BehaviorSubject<Alumno>;
+  public currentUser: Observable<Alumno>;
 
 
-  URL = "http://localhost/";
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<alumno>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject<Alumno>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): alumno {
+  public get currentUserValue(): Alumno {
     return this.currentUserSubject.value;
   }
 
 
   login(alumno) {
-    return this.http.post<alumno>(`${environment.apiUrl}/login-alumno.php`, JSON.stringify(alumno))
+    return this.http.post<Alumno>(`${environment.apiUrl}/login-alumno.php`, JSON.stringify(alumno))
       .pipe(map(alumno => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(alumno));
@@ -68,20 +67,10 @@ export class AuthService {
   }
 
   registerProfesor(profesor) {
-    return this.http.post(`${this.URL}register-profesor.php`, JSON.stringify(profesor));
+    return this.http.post(`${environment.apiUrl}/register-profesor.php`, JSON.stringify(profesor));
   }
 
   registerAlumno(alumno) {
-    return this.http.post(`${this.URL}register-alumno.php`, JSON.stringify(alumno));
+    return this.http.post(`${environment.apiUrl}/register-alumno.php`, JSON.stringify(alumno));
   }
-
-  isAuthenticated() {
-    //en caso de ser logueado y hacer el return correcto de la funcion loginUsuario, este devolvera el valor, en este caso "true" en caso de ser logueado
-
-  }
-
-  isAdmin() {
-    //en caso de ser logueado como admin y hacer el return correcto de la funcion loginUsuario, este devolvera el valor, en este caso "true" en caso de ser logueado
-  }
-
 }

@@ -13,7 +13,6 @@ export class ProfesorService {
   private currentUserSubject: BehaviorSubject<perfilProfesor>;
   public currentUser: Observable<perfilProfesor>;
 
-  URL = "http://localhost/";
   constructor(private http: HttpClient) {
 
     this.currentUserSubject = new BehaviorSubject<perfilProfesor>(JSON.parse(localStorage.getItem('currentUser')));

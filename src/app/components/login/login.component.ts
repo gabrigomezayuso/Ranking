@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/services/auth.service';
-import { alumno } from 'src/app/models/alumno';
+import { Alumno } from 'src/app/models/Alumno';
 import { first } from 'rxjs/operators';
 
 
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   authService: AuthService;
   myForm: FormGroup;
-  alumno = new alumno('','','','','');
+  alumno = new Alumno('','','','','');
   error = '';
 
   constructor(
