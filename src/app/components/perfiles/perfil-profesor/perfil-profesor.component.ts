@@ -114,7 +114,7 @@ export class PerfilProfesorComponent implements OnInit {
   GetModificarAlumno() {
     console.log(this.perfilprofe);
     this.AlumnosService.actualizarPerfil(this.perfilprofe).subscribe(
-      (datos) => {
+      (data) => {
           //borramos los datos actuales
           localStorage.removeItem('currentUser');
           localStorage.removeItem('usernameUser');
@@ -126,14 +126,14 @@ export class PerfilProfesorComponent implements OnInit {
           localStorage.removeItem('role');
 
           //introducimos los nuevos
-          localStorage.setItem('currentUser', JSON.stringify(datos[0]));
-          localStorage.setItem('usernameUser', datos[0]['usuario']);
-          localStorage.setItem('nameUser', datos[0]['nombre']);
-          localStorage.setItem('apellidoUser', datos[0]['apellido']);
-          localStorage.setItem('correoUser', datos[0]['email']);
-          localStorage.setItem('centroUser', datos[0]['centro']);
-          localStorage.setItem('idUser', datos[0]['idUsuario']);
-          localStorage.setItem('role', 'ee11cbb19052e40b07aac0ca060c23ee')
+          localStorage.setItem('currentUser', JSON.stringify(data[0]));
+          localStorage.setItem('usernameUser', data[0]['usuario']);
+          localStorage.setItem('nameUser', data[0]['nombre']);
+          localStorage.setItem('apellidoUser', data[0]['apellido']);
+          localStorage.setItem('correoUser', data[0]['email']);
+          localStorage.setItem('centroUser', data[0]['centro']);
+          localStorage.setItem('idUser', data[0]['idUsuario']);
+          localStorage.setItem('role', '21232f297a57a5a743894a0e4a801fc3');
       }
     );
   }
