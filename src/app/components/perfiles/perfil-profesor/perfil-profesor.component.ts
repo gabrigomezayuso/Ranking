@@ -5,9 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { perfilAlumno } from 'src/app/models/perfilAlumno';
 import { perfilProfesor } from 'src/app/models/PerfilProfesor';
 import { ProfesorService } from 'src/app/services/profesor.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -18,7 +18,7 @@ import { ProfesorService } from 'src/app/services/profesor.service';
 export class PerfilProfesorComponent implements OnInit {
   public user: any;
   constructor(
-    private AlumnosService: ProfesorService,
+    private ProfesorService: ProfesorService,
     private formBuilder: FormBuilder
   ) {}
 
@@ -113,7 +113,7 @@ export class PerfilProfesorComponent implements OnInit {
   }
   GetModificarAlumno() {
     console.log(this.perfilprofe);
-    this.AlumnosService.actualizarPerfil(this.perfilprofe).subscribe(
+    this.ProfesorService.actualizarPerfil(this.perfilprofe).subscribe(
       (data) => {
           //borramos los datos actuales
           localStorage.removeItem('currentUser');
@@ -141,7 +141,11 @@ export class PerfilProfesorComponent implements OnInit {
   EnviarDatos() {
     this.ModificarValores();
     this.GetModificarAlumno();
-
+    Swal.fire(
+      'Modificado correctamente',
+      'Los valores han cambiado',
+      'success'
+    )
   }
 
   BotonModificar() {

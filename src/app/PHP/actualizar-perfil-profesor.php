@@ -12,7 +12,7 @@
 
   $passwordc = password_hash($params->contrasena, PASSWORD_DEFAULT);
 
-  $instruccion = "UPDATE daw2_gamifikg6.profesor SET contrasena = '$passwordc', email = '$params->email', nombre = '$params->nombre', apellido = '$params->apellido',centro='$params->centro' WHERE idUsuario= $params->id";
+  $instruccion = "UPDATE daw2_gamifikg6.profesores SET contrasena = '$passwordc', email = '$params->email', nombre = '$params->nombre', apellido = '$params->apellido',centro='$params->centro' WHERE idUsuario= $params->id";
   // UPDATE alumnos  WHERE idUsuario = ";
   $resultado = mysqli_query($conexion, $instruccion);
 
@@ -20,7 +20,7 @@
 
 
   }else{
-    $resultado = mysqli_query($conexion, "SELECT * FROM alumnos WHERE idUsuario='$params->id'");
+    $resultado = mysqli_query($conexion, "SELECT * FROM profesores WHERE idUsuario='$params->id'");
     while ($registros = mysqli_fetch_array($resultado))
     {
       $datos[] = $registros;
