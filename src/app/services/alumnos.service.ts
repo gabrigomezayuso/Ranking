@@ -4,6 +4,7 @@ import { perfilAlumno } from '../models/perfilAlumno';
 import { BehaviorSubject, Observable} from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,7 @@ export class AlumnosService {
         localStorage.setItem('currentUser', JSON.stringify(perfilAlumno));
         this.currentUserSubject.next(perfilAlumno);
         console.log(perfilAlumno);
+        // Router['/alumnos'];
         return perfilAlumno;
       }));
   }

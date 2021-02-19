@@ -10,6 +10,7 @@ import {
 import { ConfirmedValidator } from '../confirmed.validator';
 import { perfilAlumno } from 'src/app/models/perfilAlumno';
 import { AlumnosService } from 'src/app/services/alumnos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-perfil-alumno',
@@ -107,26 +108,6 @@ export class PerfilAlumnoComponent implements OnInit {
     console.log(this.perfilalumno);
     this.AlumnosService.actualizarPerfil(this.perfilalumno).subscribe(
       (datos) => {
-        if (datos['resultado'] == 'OK') {
-          //borramos los datos actuales
-          localStorage.removeItem('currentUser');
-          localStorage.removeItem('usernameUser');
-          localStorage.removeItem('nameUser');
-          localStorage.removeItem('apellidoUser');
-          localStorage.removeItem('correoUser');
-          localStorage.removeItem('idUser');
-          localStorage.removeItem('role');
-
-          //introducimos los nuevos
-          localStorage.setItem('currentUser', JSON.stringify(datos[0]));
-          localStorage.setItem('usernameUser', datos[0]['usuario']);
-          localStorage.setItem('nameUser', datos[0]['nombre']);
-          localStorage.setItem('apellidoUser', datos[0]['apellido']);
-          localStorage.setItem('correoUser', datos[0]['email']);
-          localStorage.setItem('idUser', datos[0]['idUsuario']);
-          localStorage.setItem('role', 'ee11cbb19052e40b07aac0ca060c23ee');
-        } else {
-          alert(datos['mensaje']);
           //borramos los datos actuales
           localStorage.removeItem('currentUser');
           localStorage.removeItem('usernameUser');
@@ -145,14 +126,17 @@ export class PerfilAlumnoComponent implements OnInit {
           localStorage.setItem('idUser', datos[0]['idUsuario']);
           localStorage.setItem('role', 'ee11cbb19052e40b07aac0ca060c23ee');
         }
-      }
     );
   }
 
   EnviarDatos() {
     this.ModificarValores();
     this.GetModificarAlumno();
-
+    Swal.fire(
+      'Modificado correctamente',
+      'Los valores han cambiado',
+      'success'
+    )
   }
 
   BotonModificar() {
