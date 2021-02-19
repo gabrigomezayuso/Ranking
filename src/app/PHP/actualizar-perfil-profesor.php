@@ -10,8 +10,9 @@
 
   $conexion = conexion(); // CREA LA CONEXION
 
+  $passwordc = password_hash($params->contrasena, PASSWORD_DEFAULT);
 
-  $instruccion = "UPDATE profesor (contrasena,email,nombre,apellido,centro) VALUES ( '$params->contrasena','$params->email', '$params->nombre', '$params->apellido', '$params->centro')";
+  $instruccion = "UPDATE daw2_gamifikg6.profesores SET apellido='$params->apellido',nombre='$params->nombre', contrasena=$passwordc, usuario='$params->usuario',centro='$params->centro' WHERE idUsuario='$params->id'"
 
 
   $resultado = mysqli_query($conexion, $instruccion);
