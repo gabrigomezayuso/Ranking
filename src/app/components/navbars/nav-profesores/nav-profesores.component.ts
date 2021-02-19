@@ -14,6 +14,7 @@ export class NavProfesoresComponent implements OnInit {
   ngOnInit(): void {
   }
   logout(){
+    localStorage.removeItem('currentProfesor');
     localStorage.removeItem('currentUser');
     localStorage.removeItem('usernameUser');
     localStorage.removeItem('nameUser');
@@ -21,6 +22,8 @@ export class NavProfesoresComponent implements OnInit {
     localStorage.removeItem('correoUser');
     localStorage.removeItem('idUser');
     localStorage.removeItem('role');
+    localStorage.removeItem('centroUser');
     this.AuthService.logout
+    window.location.reload();
   }
 }
