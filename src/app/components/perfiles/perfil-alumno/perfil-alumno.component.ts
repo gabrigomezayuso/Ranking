@@ -47,7 +47,7 @@ export class PerfilAlumnoComponent implements OnInit {
       this.apellidos,
       this.correo,
       this.contrasena,
-      this.id,
+      this.id
       // ''
     );
     this.myForm = new FormGroup(
@@ -89,8 +89,6 @@ export class PerfilAlumnoComponent implements OnInit {
   }
 
   ModificarValores() {
-
-
     this.nombre = this.myForm.controls.nombre.value;
     this.apellidos = this.myForm.controls.apellido.value;
     this.correo = this.myForm.controls.email.value;
@@ -101,9 +99,8 @@ export class PerfilAlumnoComponent implements OnInit {
       this.apellidos,
       this.correo,
       this.contrasena,
-      this.id,
+      this.id
       // ''
-
     );
   }
   GetModificarAlumno() {
@@ -111,6 +108,16 @@ export class PerfilAlumnoComponent implements OnInit {
     this.AlumnosService.actualizarPerfil(this.perfilalumno).subscribe(
       (datos) => {
         if (datos['resultado'] == 'OK') {
+          //borramos los datos actuales
+          localStorage.removeItem('currentUser');
+          localStorage.removeItem('usernameUser');
+          localStorage.removeItem('nameUser');
+          localStorage.removeItem('apellidoUser');
+          localStorage.removeItem('correoUser');
+          localStorage.removeItem('idUser');
+          localStorage.removeItem('role');
+
+          //introducimos los nuevos
           localStorage.setItem('currentUser', JSON.stringify(datos[0]));
           localStorage.setItem('usernameUser', datos[0]['usuario']);
           localStorage.setItem('nameUser', datos[0]['nombre']);
@@ -118,9 +125,25 @@ export class PerfilAlumnoComponent implements OnInit {
           localStorage.setItem('correoUser', datos[0]['email']);
           localStorage.setItem('idUser', datos[0]['idUsuario']);
           localStorage.setItem('role', 'ee11cbb19052e40b07aac0ca060c23ee');
-          alert(datos['mensaje']);
         } else {
           alert(datos['mensaje']);
+          //borramos los datos actuales
+          localStorage.removeItem('currentUser');
+          localStorage.removeItem('usernameUser');
+          localStorage.removeItem('nameUser');
+          localStorage.removeItem('apellidoUser');
+          localStorage.removeItem('correoUser');
+          localStorage.removeItem('idUser');
+          localStorage.removeItem('role');
+
+          //introducimos los nuevos
+          localStorage.setItem('currentUser', JSON.stringify(datos[0]));
+          localStorage.setItem('usernameUser', datos[0]['usuario']);
+          localStorage.setItem('nameUser', datos[0]['nombre']);
+          localStorage.setItem('apellidoUser', datos[0]['apellido']);
+          localStorage.setItem('correoUser', datos[0]['email']);
+          localStorage.setItem('idUser', datos[0]['idUsuario']);
+          localStorage.setItem('role', 'ee11cbb19052e40b07aac0ca060c23ee');
         }
       }
     );
@@ -129,6 +152,7 @@ export class PerfilAlumnoComponent implements OnInit {
   EnviarDatos() {
     this.ModificarValores();
     this.GetModificarAlumno();
+
   }
 
   BotonModificar() {
