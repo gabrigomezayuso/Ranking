@@ -12,7 +12,7 @@
 
   $passwordc = password_hash($params->contrasena, PASSWORD_DEFAULT);
 
-  $instruccion = "UPDATE daw2_gamifikg6.profesores SET apellido='$params->apellido',nombre='$params->nombre', contrasena=$passwordc, usuario='$params->usuario',centro='$params->centro' WHERE idUsuario='$params->id'"
+  $instruccion = "UPDATE daw2_gamifikg6.profesores SET apellido='$params->apellido',nombre='$params->nombre', contrasena=$passwordc, usuario='$params->usuario',centro='$params->centro' WHERE idUsuario='$params->id'";
 
 
   $resultado = mysqli_query($conexion, $instruccion);
@@ -22,32 +22,13 @@
 
 
   }else{
-    $resultado = mysqli_query($conexion, "SELECT * FROM profesor WHERE usuario='$params->usuario'");
+    $resultado = mysqli_query($conexion, "SELECT * FROM daw2_gamifikg6.profesores  WHERE idUsuario='$params->id'");
     while ($registros = mysqli_fetch_array($resultado))
     {
       $datos[] = $registros;
     }
   }
 
-
-  // }
-
-
-
-    class Result {}
-
-    // GENERA LOS DATOS DE RESPUESTA
-    $response = new Result();
-    $response->nombre = $params->contrasena;
-
-    if($resultado->num_rows > 0) {
-      $response->resultado = 'OK';
-      $response->mensaje = 'LOGIN EXITOSO'.$params->usuario;
-    } else {
-        $response->resultado = 'FAIL';
-        $response->mensaje = 'LOGIN FALLIDO';
-        $response->nombre = $params->contrasena;
-      }
 
     header('Content-Type: application/json');
      echo json_encode($datos);
