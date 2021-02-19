@@ -31,9 +31,11 @@ export class PerfilProfesorComponent implements OnInit {
   centro:string;
   id: string;
   myForm: FormGroup;
+  contrasenas: FormGroup;
   perfilprofe = new perfilProfesor('', '', '', '', '', '','');
   Modificar: boolean = true;
   Modificar1: boolean = false;
+  ModificarPass:boolean =false;
 
   ngOnInit(): void {
     this.usuario = localStorage.getItem('usernameUser');
@@ -71,6 +73,18 @@ export class PerfilProfesorComponent implements OnInit {
         email: new FormControl(this.correo, [
           Validators.email,
           Validators.required,
+        ])
+
+      }
+
+    );
+
+    this.contrasenas = new FormGroup(
+      {
+        contrasenavieja: new FormControl(this.contrasena, [
+          Validators.minLength(2),
+          Validators.maxLength(15),
+          Validators.required,
         ]),
         contrasena: new FormControl(this.contrasena, [
           Validators.minLength(2),
@@ -87,25 +101,24 @@ export class PerfilProfesorComponent implements OnInit {
         ? null
         : { mismatch: true };
     }
-    // this.myForm = this.formBuilder.group({
+
   }
 
   get f() {
-    return this.myForm.controls;
+    return this.contrasenas.controls;
   }
 
   ModificarValores() {
     this.nombre = this.myForm.controls.nombre.value;
     this.apellidos = this.myForm.controls.apellido.value;
     this.correo = this.myForm.controls.email.value;
-    this.contrasena = this.myForm.controls.contrasena.value;
     this.centro = this.myForm.controls.centro.value;
     this.perfilprofe = new perfilProfesor(
       this.usuario,
       this.nombre,
       this.apellidos,
       this.correo,
-      this.contrasena,
+       null,
       this.centro,
       this.id
       // ''
@@ -153,5 +166,17 @@ export class PerfilProfesorComponent implements OnInit {
   BotonModificar() {
     this.Modificar = false;
     this.Modificar1 = true;
+  }
+
+  CambiarContrasena(){
+
+    this.ModificarPass = false;
+    this.Modificar = true;
+  }
+  BotonContrasena(){
+
+      this.Modificar = false;
+      this.ModificarPass = true;
+
   }
 }
