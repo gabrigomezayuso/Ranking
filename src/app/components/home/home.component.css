@@ -15,11 +15,13 @@ h6 {
 .btn-primary {
     background-color: rgb(25, 103, 248);
     font-weight: 700;
+    margin-bottom: 20px;
 }
 
 .btn-success {
     background-color: rgb(25, 248, 89);
     font-weight: 700;
+    margin-bottom: 20px;
 }
 
 header.masthead {
