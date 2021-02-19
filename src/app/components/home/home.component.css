@@ -12,6 +12,16 @@ h6 {
     font-weight: 700;
 }
 
+.btn-primary {
+    background-color: rgb(25, 103, 248);
+    font-weight: 700;
+}
+
+.btn-success {
+    background-color: rgb(25, 248, 89);
+    font-weight: 700;
+}
+
 header.masthead {
     position: relative;
     background-color: #343a40;
@@ -31,12 +41,11 @@ header.masthead {
 
 header.masthead .overlay {
     position: absolute;
-    background-color: #212529;
+    background: linear-gradient(360deg, #272727, transparent);
     height: 100%;
     width: 100%;
     top: 0;
     left: 0;
-    opacity: 0.3;
 }
 
 header.masthead h1 {
@@ -45,8 +54,8 @@ header.masthead h1 {
 
 @media (min-width: 768px) {
     header.masthead {
-        padding-top: 12rem;
-        padding-bottom: 12rem;
+        padding-top: 20rem;
+        padding-bottom: 20rem;
     }
     header.masthead h1 {
         font-size: 3rem;
@@ -71,6 +80,12 @@ header.masthead h1 {
 .features-icons {
     padding-top: 7rem;
     padding-bottom: 7rem;
+    color: white;
+}
+
+.bgdark {
+    background-color: #272727;
+    color: white;
 }
 
 .features-icons .features-icons-item {
@@ -132,4 +147,8 @@ footer.footer {
 
 .navbar.navbar-inverse {
     color: #000;
+}
+
+.btn {
+    border-radius: 25rem;
 }
