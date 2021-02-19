@@ -108,6 +108,10 @@ export class PerfilProfesorComponent implements OnInit {
     return this.contrasenas.controls;
   }
 
+  CancelarPass(){
+    this.ModificarPass=false
+    this.Modificar=true
+  }
   ModificarValores() {
     this.nombre = this.myForm.controls.nombre.value;
     this.apellidos = this.myForm.controls.apellido.value;

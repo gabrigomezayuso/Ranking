@@ -142,4 +142,8 @@ export class PerfilAlumnoComponent implements OnInit {
     this.Modificar = false;
     this.Modificar1 = true;
   }
+  Cancelar(){
+    this.Modificar1=false
+    this.Modificar=true
+  }
 }
