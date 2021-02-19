@@ -61,11 +61,71 @@
                   <div  class="form-group">
                        <div class="col-xs-12">
                             <br>
-                            <button (click)="BotonModificar()" class="btn btn-lg btn-success" ><i class="glyphicon glyphicon-ok-sign"></i> Modificar Valores</button>
-
+                            <button (click)="BotonModificar()" class="btn btn-lg btn-success" ><i class="glyphicon glyphicon-ok-sign"></i> Modificar Perfil</button> &nbsp;
+                            <button (click)="BotonContrasena()" class="btn btn-lg btn-primary" ><i class="glyphicon glyphicon-ok-sign"></i> Modificar Contraseña</button>
                         </div>
                   </div>
                 </div>
+
+
+                <form *ngIf="ModificarPass" [formGroup]="contrasenas" (ngSubmit)="CambiarContrasena()">
+
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                        <label for="password"><h4>Contraseña actual</h4></label>
+                        <input type="password" class="form-control"  formControlName="contrasenavieja" placeholder="Escribe la contraseña actual"  title="enter your password.">
+                        <div *ngIf="contrasenas.get('contrasenavieja').hasError('required') && contrasenas.get('contrasenavieja').touched"
+                        class="alert alert-danger">
+                        Este campo es obligatorio
+                      </div>
+                      <div *ngIf="contrasenas.get('contrasenavieja').hasError('maxlength') && contrasenas.get('contrasenavieja').touched"
+                        class="alert alert-danger">
+                        La contraseña es demasiado larga
+                      </div>
+                      <div *ngIf="contrasenas.get('contrasenavieja').hasError('minlength') && contrasenas.get('contrasenavieja').touched"
+                        class="alert alert-danger">
+                        La contraseña es demasiado corta
+                      </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                  <div class="col-xs-6">
+                      <label for="password"><h4>Contraseña nueva</h4></label>
+                      <input type="password" class="form-control"  formControlName="contrasena" placeholder="Escribe la nueva contraseña"  title="enter your password.">
+                      <div *ngIf="contrasenas.get('contrasena').hasError('required') && contrasenas.get('contrasena').touched"
+                      class="alert alert-danger">
+                      Este campo es obligatorio
+                    </div>
+                    <div *ngIf="contrasenas.get('contrasena').hasError('maxlength') && contrasenas.get('contrasena').touched"
+                      class="alert alert-danger">
+                      La contraseña es demasiado larga
+                    </div>
+                    <div *ngIf="contrasenas.get('contrasena').hasError('minlength') && contrasenas.get('contrasena').touched"
+                      class="alert alert-danger">
+                      La contraseña es demasiado corta
+                    </div>
+                  </div>
+              </div>
+
+                <div class="form-group">
+
+                  <div class="col-xs-6">
+                    <label for="password2"><h4>Verificar Contraseña</h4></label>
+                      <input type="password" class="form-control" formControlName="confirm_password" placeholder="Repite la contraseña" title="enter your password2.">
+                      <div *ngIf="f.confirm_password.touched && f.confirm_password.invalid" class="alert alert-danger">
+                        <div *ngIf="f.confirm_password.errors.required">Repetir la contraseña es requerido.</div>
+                        <div *ngIf="f.confirm_password.errors.passwordMatchValidator">Las contraseñas deben ser iguales.</div>
+                    </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-lg btn-success" button [disabled]="contrasenas.invalid"  type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+
+                </form>
+
                   <form *ngIf="Modificar1" [formGroup]="myForm" (ngSubmit)="EnviarDatos()">
                     <div class="form-group">
 
@@ -132,36 +192,7 @@
                                </select>
                           </div>
                       </div>
-                      <div class="form-group">
 
-                        <div class="col-xs-6">
-                            <label for="password"><h4>Contraseña</h4></label>
-                            <input type="password" class="form-control"  formControlName="contrasena" placeholder="Escribe la nueva contraseña"  title="enter your password.">
-                            <div *ngIf="myForm.get('contrasena').hasError('required') && myForm.get('contrasena').touched"
-                            class="alert alert-danger">
-                            Este campo es obligatorio
-                          </div>
-                          <div *ngIf="myForm.get('contrasena').hasError('maxlength') && myForm.get('contrasena').touched"
-                            class="alert alert-danger">
-                            La contraseña es demasiado larga
-                          </div>
-                          <div *ngIf="myForm.get('contrasena').hasError('minlength') && myForm.get('contrasena').touched"
-                            class="alert alert-danger">
-                            La contraseña es demasiado corta
-                          </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-
-                      <div class="col-xs-6">
-                        <label for="password2"><h4>Verificar Contraseña</h4></label>
-                          <input type="password" class="form-control" formControlName="confirm_password" placeholder="Repite la contraseña" title="enter your password2.">
-                          <div *ngIf="f.confirm_password.touched && f.confirm_password.invalid" class="alert alert-danger">
-                            <div *ngIf="f.confirm_password.errors.required">Repetir la contraseña es requerido.</div>
-                            <div *ngIf="f.confirm_password.errors.confirmedValidator">Las contraseñas deben ser iguales.</div>
-                        </div>
-                        </div>
-                    </div>
                       <div class="form-group">
                            <div class="col-xs-12">
                                 <br>
