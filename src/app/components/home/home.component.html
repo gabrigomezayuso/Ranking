@@ -1,93 +1,107 @@
-<!-- Masthead -->
-<header class="masthead text-white text-center">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-9 mx-auto">
-                <h1>Bienvenido a GAMIFI-K</h1>
-                <h5>Mejora tu experiencia de aprendizaje😜</h5>
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
+    <header id="header-section">
+        <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
+            <div class="container">
+                <div class="navbar-brand-wrapper d-flex w-100">
+                    <img src="../../../assets/ff3e1129-5786-4c3c-aeb2-6de1a9a977ca_200x200.png" alt="" width="100px">
+                    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="mdi mdi-menu navbar-toggler-icon"></span>
+        </button>
+                </div>
+                <div class="collapse navbar-collapse navbar-menu-wrapper" id="navbarSupportedContent">
+                    <ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
+                        <li class="d-flex align-items-center justify-content-between pl-4 pl-lg-0">
+                            <div class="navbar-collapse-logo">
+                                <img src="../../../assets/ff3e1129-5786-4c3c-aeb2-6de1a9a977ca_200x200.png" alt="" width="100px">
+                            </div>
+                            <button class="navbar-toggler close-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
+            </button>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" (click)="login()">Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" (click)="register()">Registro</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                <br>
-                <div class="form-row">
-                    <div class="col-sm-6">
-                        <button type="submit" class="btn btn-block btn-lg btn-primary" (click)="login()">Login</button>
+        </nav>
+    </header>
+    <div class="banner">
+        <div class="container">
+            <h1 class="font-weight-semibold">Bienvenido a GAMIFI-K</h1>
+            <h6 class="font-weight-normal text-muted pb-3">Mejora tu experiencia de aprendizaje😜</h6>
+            <div>
+                <button class="btn btn-opacity-light mr-1" (click)="register()">Darme de alta</button>
+                <button class="btn btn-opacity-success ml-1" (click)="login()">Iniciar sessión</button>
+            </div>
+            <img src="../../../assets/images/Group171.svg" alt="" class="img-fluid">
+        </div>
+    </div>
+    <div class="content-wrapper">
+        <div class="container">
+            <section class="features-overview" id="features-section">
+                <div class="content-header">
+                    <h2>¿Como funciona?</h2>
+                    <h6 class="section-subtitle text-muted">Genera tus rankings e invita a tus amigos para que participen en tu aventura</h6>
+                </div>
+                <div class="d-md-flex justify-content-between">
+                    <div class="grid-margin d-flex justify-content-start">
+                        <div class="features-width">
+                            <img src="../../../assets/images/Group12.svg" alt="" class="img-icons">
+                            <h5 class="py-3">Crea tus rankings a gran velocidad</h5>
+                        </div>
                     </div>
-
-                    <div class="col-sm-6">
-                        <button type="submit" class="btn btn-block btn-lg btn-success" (click)="register()">Registro</button>
+                    <div class="grid-margin d-flex justify-content-center">
+                        <div class="features-width">
+                            <img src="../../../assets/images/Group7.svg" alt="" class="img-icons">
+                            <h5 class="py-3">Mira quienes són los mejores y recompensales</h5>
+                        </div>
+                    </div>
+                    <div class="grid-margin d-flex justify-content-end">
+                        <div class="features-width">
+                            <img src="../../../assets/images/Group5.svg" alt="" class="img-icons">
+                            <h5 class="py-3">Cumple objetivos</h5>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <footer class="border-top">
+                <p class="text-center text-muted pt-4">Copyright © 2021 Sergi Bertran | Gabriel Gomez | Alex Rodriguez. Todos los derechos reservados.</p>
+            </footer>
+            <!-- Modal for Contact - us Button -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="exampleModalLabel">Contact Us</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="Name">Name</label>
+                                    <input type="text" class="form-control" id="Name" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Email">Email</label>
+                                    <input type="email" class="form-control" id="Email-1" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Message">Message</label>
+                                    <textarea class="form-control" id="Message" placeholder="Enter your Message"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-success">Submit</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</header>
-
-<!-- Icons Grid -->
-
-<section class="features-icons bgdark text-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3 text-center">
-                    <img src="../../../assets/table-pngrepo-com.png" alt="" width="40%">
-                    <i class="icon-layers m-auto text-primary"></i>
-                    <br>
-                    <br>
-                    <h3>Genera tus rankings</h3>
-                    <p class="lead mb-0">Haz tus rankings e invita a tus alumnos</p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3 text-center">
-                    <img src="../../../assets/trof.png" alt="" width="40%">
-                    <i class="icon-layers m-auto text-primary"></i>
-                    <br>
-                    <br>
-                    <h3>Recompensas a los mejores</h3>
-                    <p class="lead mb-0">Los mejores de cada ranking reciben recompensas</p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3 text-center">
-                    <img src="../../../assets/approval-notice-notice-of-approval-get-approved-pngrepo-com.png" alt="" width="40%">
-                    <i class="icon-layers m-auto text-primary"></i>
-                    <br>
-                    <br>
-                    <h3>Mejora tu expediente</h3>
-                    <p class="lead mb-0">La competividad ayuda a crecer</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-<!-- Footer -->
-<footer class="footer bgdark">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
-                <!-- <ul class="list-inline mb-2">
-                    <li class="list-inline-item">
-                        <a href="#">About</a>
-                    </li>
-                    <li class="list-inline-item">&sdot;</li>
-                    <li class="list-inline-item">
-                        <a href="#">Contact</a>
-                    </li>
-                    <li class="list-inline-item">&sdot;</li>
-                    <li class="list-inline-item">
-                        <a href="#">Terms of Use</a>
-                    </li>
-                    <li class="list-inline-item">&sdot;</li>
-                    <li class="list-inline-item">
-                        <a href="#">Privacy Policy</a>
-                    </li>
-                </ul> -->
-                <p class="text-muted small mb-4 mb-lg-0">&copy; Sergi Bertran, Gabriel Gómez, Alex Rodriguez</p>
-            </div>
-        </div>
-    </div>
-</footer>
+    <script src="../../../assets/js/landingpage.js"></script>
+</body>

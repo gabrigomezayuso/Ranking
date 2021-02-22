@@ -7,7 +7,11 @@ import { Alumno } from 'src/app/models/Alumno';
 import { first } from 'rxjs/operators';
 
 
-@Component({ templateUrl: 'login.component.html' })
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
 export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
