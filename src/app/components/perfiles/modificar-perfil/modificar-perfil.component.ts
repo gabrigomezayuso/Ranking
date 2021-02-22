@@ -141,7 +141,7 @@ export class ModificarPerfilComponent implements OnInit {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this.router.navigate(['/alumno']);
+        this.router.navigate(['/usuario']);
         window.location.reload();
       } else {
         Swal.fire('Error', '', 'info')

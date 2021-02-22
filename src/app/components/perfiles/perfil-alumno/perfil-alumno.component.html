@@ -8,19 +8,15 @@
         <div class="col-sm-10">
           <h1>{{nombre}}</h1>
         </div>
-
       </div>
       <div class="row">
         <div class="col-sm-3">
           <!--left col-->
-
-
           <div class="text-center curva">
             <img
               src="https://www.pngitem.com/pimgs/m/5-56324_transparent-profesor-png-cartoon-man-vector-png-download.png"
               class="avatar img-circle img-thumbnail curva" alt="avatar">
           </div><br>
-
           <ul class="list-group curva">
             <li class="list-group-item text-muted bordd">Rankings <i class="fa fa-dashboard fa-1x"></i></li>
             <li class="list-group-item text-right bordd"><span class="pull-left"><strong>DAW2</strong></span> 125
@@ -28,8 +24,10 @@
           </ul>
           <br>
           <ul class="list-group curva">
-            <li class="list-group-item text-muted bordd">Social Media<i class="fa fa-dashboard fa-1x"></i></li>
-            <li class="list-group-item text-right bordd"><span class="pull-left"><strong></strong></span>-</li>
+            <!-- <li class="list-group-item text-muted bordd">Editar perfil<i class="fa fa-dashboard fa-1x"></i></li> -->
+            <li class="list-group-item text-left bordd">
+              <a class="nav-link" (click)="BotonModificar()"><b>Editar perfil</b></a>
+              <a class="nav-link" (click)="BotonModificar()"><b>Cambiar contraseña</b></a>
           </ul>
         </div>
         <!--/col-3-->
@@ -37,9 +35,7 @@
           <div class="tab-content">
             <div class="tab-pane active" id="home">
               <hr>
-
               <div *ngIf="Modificar">
-
                 <div class="col-xs-12">
                   <label for="first_name">
                     <h4>Usuario:</h4>
@@ -52,39 +48,31 @@
                   </label>
                   {{this.nombre}}
                 </div>
-
                 <div class="col-xs-6">
                   <label for="last_name">
                     <h4>Apellidos</h4>
                   </label>
                   {{this.apellidos}}
                 </div>
-
                 <div class="col-xs-6">
                   <label for="email">
                     <h4>Email</h4>
                   </label>
                   {{this.correo}}
                 </div>
-
-
                 <div class="form-group">
                   <div class="col-xs-12">
                     <br>
-                    <button (click)="BotonModificar()" class="btn btn-lg btn-success"><i
-                        class="glyphicon glyphicon-ok-sign"></i> Modificar Valores</button>
-
+                    <br>
+                    <br>
                   </div>
                 </div>
               </div>
               <div *ngIf="Modificar1">
                 <app-modificar-perfil></app-modificar-perfil>
               </div>
-
-
             </div>
             <!--/tab-content-->
-
           </div>
           <!--/col-9-->
         </div>
@@ -94,6 +82,6 @@
         </div>
       </div>
     </div>
-<br>
-<br>
-<br>
+    <br>
+    <br>
+    <br>

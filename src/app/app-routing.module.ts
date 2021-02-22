@@ -16,7 +16,7 @@ const routes: Routes = [
  { path: 'login-profesor', component: LoginProfesorComponent },
  { path: 'register', component: RegisterComponent },
  { path: 'register-admin', component: RegisterAdminComponent },
- { path: 'alumno', component: PerfilAlumnoComponent, canActivate: [AuthGuard] },
+ { path: 'usuario', component: PerfilAlumnoComponent, canActivate: [AuthGuard] },
  { path: 'profesor', component: PerfilProfesorComponent, canActivate: [AuthGuard, AdminGuard] },
  { path: 'home', component: HomeComponent} , //HOME es un componente que requiere ser identificado, debido a esto, le introducimos un "guardian" para controlar su acceso
  { path: '**', redirectTo: 'home' }
