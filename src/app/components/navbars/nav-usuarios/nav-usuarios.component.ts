@@ -4,7 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-nav-usuarios',
   templateUrl: './nav-usuarios.component.html',
-  styleUrls: ['./nav-usuarios.component.css']
+  styleUrls: ['./nav-usuarios.component.css', '../../home/home.component.css']
 })
 export class NavUsuariosComponent implements OnInit {
 

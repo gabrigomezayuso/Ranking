@@ -1,18 +1,32 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand">Ranking</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<header id="header-section">
+  <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
+    <div class="container">
+      <div class="navbar-brand-wrapper d-flex w-100">
+        <img src="../../../assets/ff3e1129-5786-4c3c-aeb2-6de1a9a977ca_200x200.png" [routerLink]="['/']" routerLinkActive alt="" width="100px">
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="mdi mdi-menu navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse navbar-menu-wrapper" id="navbarSupportedContent">
+        <ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
+          <li class="d-flex align-items-center justify-content-between pl-4 pl-lg-0">
+            <div class="navbar-collapse-logo">
+              <img src="../../../assets/ff3e1129-5786-4c3c-aeb2-6de1a9a977ca_200x200.png" [routerLink]="['/']" routerLinkActive alt="" width="100px">
+            </div>
+            <button class="navbar-toggler close-button" type="button" data-toggle="collapse"
+              data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="logout()">Cerrar sessión</a>
+          </li>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" [routerLink]="['../alumno']" routerLinkActive="active"> Perfil <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item" [routerLink]="['login']" routerLinkActive (click)="logout()">
-        <a class="nav-link" >Cerrar sessión</a>
-      </li>
-    </ul>
-
-  </div>
-</nav>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

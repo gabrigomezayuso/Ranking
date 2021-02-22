@@ -3,22 +3,26 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
-  Validators,
+  Validators
 } from '@angular/forms';
 import { perfilAlumno } from 'src/app/models/perfilAlumno';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import Swal from 'sweetalert2';
+import { Router, ActivatedRoute, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
+
+
 
 @Component({
-  selector: 'app-perfil-alumno',
-  templateUrl: './perfil-alumno.component.html',
-  styleUrls: ['./perfil-alumno.component.css',  '../../home/home.component.css'],
+  selector: 'app-modificar-perfil',
+  templateUrl: './modificar-perfil.component.html',
+  styleUrls: ['./modificar-perfil.component.css']
 })
-export class PerfilAlumnoComponent implements OnInit {
+export class ModificarPerfilComponent implements OnInit {
   public user: any;
   constructor(
     private AlumnosService: AlumnosService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) { }
 
   nombre: string;
@@ -129,22 +133,22 @@ export class PerfilAlumnoComponent implements OnInit {
   EnviarDatos() {
     this.ModificarValores();
     this.GetModificarAlumno();
-    Swal.fire(
-      'Modificado correctamente',
-      'Los valores han cambiado',
-      'success'
-    )
-    this.Modificar = true;
-    this.Modificar1 = false;
+    Swal.fire({
+      icon: 'success',
+      title: 'Modificado correctamente',
+      showConfirmButton: true,
+      timer: 1500
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.router.navigate(['/alumno']);
+        window.location.reload();
+      } else {
+        Swal.fire('Error', '', 'info')
+      }
+    })
+
+
   }
 
-  BotonModificar() {
-    this.Modificar = false;
-    this.Modificar1 = true;
-
-  }
-  Cancelar(){
-    this.Modificar = true;
-    this.Modificar1 = false;
-  }
 }
