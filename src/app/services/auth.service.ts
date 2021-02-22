@@ -25,6 +25,8 @@ export class AuthService {
   }
 
 
+
+
   login(alumno) {
     return this.http.post<Alumno>(`${environment.apiUrl}/login-alumno.php`, JSON.stringify(alumno))
       .pipe(map(alumno => {
@@ -33,6 +35,13 @@ export class AuthService {
         this.currentUserSubject.next(alumno);
         return alumno;
       }));
+  }
+  isLogged(){
+    if(localStorage.getItem('currentUser')){
+      return true;
+    }else{
+      return false
+    }
   }
 
 

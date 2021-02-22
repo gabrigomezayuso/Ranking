@@ -1,20 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { state } from '@angular/animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
 
+export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
-    private route: ActivatedRoute
-  ) { }
+    private AuthService: AuthService
+  ) {
 
+  }
+  isAuthenticated: boolean;
+  NavNoLog: boolean;
+  NavLogged: boolean;
   ngOnInit(): void {
+    this.isLoggedIn();
   }
 
   register() {
@@ -71,5 +78,35 @@ export class HomeComponent implements OnInit {
         console.log('user');
       }
     });
+  }
+
+
+
+  BotonModificar() {
+    this.NavNoLog = false;
+    this.NavLogged = true;
+  }
+
+  isLoggedIn() {
+    this.isAuthenticated  = this.AuthService.isLogged();
+    if(this.isAuthenticated){
+      this.NavLogged = true;
+      this.NavNoLog = false;
+    }else{
+      this.NavLogged = false;
+      this.NavNoLog = true;
+    }
+  }
+
+  logout(){
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('usernameUser');
+    localStorage.removeItem('nameUser');
+    localStorage.removeItem('apellidoUser');
+    localStorage.removeItem('correoUser');
+    localStorage.removeItem('idUser');
+    localStorage.removeItem('role');
+    this.AuthService.logout
+    window.location.reload();
   }
 }
