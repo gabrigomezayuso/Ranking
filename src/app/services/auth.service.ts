@@ -36,6 +36,8 @@ export class AuthService {
         return alumno;
       }));
   }
+
+
   isLogged(){
     if(localStorage.getItem('currentUser')){
       return true;
