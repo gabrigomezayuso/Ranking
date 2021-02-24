@@ -67,23 +67,11 @@ export class ModificarPerfilComponent implements OnInit {
         email: new FormControl(this.correo, [
           Validators.email,
           Validators.required,
-        ]),
-        contrasena: new FormControl(this.contrasena, [
-          Validators.minLength(2),
-          Validators.maxLength(15),
-          Validators.required,
-        ]),
-        confirm_password: new FormControl('', Validators.required),
-      },
-      passwordMatchValidator
+        ])
+      }
+
     );
 
-    function passwordMatchValidator(g: FormGroup) {
-      return g.get('contrasena').value === g.get('confirm_password').value
-        ? null
-        : { mismatch: true };
-    }
-    // this.myForm = this.formBuilder.group({
   }
 
   get f() {
@@ -94,7 +82,6 @@ export class ModificarPerfilComponent implements OnInit {
     this.nombre = this.myForm.controls.nombre.value;
     this.apellidos = this.myForm.controls.apellido.value;
     this.correo = this.myForm.controls.email.value;
-    this.contrasena = this.myForm.controls.contrasena.value;
     this.perfilalumno = new perfilAlumno(
       this.usuario,
       this.nombre,
