@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators
+} from '@angular/forms';
+import { perfilAlumno } from 'src/app/models/perfilAlumno';
 @Component({
   selector: 'app-modificar-contrasena',
   templateUrl: './modificar-contrasena.component.html',
@@ -7,16 +13,66 @@ import {Router} from '@angular/router';
 })
 export class ModificarContrasenaComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor() { }
 
   Atras:boolean=false;
   Todo:boolean=false;
+  contrasenas: FormGroup;
+  nombre: string;
+  apellidos: string;
+  usuario: string;
+  correo: string;
+  contrasena: string;
+  id: string;
+  perfilalumno = new perfilAlumno('', '', '', '', '', '');
   ngOnInit(): void {
+
+    this.usuario = localStorage.getItem('usernameUser');
+    this.nombre = localStorage.getItem('nameUser');
+    this.contrasena = localStorage.getItem('contrasenaUser');
+    this.apellidos = localStorage.getItem('apellidoUser');
+    this.correo = localStorage.getItem('correoUser');
+    this.id = localStorage.getItem('idUser');
+    this.perfilalumno = new perfilAlumno(
+      this.usuario,
+      this.nombre,
+      this.apellidos,
+      this.correo,
+      this.contrasena,
+      this.id
+      // ''
+    );
+
+    this.contrasenas = new FormGroup(
+      {
+        contrasenavieja: new FormControl(this.contrasena, [
+          Validators.minLength(2),
+          Validators.maxLength(15),
+          Validators.required,
+        ]),
+        contrasena: new FormControl(this.contrasena, [
+          Validators.minLength(2),
+          Validators.maxLength(15),
+          Validators.required,
+        ]),
+        confirm_password: new FormControl('', Validators.required),
+      },
+      passwordMatchValidator
+    );
+
+    function passwordMatchValidator(g: FormGroup) {
+      return g.get('contrasena').value === g.get('confirm_password').value
+        ? null
+        : { mismatch: true };
+    }
+  }
+  get f() {
+    return this.contrasenas.controls;
   }
 
-Router
-  BotonAtras(){
-    this.router.navigate(['usuario']);
 
-  }
+EnviarDatos(){
+
+}
+
 }
