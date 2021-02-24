@@ -31,6 +31,7 @@ export class PerfilAlumnoComponent implements OnInit {
   perfilalumno = new perfilAlumno('', '', '', '', '', '');
   Modificar: boolean = true;
   Modificar1: boolean = false;
+  ModificarPass:boolean = false;
 
   ngOnInit(): void {
     this.usuario = localStorage.getItem('usernameUser');
@@ -143,6 +144,18 @@ export class PerfilAlumnoComponent implements OnInit {
     this.Modificar1 = true;
 
   }
+
+  BotonContrasena() {
+    this.Modificar = false;
+    this.ModificarPass = true;
+  }
+  AtrasPass(){
+    this.ModificarPass = false;
+    this.Modificar = true;
+
+
+  }
+
   Cancelar(){
     this.Modificar = true;
     this.Modificar1 = false;

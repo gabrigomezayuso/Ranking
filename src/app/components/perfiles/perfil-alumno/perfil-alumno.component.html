@@ -26,8 +26,7 @@
           <ul class="list-group curva">
             <!-- <li class="list-group-item text-muted bordd">Editar perfil<i class="fa fa-dashboard fa-1x"></i></li> -->
             <li class="list-group-item text-left bordd">
-              <a class="nav-link" (click)="BotonModificar()"><b>Editar perfil</b></a>
-              <a class="nav-link" (click)="BotonModificar()"><b>Cambiar contraseña</b></a>
+              <a class="nav-link" (click)="BotonContrasena()"><b>Cambiar contraseña</b></a>
           </ul>
         </div>
         <!--/col-3-->
@@ -35,42 +34,16 @@
           <div class="tab-content">
             <div class="tab-pane active" id="home">
               <hr>
+
               <div *ngIf="Modificar">
-                <div class="col-xs-12">
-                  <label for="first_name">
-                    <h4>Usuario:</h4>
-                  </label>
-                  {{this.usuario}}
-                </div>
-                <div class="col-xs-6">
-                  <label for="first_name">
-                    <h4>Nombre</h4>
-                  </label>
-                  {{this.nombre}}
-                </div>
-                <div class="col-xs-6">
-                  <label for="last_name">
-                    <h4>Apellidos</h4>
-                  </label>
-                  {{this.apellidos}}
-                </div>
-                <div class="col-xs-6">
-                  <label for="email">
-                    <h4>Email</h4>
-                  </label>
-                  {{this.correo}}
-                </div>
-                <div class="form-group">
-                  <div class="col-xs-12">
-                    <br>
-                    <br>
-                    <br>
-                  </div>
-                </div>
+              <app-modificar-perfil></app-modificar-perfil>
+             </div>
+              <div *ngIf="ModificarPass">
+                <app-modificar-contrasena></app-modificar-contrasena>
+                <button class="btn btn-opacity-light mr-1" (click)="AtrasPass()">Atras</button>
+
               </div>
-              <div *ngIf="Modificar1">
-                <app-modificar-perfil></app-modificar-perfil>
-              </div>
+
             </div>
             <!--/tab-content-->
           </div>

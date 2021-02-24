@@ -17,6 +17,7 @@ import { NavProfesoresComponent } from './components/navbars/nav-profesores/nav-
 import { LoginProfesorComponent } from './components/login-profesor/login-profesor.component';
 import { ModificarPerfilComponent } from './components/perfiles/modificar-perfil/modificar-perfil.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ModificarContrasenaComponent } from './components/perfiles/modificar-contrasena/modificar-contrasena.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { FooterComponent } from './components/footer/footer.component';
     NavProfesoresComponent,
     LoginProfesorComponent,
     ModificarPerfilComponent,
-    FooterComponent
+    FooterComponent,
+    ModificarContrasenaComponent
   ],
   imports: [
     BrowserModule,

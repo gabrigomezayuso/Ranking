@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
               showConfirmButton: false,
               timer: 1500
             }).then((result) => {
-              this.router.navigate['login']
+              this.router.navigate(['login'])
             })
 
           } else {

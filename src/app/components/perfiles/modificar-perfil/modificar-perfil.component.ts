@@ -151,4 +151,16 @@ export class ModificarPerfilComponent implements OnInit {
 
   }
 
+  BotonModificar() {
+    this.Modificar = false;
+    this.Modificar1 = true;
+
+  }
+  Atras() {
+    this.Modificar1 = false;
+    this.Modificar = true;
+
+
+  }
+
 }
