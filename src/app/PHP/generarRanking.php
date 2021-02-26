@@ -13,7 +13,6 @@ require("db.php"); // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
 
 $conexion = conexion(); // CREA LA CONEXION
 
-$passwordc = password_hash($params->contrasena, PASSWORD_DEFAULT);
 
 //Funcion aleatoria
 function generateRandomString($length=6) {
@@ -28,27 +27,15 @@ function generateRandomString($length=6) {
 
 $ranking= generateRandomString(6);
 
-echo $ranking;
-
-
-$resultadoNoRepetir = mysqli_query($conexion, "SELECT id_ranking FROM rankings WHERE id_ranking='$ranking'");
 
 
 
-if($resultadoNoRepetir->num_rows >= 1) {
-
-  while($ranking === $resultadoNoRepetir){
-    $ranking= generateRandomString(6);
-  }
-
-}else{
 // REALIZA LA QUERY A LA DB
 $resultado = mysqli_query($conexion, "INSERT INTO `rankings`(`id_ranking`, `nombreRanking`, `administrador`)
 VALUES ('$ranking','$params->nombre','$params->idProfesor')");
-}
 
-$instruccion = "SELECT contrasena FROM alumnos WHERE usuario = '$params->usuario'";
-$resultado = mysqli_query($conexion, $instruccion);
+
+echo $ranking;
 
 
 

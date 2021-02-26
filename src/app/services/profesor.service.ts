@@ -27,7 +27,7 @@ export class ProfesorService {
 
   actualizarPerfil(generarRankings) {
     return this.http.post<generarRanking>(`${environment.apiUrl}/generar-ranking.php`, JSON.stringify(generarRankings))
-      .pipe(map(generarRanking => {
+      .pipe(map(generarRankings => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         console.log(generarRankings)
         return generarRankings;

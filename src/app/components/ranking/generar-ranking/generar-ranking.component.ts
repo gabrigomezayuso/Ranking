@@ -20,7 +20,7 @@ export class GenerarRankingComponent implements OnInit {
 
   myForm: FormGroup;
   nombre:string
-  generarRanking;
+  generarRanking2;
   idProfesor: string;
 
   ngOnInit(): void {
@@ -39,39 +39,18 @@ export class GenerarRankingComponent implements OnInit {
 
   EnviarDatos(){
     this.nombre = this.myForm.controls.nombre.value;
-    this.generarRanking = new generarRanking(
+    this.generarRanking2 = new generarRanking(
     this.nombre,
     this.idProfesor
     );
-    this.AlumnosService.actualizarPerfil(this.generarRanking).subscribe(
+    console.log(this.generarRanking2)
+
+    this.ProfesorService.actualizarPerfil(this.generarRanking2).subscribe(
       (datos) => {
-        //borramos los datos actuales
-        localStorage.removeItem('currentUser');
-        localStorage.removeItem('usernameUser');
-        localStorage.removeItem('nameUser');
-        localStorage.removeItem('apellidoUser');
-        localStorage.removeItem('correoUser');
-        localStorage.removeItem('idUser');
-        localStorage.removeItem('role');
+        console.log(datos)
 
-
-
-        //introducimos los nuevos
-        localStorage.setItem('currentUser', JSON.stringify(datos[0]));
-        localStorage.setItem('usernameUser', datos[0]['usuario']);
-        localStorage.setItem('nameUser', datos[0]['nombre']);
-        localStorage.setItem('apellidoUser', datos[0]['apellido']);
-        localStorage.setItem('correoUser', datos[0]['email']);
-        localStorage.setItem('idUser', datos[0]['idUsuario']);
-        if(this.isAdmin){
-          localStorage.setItem('role', '21232f297a57a5a743894a0e4a801fc3');
-        }else{
-          localStorage.setItem('role', 'ee11cbb19052e40b07aac0ca060c23ee');
         }
-      }
     );
   }
-
-
-
 }
+
