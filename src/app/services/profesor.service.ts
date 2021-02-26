@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {perfilProfesor} from '../models/PerfilProfesor';
+import {generarRanking} from '../models/generarRanking';
 import { BehaviorSubject, from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -24,13 +25,12 @@ export class ProfesorService {
   }
 
 
-  actualizarPerfil(perfilProfesor) {
-    return this.http.post<perfilProfesor>(`${environment.apiUrl}/actualizar-perfil-profesor.php`, JSON.stringify(perfilProfesor))
-      .pipe(map(perfilProfesor => {
+  actualizarPerfil(generarRankings) {
+    return this.http.post<generarRanking>(`${environment.apiUrl}/generar-ranking.php`, JSON.stringify(generarRankings))
+      .pipe(map(generarRanking => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('currentUser', JSON.stringify(perfilProfesor));
-        this.currentUserSubject.next(perfilProfesor);
-        return perfilProfesor;
+        console.log(generarRankings)
+        return generarRankings;
       }));
 }
 }

@@ -24,7 +24,8 @@ export class ModificarContrasenaComponent implements OnInit {
   correo: string;
   contrasena: string;
   id: string;
-  perfilalumno = new perfilAlumno('', '', '', '', '', '');
+  role:string;
+  perfilalumno = new perfilAlumno('', '', '', '', '', '','','');
   ngOnInit(): void {
 
     this.usuario = localStorage.getItem('usernameUser');
@@ -33,12 +34,14 @@ export class ModificarContrasenaComponent implements OnInit {
     this.apellidos = localStorage.getItem('apellidoUser');
     this.correo = localStorage.getItem('correoUser');
     this.id = localStorage.getItem('idUser');
+    this.role = localStorage.getItem('role');
     this.perfilalumno = new perfilAlumno(
       this.usuario,
       this.nombre,
       this.apellidos,
       this.correo,
       this.contrasena,
+      this.role,
       this.id
       // ''
     );

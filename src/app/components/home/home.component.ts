@@ -20,8 +20,13 @@ export class HomeComponent implements OnInit {
   isAuthenticated: boolean;
   NavNoLog: boolean;
   NavLogged: boolean;
+  mostrarLog: boolean;
+  mostrarNoLog: boolean;
+  isAdmin: boolean;
+
   ngOnInit(): void {
     this.isLoggedIn();
+    this.isAdminis();
   }
 
   register() {
@@ -108,5 +113,16 @@ export class HomeComponent implements OnInit {
     localStorage.removeItem('role');
     this.AuthService.logout
     window.location.reload();
+  }
+
+  isAdminis() {
+    this.isAdmin  = this.AuthService.isAdmin();
+    if(this.isAdmin){
+      this.mostrarLog = true;
+      this.mostrarNoLog = false;
+    }else{
+      this.mostrarLog = false;
+      this.mostrarNoLog = true;
+    }
   }
 }

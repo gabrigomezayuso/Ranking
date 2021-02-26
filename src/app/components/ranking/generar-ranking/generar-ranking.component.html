@@ -1,0 +1,46 @@
+<app-nav-usuarios></app-nav-usuarios>
+<div class="banner">
+  <div class="container">
+    <img src="../../../assets/generar-ranking.svg" alt="" class="img-fluid" width="25%">
+<br>
+<br>
+    <form [formGroup]="myForm" (ngSubmit)="EnviarDatos()">
+
+        <div class="form-group row justify-content-center">
+          <div class="col-xs-4">
+            <label for="first_name">
+              <h4>Nombre ranking</h4>
+            </label>
+            <br>
+            <input type="text" class="form-control" formControlName="nombre" title="enter your first name if any.">
+            <div *ngIf="myForm.get('nombre').hasError('required') && myForm.get('nombre').touched"
+              class="alert alert-danger">
+              Este campo es obligatorio
+            </div>
+
+            <div *ngIf="myForm.get('nombre').hasError('maxlength') && myForm.get('nombre').touched"
+              class="alert alert-danger">
+              El nombre es demasiado largo
+            </div>
+            <div *ngIf="myForm.get('nombre').hasError('minlength') && myForm.get('nombre').touched"
+              class="alert alert-danger">
+              El nombre es demasiado corto
+            </div>
+          </div>
+        </div>
+
+
+      <div class="form-group">
+        <div class="col-xs-12">
+          <br>
+          <button class="btn btn-lg btn-success" button [disabled]="myForm.invalid" type="submit"><i
+              class="glyphicon glyphicon-ok-sign"></i>Generar</button>
+
+        </div>
+      </div>
+    </form>
+    <!-- <img src="../../../assets/generar-ranking.svg" alt="" class="img-fluid" width="30%"> -->
+
+
+  </div>
+</div>

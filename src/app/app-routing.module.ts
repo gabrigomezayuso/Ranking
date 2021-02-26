@@ -5,10 +5,10 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RegisterAdminComponent } from './components/register-admin/register-admin.component';
 import { AuthGuard } from '../app/_helpers/auth.guard';
-import { PerfilProfesorComponent } from './components/perfiles/perfil-profesor/perfil-profesor.component';
 import { PerfilAlumnoComponent } from './components/perfiles/perfil-alumno/perfil-alumno.component';
 import { LoginProfesorComponent } from './components/login-profesor/login-profesor.component';
 import { AdminGuard } from '../app/_helpers/admin.guard';
+import { GenerarRankingComponent } from './components/ranking/generar-ranking/generar-ranking.component';
 
 const routes: Routes = [
  { path: '', component: HomeComponent },
@@ -17,8 +17,8 @@ const routes: Routes = [
  { path: 'register', component: RegisterComponent },
  { path: 'register-admin', component: RegisterAdminComponent },
  { path: 'usuario', component: PerfilAlumnoComponent, canActivate: [AuthGuard] },
- { path: 'profesor', component: PerfilProfesorComponent, canActivate: [AuthGuard, AdminGuard] },
  { path: 'home', component: HomeComponent} , //HOME es un componente que requiere ser identificado, debido a esto, le introducimos un "guardian" para controlar su acceso
+ { path: 'generar-ranking', component: GenerarRankingComponent} , //HOME es un componente que requiere ser identificado, debido a esto, le introducimos un "guardian" para controlar su acceso
  { path: '**', redirectTo: 'home' }
 
 ];

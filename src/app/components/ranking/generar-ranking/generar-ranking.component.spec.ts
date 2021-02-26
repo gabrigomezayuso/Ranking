@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PerfilProfesorComponent } from './perfil-profesor.component';
+import { GenerarRankingComponent } from './generar-ranking.component';
 
-describe('PerfilProfesorComponent', () => {
-  let component: PerfilProfesorComponent;
-  let fixture: ComponentFixture<PerfilProfesorComponent>;
+describe('GenerarRankingComponent', () => {
+  let component: GenerarRankingComponent;
+  let fixture: ComponentFixture<GenerarRankingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PerfilProfesorComponent ]
+      declarations: [ GenerarRankingComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PerfilProfesorComponent);
+    fixture = TestBed.createComponent(GenerarRankingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

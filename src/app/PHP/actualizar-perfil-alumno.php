@@ -12,40 +12,39 @@
 
   $passwordc = password_hash($params->contrasena, PASSWORD_DEFAULT);
 
-  $instruccion = "UPDATE daw2_gamifikg6.alumnos SET contrasena = '$passwordc', email = '$params->email', nombre = '$params->nombre', apellido = '$params->apellido' WHERE idUsuario= $params->id";
-  // UPDATE alumnos  WHERE idUsuario = ";
-  $resultado = mysqli_query($conexion, $instruccion);
+  if($params->role==="21232f297a57a5a743894a0e4a801fc3"){
+    $instruccion = "UPDATE daw2_gamifikg6.profesores SET  email = '$params->email', nombre = '$params->nombre', apellido = '$params->apellido' WHERE idUsuario= $params->id";
+    // UPDATE alumnos  WHERE idUsuario = ";
+    $resultado = mysqli_query($conexion, $instruccion);
 
-   if (!$resultado){
+     if (!$resultado){
 
 
+    }else{
+      $resultado = mysqli_query($conexion, "SELECT * FROM profesores WHERE idUsuario='$params->id'");
+      while ($registros = mysqli_fetch_array($resultado))
+      {
+        $datos[] = $registros;
+      }
+    }
   }else{
-    $resultado = mysqli_query($conexion, "SELECT * FROM alumnos WHERE idUsuario='$params->id'");
-    while ($registros = mysqli_fetch_array($resultado))
-    {
-      $datos[] = $registros;
+    $instruccion = "UPDATE daw2_gamifikg6.alumnos SET  email = '$params->email', nombre = '$params->nombre', apellido = '$params->apellido' WHERE idUsuario= $params->id";
+    // UPDATE alumnos  WHERE idUsuario = ";
+    $resultado = mysqli_query($conexion, $instruccion);
+
+     if (!$resultado){
+
+
+    }else{
+      $resultado = mysqli_query($conexion, "SELECT * FROM alumnos WHERE idUsuario='$params->id'");
+      while ($registros = mysqli_fetch_array($resultado))
+      {
+        $datos[] = $registros;
+      }
     }
   }
 
 
-  // }
-
-
-
-    class Result {}
-
-    // GENERA LOS DATOS DE RESPUESTA
-    $response = new Result();
-    $response->nombre = $params->contrasena;
-
-    if($resultado->num_rows > 0) {
-      $response->resultado = 'OK';
-      $response->mensaje = 'LOGIN EXITOSO'.$params->usuario;
-    } else {
-        $response->resultado = 'FAIL';
-        $response->mensaje = 'LOGIN FALLIDO';
-        $response->nombre = $params->contrasena;
-      }
 
     header('Content-Type: application/json');
     echo json_encode($datos);

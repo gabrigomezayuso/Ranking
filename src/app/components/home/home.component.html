@@ -77,6 +77,9 @@
     <!-- BOTONES PARA USUARIO LOGUEADO -->
     <div *ngIf="NavLogged">
       <button class="btn btn-opacity-light mr-1" [routerLink]="['../usuario']" routerLinkActive="active" >Mis rankings</button>
+
+          <!-- BOTONES PARA USUARIO ADMIN -->
+      <button class="btn btn-opacity-success mr-1" [routerLink]="['../generar-ranking']" routerLinkActive="active"  *ngIf="mostrarLog" >Generar ranking</button>
     </div>
     <img src="../../../assets/images/Group171.svg" alt="" class="img-fluid">
   </div>

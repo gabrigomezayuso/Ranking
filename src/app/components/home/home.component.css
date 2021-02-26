@@ -10557,15 +10557,15 @@ footer a:hover {
 
 .form-control {
     background-color: #f6f7fb;
-    border: none;
     font-size: 14px;
+    border-radius: 50rem;
 }
 
 .form-control:focus {
     background-color: #f6f7fb;
     border: 1px solid #ced4da;
     box-shadow: none;
-    border: none;
+    /* border: none; */
 }
 
 .modal-content {

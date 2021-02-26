@@ -9,6 +9,7 @@ import { perfilAlumno } from 'src/app/models/perfilAlumno';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import Swal from 'sweetalert2';
 import { Router, ActivatedRoute, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 
 
@@ -21,8 +22,8 @@ export class ModificarPerfilComponent implements OnInit {
   public user: any;
   constructor(
     private AlumnosService: AlumnosService,
-    private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private AuthService: AuthService
   ) { }
 
   nombre: string;
@@ -31,27 +32,51 @@ export class ModificarPerfilComponent implements OnInit {
   correo: string;
   contrasena: string;
   id: string;
+  role: string;
+  centro: string;
   myForm: FormGroup;
-  perfilalumno = new perfilAlumno('', '', '', '', '', '');
   Modificar: boolean = true;
   Modificar1: boolean = false;
+  perfilalumno;
+  isAdmin: boolean;
+  mostrarLog: boolean;
+  mostrarNoLog: boolean;
 
   ngOnInit(): void {
+    this.isLoggedIn();
     this.usuario = localStorage.getItem('usernameUser');
     this.nombre = localStorage.getItem('nameUser');
     this.contrasena = localStorage.getItem('contrasenaUser');
     this.apellidos = localStorage.getItem('apellidoUser');
     this.correo = localStorage.getItem('correoUser');
     this.id = localStorage.getItem('idUser');
-    this.perfilalumno = new perfilAlumno(
-      this.usuario,
-      this.nombre,
-      this.apellidos,
-      this.correo,
-      this.contrasena,
-      this.id
-      // ''
-    );
+    this.role = localStorage.getItem('role');
+    if(this.isLoggedIn){
+      this.centro = localStorage.getItem('centroUser');
+      this.perfilalumno = new perfilAlumno(
+        this.usuario,
+        this.nombre,
+        this.apellidos,
+        this.correo,
+        this.contrasena,
+        this.id,
+        this.role,
+        this.centro
+        // ''
+      );
+    }else{
+      this.perfilalumno = new perfilAlumno(
+        this.usuario,
+        this.nombre,
+        this.apellidos,
+        this.correo,
+        this.contrasena,
+        this.id,
+        this.role
+        // ''
+      );
+    }
+
     this.myForm = new FormGroup(
       {
         nombre: new FormControl(this.nombre, [
@@ -82,16 +107,35 @@ export class ModificarPerfilComponent implements OnInit {
     this.nombre = this.myForm.controls.nombre.value;
     this.apellidos = this.myForm.controls.apellido.value;
     this.correo = this.myForm.controls.email.value;
-    this.perfilalumno = new perfilAlumno(
-      this.usuario,
-      this.nombre,
-      this.apellidos,
-      this.correo,
-      this.contrasena,
-      this.id
-      // ''
-    );
+
+    if(this.isLoggedIn){
+      this.centro = localStorage.getItem('centroUser');
+      this.perfilalumno = new perfilAlumno(
+        this.usuario,
+        this.nombre,
+        this.apellidos,
+        this.correo,
+        this.contrasena,
+        this.id,
+        this.role,
+        this.centro
+        // ''
+      );
+    }else{
+      this.perfilalumno = new perfilAlumno(
+        this.usuario,
+        this.nombre,
+        this.apellidos,
+        this.correo,
+        this.contrasena,
+        this.id,
+        this.role
+        // ''
+      );
+    }
   }
+
+
   GetModificarAlumno() {
     console.log(this.perfilalumno);
     this.AlumnosService.actualizarPerfil(this.perfilalumno).subscribe(
@@ -105,6 +149,8 @@ export class ModificarPerfilComponent implements OnInit {
         localStorage.removeItem('idUser');
         localStorage.removeItem('role');
 
+
+
         //introducimos los nuevos
         localStorage.setItem('currentUser', JSON.stringify(datos[0]));
         localStorage.setItem('usernameUser', datos[0]['usuario']);
@@ -112,7 +158,11 @@ export class ModificarPerfilComponent implements OnInit {
         localStorage.setItem('apellidoUser', datos[0]['apellido']);
         localStorage.setItem('correoUser', datos[0]['email']);
         localStorage.setItem('idUser', datos[0]['idUsuario']);
-        localStorage.setItem('role', 'ee11cbb19052e40b07aac0ca060c23ee');
+        if(this.isAdmin){
+          localStorage.setItem('role', '21232f297a57a5a743894a0e4a801fc3');
+        }else{
+          localStorage.setItem('role', 'ee11cbb19052e40b07aac0ca060c23ee');
+        }
       }
     );
   }
@@ -125,14 +175,9 @@ export class ModificarPerfilComponent implements OnInit {
       title: 'Modificado correctamente',
       showConfirmButton: true,
       timer: 1500
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
+    }).then(() => {
         this.router.navigate(['/usuario']);
         window.location.reload();
-      } else {
-        Swal.fire('Error', '', 'info')
-      }
     })
 
 
@@ -146,8 +191,17 @@ export class ModificarPerfilComponent implements OnInit {
   Atras() {
     this.Modificar1 = false;
     this.Modificar = true;
+  }
 
-
+  isLoggedIn() {
+    this.isAdmin  = this.AuthService.isAdmin();
+    if(this.isAdmin){
+      this.mostrarLog = true;
+      this.mostrarNoLog = false;
+    }else{
+      this.mostrarLog = false;
+      this.mostrarNoLog = true;
+    }
   }
 
 }

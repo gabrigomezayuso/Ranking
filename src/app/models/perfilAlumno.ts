@@ -6,6 +6,8 @@ export class perfilAlumno {
   public email: string,
   public contrasena: string,
   public id: string,
+  public role: string,
+  public centro?: string,
   // public token?: string
   ){}
 
