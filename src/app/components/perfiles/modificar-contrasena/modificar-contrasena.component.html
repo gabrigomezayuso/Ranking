@@ -43,10 +43,12 @@
     <div class="col-xs-6">
       <label for="password2"><h4>Verificar Contraseña</h4></label>
         <input type="password" class="form-control" formControlName="confirm_password" placeholder="Repite la contraseña" title="enter your password2.">
-        <div *ngIf="f.confirm_password.touched && f.confirm_password.invalid" class="alert alert-danger">
-          <div *ngIf="f.confirm_password.errors.required">Repetir la contraseña es requerido.</div>
-          <div *ngIf="f.confirm_password.errors.confirmedValidator">Las contraseñas deben ser iguales.</div>
+
+        <div  class="alert alert-danger" *ngIf="contrasenas.hasError('notSame') && contrasenas.get('confirm_password').touched">
+          Las contraseñas no son las mismas
       </div>
+
+
       </div>
   </div>
   <div class="form-group">

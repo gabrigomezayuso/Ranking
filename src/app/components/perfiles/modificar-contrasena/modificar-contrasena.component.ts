@@ -61,9 +61,10 @@ export class ModificarContrasenaComponent implements OnInit {
     );
 
     function passwordMatchValidator(g: FormGroup) {
-      return g.get('contrasena').value === g.get('confirm_password').value
-        ? null
-        : { mismatch: true };
+      const pass = g.controls.contrasena.value;
+        const confirmPass = g.controls.confirm_password.value;
+
+        return pass === confirmPass ? null : { notSame: true };
     }
   }
   get f() {
