@@ -107,6 +107,8 @@ export class NavUsuariosComponent implements OnInit {
     localStorage.removeItem('apellidoUser');
     localStorage.removeItem('correoUser');
     localStorage.removeItem('idUser');
+    localStorage.removeItem('centroUser');
+    localStorage.removeItem('currentProfesor');
     localStorage.removeItem('role');
     this.AuthService.logout
     window.location.reload();

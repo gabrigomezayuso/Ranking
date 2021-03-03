@@ -11,12 +11,15 @@ $params = json_decode($json); // DECODIFICA EL JSON Y LO GUARADA EN LA VARIABLE
 
 require("db.php"); // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
 $conexion = conexion(); // CREA LA CONEXION
-$ranking="";
-$resultadoNoRepetir2="";
+$ranking = "";
+$resultadoNoRepetir2 = "";
+$idNoSeRepite = false;
 //Funcion aleatoria
-function generateRandomString($length = 6)
+
+
+function generateRandomString($length)
 {
-  $characters = '0123456789';
+  $characters = '123456789';
   $charactersLength = strlen($characters);
   $randomString = '';
   for ($i = 0; $i < $length; $i++) {
@@ -27,24 +30,31 @@ function generateRandomString($length = 6)
 
 $resultadoNoRepetir = mysqli_query($conexion, "SELECT * FROM rankings WHERE nombre_ranking='$params->nombre'");
 
-
 if ($resultadoNoRepetir->num_rows >= 1) {
   echo json_encode('ERROR');
 } else {
 
-  while($ranking==$resultadoNoRepetir2){
+  while ($idNoSeRepite == false) {
 
-  $ranking = generateRandomString(6);
-  $resultadoNoRepetir2 = mysqli_query($conexion, "SELECT id_ranking FROM rankings WHERE id_ranking='$ranking'");
+    $ranking = generateRandomString(6);
+    $resultadoNoRepetir2 = mysqli_query($conexion, "SELECT id_ranking FROM rankings WHERE id_ranking='$ranking'");
 
+    if ($resultadoNoRepetir2->num_rows >= 1) {
+      $ranking = generateRandomString(6);
+
+    } else {
+      $idNoSeRepite = true;
+    }
   }
-
-    // REALIZA LA QUERY A LA DB
-    $resultado = mysqli_query($conexion, "INSERT INTO `rankings`(`id_ranking`, `nombre_ranking`, `administrador`)
-    VALUES ('$ranking','$params->nombre','$params->idProfesor')");
-
-  }
-
-
+  // REALIZA LA QUERY A LA DB
+$resultado = mysqli_query($conexion, "INSERT INTO `rankings`(`id_ranking`, `nombre_ranking`, `administrador`)
+VALUES ('$ranking','$params->nombre','$params->idProfesor')");
 header('Content-Type: application/json');
 echo json_encode($ranking);
+}
+
+
+
+
+
+

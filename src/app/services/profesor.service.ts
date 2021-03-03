@@ -30,7 +30,7 @@ export class ProfesorService {
     return this.http.post<generarRanking>(`${environment.apiUrl}/generarRanking.php`, JSON.stringify(generarRankings))
       .pipe(map(generarRankings => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
-        console.log(generarRankings)
+        console.log(generarRankings + "prueba")
         return generarRankings;
       }));
 }
