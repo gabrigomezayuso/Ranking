@@ -18,7 +18,7 @@ const routes: Routes = [
  { path: 'register-admin', component: RegisterAdminComponent },
  { path: 'usuario', component: PerfilAlumnoComponent, canActivate: [AuthGuard] },
  { path: 'home', component: HomeComponent} , //HOME es un componente que requiere ser identificado, debido a esto, le introducimos un "guardian" para controlar su acceso
- { path: 'generar-ranking', component: GenerarRankingComponent} , //HOME es un componente que requiere ser identificado, debido a esto, le introducimos un "guardian" para controlar su acceso
+ { path: 'generar-ranking', component: GenerarRankingComponent, canActivate: [AuthGuard, AdminGuard]} , //HOME es un componente que requiere ser identificado, debido a esto, le introducimos un "guardian" para controlar su acceso
  { path: '**', redirectTo: 'home' }
 
 ];

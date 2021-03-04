@@ -76,13 +76,7 @@ export class LoginProfesorComponent implements OnInit {
       .pipe(first())
       .subscribe(
         (data) => {
-          if (data == null) {
-            Swal.fire({
-              icon: 'error',
-              title: 'Login incorrecto',
-              text: 'Datos introducidos incorrectos, revisa tus datos',
-            })
-          } else {
+          try {
             if (data[0][0] == this.profesor.usuario) {
               console.log('Login realizado');
               this.router.navigate(['profesor']);
@@ -94,7 +88,27 @@ export class LoginProfesorComponent implements OnInit {
               localStorage.setItem('centroUser', data[0]['centro']);
               localStorage.setItem('idUser', data[0]['idUsuario']);
               localStorage.setItem('role', '21232f297a57a5a743894a0e4a801fc3');
+            }else{
+              throw new Error('An error occurred');
             }
+          }
+           catch (error) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Login incorrecto',
+              text: 'Datos introducidos incorrectos, revisa tus datos',
+            })
+          }
+
+
+          if (data == null) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Login incorrecto',
+              text: 'Datos introducidos incorrectos, revisa tus datos',
+            })
+          } else {
+
             // }else{
             //   Swal.fire({
             //     icon: 'error',
