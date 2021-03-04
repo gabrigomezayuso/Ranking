@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/services/auth.service';
 import { Alumno } from 'src/app/models/Alumno';
 import { first } from 'rxjs/operators';
+import { usuario } from 'src/app/models/user';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   authService: AuthService;
   myForm: FormGroup;
-  alumno = new Alumno('','');
+  alumno = new usuario();
   error = '';
 
   constructor(
