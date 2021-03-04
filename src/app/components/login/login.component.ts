@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   authService: AuthService;
   myForm: FormGroup;
-  alumno;
+  alumno = new Alumno('','');
   error = '';
 
   constructor(
