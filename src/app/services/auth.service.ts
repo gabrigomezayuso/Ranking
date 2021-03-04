@@ -1,26 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Alumno } from '../models/Alumno';
 import { profesor } from '../models/profesor';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { usuario } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private currentUserSubject: BehaviorSubject<Alumno>;
-  public currentUser: Observable<Alumno>;
+  private currentUserSubject: BehaviorSubject<usuario>;
+  public currentUser: Observable<usuario>;
 
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<Alumno>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject<usuario>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): Alumno {
+  public get currentUserValue(): usuario {
     return this.currentUserSubject.value;
   }
 
@@ -28,10 +28,9 @@ export class AuthService {
 
 
   login(alumno) {
-    return this.http.post<Alumno>(`${environment.apiUrl}/login-alumno.php`, JSON.stringify(alumno))
+    return this.http.post<usuario>(`${environment.apiUrl}/login-alumno.php`, JSON.stringify(alumno))
       .pipe(map(alumno => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('currentUser', JSON.stringify(alumno));
         this.currentUserSubject.next(alumno);
         return alumno;
       }));

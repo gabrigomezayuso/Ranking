@@ -3,7 +3,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/services/auth.service';
-import { Alumno } from 'src/app/models/Alumno';
 import { first } from 'rxjs/operators';
 import { usuario } from 'src/app/models/user';
 
