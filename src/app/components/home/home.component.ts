@@ -3,6 +3,9 @@ import Swal from 'sweetalert2';
 import { Router, ActivatedRoute, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { state } from '@angular/animations';
+import { environment } from 'src/environments/environment';
+import { unirmeRanking } from 'src/app/models/unirmeRanking';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -13,20 +16,28 @@ import { state } from '@angular/animations';
 export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
-    private AuthService: AuthService
+    private AuthService: AuthService,
+    private http: HttpClient
   ) {
-
   }
+
+
   isAuthenticated: boolean;
   NavNoLog: boolean;
   NavLogged: boolean;
+  NavLoggedUser: boolean;
   mostrarLog: boolean;
   mostrarNoLog: boolean;
   isAdmin: boolean;
 
+
+  idRanking: string;
+  unirmeRanking2;
+  idUser: string;
+
   ngOnInit(): void {
     this.isLoggedIn();
-    this.isAdminis();
+    this.idUser = localStorage.getItem('idUser');
   }
 
   register() {
@@ -95,11 +106,11 @@ export class HomeComponent implements OnInit {
   isLoggedIn() {
     this.isAuthenticated  = this.AuthService.isLogged();
     if(this.isAuthenticated){
-      this.NavLogged = true;
-      this.NavNoLog = false;
+      this.isAdminis();
     }else{
       this.NavLogged = false;
       this.NavNoLog = true;
+      this.NavLoggedUser=false;
     }
   }
 
@@ -118,11 +129,40 @@ export class HomeComponent implements OnInit {
   isAdminis() {
     this.isAdmin  = this.AuthService.isAdmin();
     if(this.isAdmin){
-      this.mostrarLog = true;
+      this.NavLogged = true;
       this.mostrarNoLog = false;
+      this.NavLoggedUser=false;
     }else{
       this.mostrarLog = false;
-      this.mostrarNoLog = true;
+      this.mostrarNoLog = false;
+      this.NavLoggedUser=true;
     }
+  }
+
+  unirme(){
+    Swal.fire({
+      title: 'Introduce el código de Ranking',
+      input: 'number',
+      inputAttributes: {
+        autocapitalize: 'off'
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Buscar',
+      cancelButtonText: 'Cancelar',
+      showLoaderOnConfirm: true,
+      preConfirm: (idRanking) => {
+        this.unirmeRanking2 = new unirmeRanking(idRanking, this.idUser)
+        console.log(this.unirmeRanking2)
+        return this.http.post<unirmeRanking>(`${environment.apiUrl}/unirRanking.php`, JSON.stringify(this.unirmeRanking2))
+      },
+      allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: `'s avatar`,
+          // imageUrl: result.value.avatar_url
+        })
+      }
+    })
   }
 }

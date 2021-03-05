@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { usuario } from '../models/user';
+import { unirmeRanking } from '../models/unirmeRanking';
 
 @Injectable({
   providedIn: 'root'
@@ -90,5 +91,9 @@ export class AuthService {
 
   registerAlumno(alumno) {
     return this.http.post(`${environment.apiUrl}/register-alumno.php`, JSON.stringify(alumno));
+  }
+
+  unirmeRanking(unirmeRanking2){
+    return this.http.post<unirmeRanking>(`${environment.apiUrl}/generarRanking.php`, JSON.stringify(unirmeRanking2))
   }
 }
