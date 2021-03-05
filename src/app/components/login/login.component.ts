@@ -77,6 +77,17 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         (data) => {
+          Swal.fire({
+            title: 'Auto close alert!',
+            html: 'I will close in <b></b> milliseconds.',
+            timerProgressBar: true,
+            didOpen: () => {
+              Swal.showLoading()
+
+        },
+        willClose: () => {
+        }
+          })
           if (data == null) {
             Swal.fire({
               icon: 'error',
