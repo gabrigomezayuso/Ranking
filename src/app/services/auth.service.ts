@@ -78,7 +78,7 @@ export class AuthService {
     return this.http.post<profesor>(`${environment.apiUrl}/login-profesor.php`, JSON.stringify(profesor))
       .pipe(map(profesor => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('currentProfesor', JSON.stringify(profesor));
+        // localStorage.setItem('currentProfesor', JSON.stringify(profesor));
         this.currentUserSubject.next(profesor);
         return profesor;
       }));

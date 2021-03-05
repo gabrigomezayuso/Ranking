@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   myForm: FormGroup;
   alumno = new usuario();
   error = '';
+  cerrarSweet: boolean = false;
 
   constructor(
     private AuthService: AuthService,
@@ -77,24 +78,7 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         (data) => {
-          Swal.fire({
-            title: 'Auto close alert!',
-            html: 'I will close in <b></b> milliseconds.',
-            timerProgressBar: true,
-            didOpen: () => {
-              Swal.showLoading()
-
-        },
-        willClose: () => {
-        }
-          })
-          if (data == null) {
-            Swal.fire({
-              icon: 'error',
-              title: 'Login incorrecto',
-              text: 'Datos introducidos incorrectos, revisa tus datos',
-            })
-          } else {
+          try {
             if (data[0][0] == this.alumno.usuario) {
               console.log('Login realizado');
               this.router.navigate(['alumno']);
@@ -105,20 +89,23 @@ export class LoginComponent implements OnInit {
               localStorage.setItem('correoUser', data[0]['email']);
               localStorage.setItem('idUser', data[0]['idUsuario']);
               localStorage.setItem('role', 'ee11cbb19052e40b07aac0ca060c23ee');
-            }else{
-              Swal.fire({
-                icon: 'error',
-                title: 'Login incorrecto',
-                text: 'Revisa tus datos',
-              })
+            } else{
+              throw new Error('An error occurred');
             }
+          }
+           catch (error) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Login incorrecto',
+              text: 'Datos introducidos incorrectos, revisa tus datos',
+            })
           }
         });
 
 
   }
 
-  cambiarRol(){
+  cambiarRol() {
     window.location.reload();
     this.router.navigate(['/login-profesor']);
   }
