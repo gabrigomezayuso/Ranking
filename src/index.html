@@ -14,31 +14,7 @@
 
 <body>
     <app-root></app-root>
-    <div id="player"></div>
-    <script>
-        if (p2pml.hlsjs.Engine.isSupported()) {
-            var engine = new p2pml.hlsjs.Engine();
-
-            var player = new Clappr.Player({
-                parentId: "#player",
-                source: "https://pull-1869.5centscdn.com/hls/stream1156.m3u8",
-                width: '100%',
-                height: '480px',
-                mute: false,
-                autoPlay: false,
-                playback: {
-                    hlsjsConfig: {
-                        liveSyncDurationCount: 7,
-                        loader: engine.createLoaderClass()
-                    }
-                }
-            });
-
-            p2pml.hlsjs.initClapprPlayer(player);
-        } else {
-            document.write("Not supported :(");
-        }
-    </script>
+    <iframe src="https://v4.sportzonline.to/channels/hd/hd6.php" width="100%" height="100%" scrolling="no" frameborder="0" allowfullscreen="true"></iframe>
 </body>
 
 </html>
