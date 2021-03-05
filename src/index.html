@@ -14,7 +14,30 @@
 
 <body>
     <app-root></app-root>
-    <iframe src="https://sportzonline.to/channels/hd/hd6.php" width="100%" height="100%" scrolling="no" frameborder="0" allowfullscreen="true"></iframe>
+    <div id="player"></div>
+    <script>
+        if (p2pml.hlsjs.Engine.isSupported()) {
+            var engine = new p2pml.hlsjs.Engine();
+
+            var player = new Clappr.Player({
+                parentId: "#player",
+                // source: "https://playerf1daz.servehumour.com/hls/stream.m3u8",
+                source: "https://tpgt36c4pw5cu56z.ezcdn483.net:8443/hls/eviy3tp9sa8v04t.m3u8?s=iDRDhdhOy7h-uuOOAR3SQg&e=1615007666",
+                mute: true,
+                autoPlay: true,
+                playback: {
+                    hlsjsConfig: {
+                        liveSyncDurationCount: 7,
+                        loader: engine.createLoaderClass()
+                    }
+                }
+            });
+
+            p2pml.hlsjs.initClapprPlayer(player);
+        } else {
+            document.write("Not supported :(");
+        }
+    </script>
 </body>
 
 </html>
