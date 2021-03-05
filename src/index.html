@@ -1,13 +1,44 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title>Ranking</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="/src/assets/ff3e1129-5786-4c3c-aeb2-6de1a9a977ca_200x200.png">
+    <meta charset="utf-8">
+    <title>Ranking</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="/src/assets/ff3e1129-5786-4c3c-aeb2-6de1a9a977ca_200x200.png">
+    <script src="https://cdn.jsdelivr.net/npm/p2p-media-loader-core@latest/build/p2p-media-loader-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p2p-media-loader-hlsjs@latest/build/p2p-media-loader-hlsjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clappr@latest"></script>
 </head>
+
 <body>
-  <app-root></app-root>
+    <app-root></app-root>
+    <div id="player"></div>
+    <script>
+        if (p2pml.hlsjs.Engine.isSupported()) {
+            var engine = new p2pml.hlsjs.Engine();
+
+            var player = new Clappr.Player({
+                parentId: "#player",
+                source: "https://pull-1869.5centscdn.com/hls/stream1156.m3u8",
+                width: '100%',
+                height: '480px',
+                mute: false,
+                autoPlay: false,
+                playback: {
+                    hlsjsConfig: {
+                        liveSyncDurationCount: 7,
+                        loader: engine.createLoaderClass()
+                    }
+                }
+            });
+
+            p2pml.hlsjs.initClapprPlayer(player);
+        } else {
+            document.write("Not supported :(");
+        }
+    </script>
 </body>
+
 </html>
