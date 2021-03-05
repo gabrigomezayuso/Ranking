@@ -94,6 +94,6 @@ export class AuthService {
   }
 
   unirmeRanking(unirmeRanking2){
-    return this.http.post<unirmeRanking>(`${environment.apiUrl}/generarRanking.php`, JSON.stringify(unirmeRanking2))
-  }
+    return this.http.post<unirmeRanking>(`${environment.apiUrl}/unirRanking.php`, JSON.stringify(unirmeRanking2))
+    }
 }

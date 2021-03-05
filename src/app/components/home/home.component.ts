@@ -153,7 +153,11 @@ export class HomeComponent implements OnInit {
       preConfirm: (idRanking) => {
         this.unirmeRanking2 = new unirmeRanking(idRanking, this.idUser)
         console.log(this.unirmeRanking2)
-        return this.http.post<unirmeRanking>(`${environment.apiUrl}/unirRanking.php`, JSON.stringify(this.unirmeRanking2))
+        this.AuthService.unirmeRanking(this.unirmeRanking2)
+          .subscribe (
+            datos => {
+              console.log(datos)
+            })
       },
       allowOutsideClick: () => !Swal.isLoading()
     }).then((result) => {
