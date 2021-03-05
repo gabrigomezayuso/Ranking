@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   mostrarNoLog: boolean;
   isAdmin: boolean;
 
-
+  mensaje;
   idRanking: string;
   unirmeRanking2;
   idUser: string;
@@ -156,17 +156,14 @@ export class HomeComponent implements OnInit {
         this.AuthService.unirmeRanking(this.unirmeRanking2)
           .subscribe (
             datos => {
-              console.log(datos)
+              this.mensaje = datos;
+              Swal.fire({
+                title: `${this.mensaje}`,
+                // imageUrl: result.value.avatar_url
+              })
             })
       },
       allowOutsideClick: () => !Swal.isLoading()
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: `'s avatar`,
-          // imageUrl: result.value.avatar_url
-        })
-      }
     })
   }
 }

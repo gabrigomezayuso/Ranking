@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://server-gamifik.herokuapp.com/'
+  // apiUrl: 'http://localhost/'
 };
 
 /*
