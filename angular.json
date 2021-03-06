@@ -29,10 +29,7 @@
                         ],
                         "scripts": ["node_modules/popper.js/dist/umd/popper.js",
                             "node_modules/jquery/dist/jquery.js",
-                            "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
-                            "https://cdn.jsdelivr.net/npm/p2p-media-loader-core@latest/build/p2p-media-loader-core.min.js",
-                            "https://cdn.jsdelivr.net/npm/p2p-media-loader-hlsjs@latest/build/p2p-media-loader-hlsjs.min.js",
-                            "https://cdn.jsdelivr.net/npm/clappr@latest"
+                            "node_modules/bootstrap/dist/js/bootstrap.bundle.js"
                         ]
                     },
                     "configurations": {
@@ -95,9 +92,6 @@
                         ],
                         "scripts": ["node_modules/popper.js/dist/umd/popper.js",
                             "node_modules/jquery/jquery.js",
-                            "https://cdn.jsdelivr.net/npm/p2p-media-loader-core@latest/build/p2p-media-loader-core.min.js",
-                            "https://cdn.jsdelivr.net/npm/p2p-media-loader-hlsjs@latest/build/p2p-media-loader-hlsjs.min.js",
-                            "https://cdn.jsdelivr.net/npm/clappr@latest",
                             "node_modules/bootstrap/dist/js/bootstrap.bundle.js"
                         ]
                     }
