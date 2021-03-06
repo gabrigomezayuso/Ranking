@@ -17,6 +17,7 @@ import { ModificarPerfilComponent } from './components/perfiles/modificar-perfil
 import { FooterComponent } from './components/footer/footer.component';
 import { ModificarContrasenaComponent } from './components/perfiles/modificar-contrasena/modificar-contrasena.component';
 import { GenerarRankingComponent } from './components/ranking/generar-ranking/generar-ranking.component';
+import { EasterEggComponent } from './components/easter-egg/easter-egg.component';
 
 
 
@@ -34,6 +35,7 @@ import { GenerarRankingComponent } from './components/ranking/generar-ranking/ge
     FooterComponent,
     ModificarContrasenaComponent,
     GenerarRankingComponent,
+    EasterEggComponent,
   ],
   imports: [
     BrowserModule,
