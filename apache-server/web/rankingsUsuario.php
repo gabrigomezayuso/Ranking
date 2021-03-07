@@ -18,13 +18,22 @@ $conexion = conexion(); // CREA LA CONEXION
 $query = "SELECT r.nombre_ranking , r.id_ranking FROM rankings r , usuariosranking u WHERE u.idUsuario = $params->idUser";
 $result = mysqli_query($conexion, $query);
 
-if (mysqli_num_rows($result) > 0) {
-  // output data of each row
 
-  while($row = mysqli_fetch_assoc($result)) {
-    header('Content-Type: application/json');
-    echo json_encode ($row["nombre_ranking"]) ;
-  }
+$dir = array();
+$cont = 0;
+while ($row = @mysqli_fetch_array($result)) {
+  $dir[$cont] = $row['nombre_ranking'];
+  $cont++;
 }
 
-// echo json_encode($result);
+
+// if (mysqli_num_rows($result) > 0) {
+//   // output data of each row
+
+//   while($row = mysqli_fetch_assoc($result)) {
+//     header('Content-Type: application/json');
+//     echo json_encode ($row["nombre_ranking"]) ;
+//   }
+// }
+header('Content-Type: application/json');
+echo json_encode($dir[]);
