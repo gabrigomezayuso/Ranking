@@ -16,4 +16,4 @@ $conexion = conexion(); // CREA LA CONEXION
 $query = mysqli_query($conexion, "SELECT r.nombre_ranking , r.id_ranking FROM rankings r , usuariosranking u WHERE u.idUsuario = $params->idUser");
 
 header('Content-Type: application/json');
-echo json_encode($query);
+echo json_encode($query->num_rows);

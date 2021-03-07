@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Router, ActivatedRoute, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { state } from '@angular/animations';
-import { environment } from 'src/environments/environment';
 import { unirmeRanking } from 'src/app/models/unirmeRanking';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +14,6 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private AuthService: AuthService,
-    private http: HttpClient
   ) {
   }
 
