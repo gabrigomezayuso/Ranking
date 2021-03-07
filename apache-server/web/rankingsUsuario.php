@@ -15,7 +15,7 @@ $conexion = conexion(); // CREA LA CONEXION
 
 
 
-$query = "SELECT r.nombre_ranking , r.id_ranking FROM rankings r , usuariosranking u";
+$query = "SELECT r.nombre_ranking , r.id_ranking FROM rankings r , usuariosranking u WHERE u.idUsuario = $params->idUser";
 $result = mysqli_query($conexion, $query);
 
 if (mysqli_num_rows($result) > 0) {
