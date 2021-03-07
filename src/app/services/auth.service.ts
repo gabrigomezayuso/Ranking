@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { usuario } from '../models/user';
 import { unirmeRanking } from '../models/unirmeRanking';
+import { consultarRankings } from '../models/consultarRankings';
 
 @Injectable({
   providedIn: 'root'
@@ -96,4 +97,8 @@ export class AuthService {
   unirmeRanking(unirmeRanking2){
     return this.http.post<unirmeRanking>(`${environment.apiUrl}/unirRanking.php`, JSON.stringify(unirmeRanking2))
     }
+
+    consultarRankings(consultarRanking){
+      return this.http.post<consultarRankings>(`${environment.apiUrl}/rankingsUsuario.php`, JSON.stringify(consultarRanking))
+      }
 }

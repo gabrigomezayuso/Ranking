@@ -9,7 +9,7 @@ import { perfilAlumno } from 'src/app/models/perfilAlumno';
 @Component({
   selector: 'app-modificar-contrasena',
   templateUrl: './modificar-contrasena.component.html',
-  styleUrls: ['./modificar-contrasena.component.css']
+  styleUrls: ['./modificar-contrasena.component.css',  '../../home/home.component.css']
 })
 export class ModificarContrasenaComponent implements OnInit {
 

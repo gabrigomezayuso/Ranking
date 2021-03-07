@@ -16,7 +16,7 @@ import { AuthService } from '../../../services/auth.service';
 @Component({
   selector: 'app-modificar-perfil',
   templateUrl: './modificar-perfil.component.html',
-  styleUrls: ['./modificar-perfil.component.css']
+  styleUrls: ['./modificar-perfil.component.css',  '../../home/home.component.css']
 })
 export class ModificarPerfilComponent implements OnInit {
   public user: any;
