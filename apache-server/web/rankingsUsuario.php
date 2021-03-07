@@ -13,7 +13,17 @@ require("db.php"); // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
 $conexion = conexion(); // CREA LA CONEXION
 
 
-$query = mysqli_query($conexion, "SELECT r.nombre_ranking , r.id_ranking FROM rankings r , usuariosranking u WHERE u.idUsuario = $params->idUser");
 
-header('Content-Type: application/json');
-echo json_encode($query->num_rows);
+
+$query = "SELECT r.nombre_ranking , r.id_ranking FROM rankings r , usuariosranking u WHERE u.idUsuario = $params->idUser";
+$result = mysqli_query($conexion, $query);
+
+if (mysqli_num_rows($result) > 0) {
+  // output data of each row
+  while($row = mysqli_fetch_assoc($result)) {
+    echo "nombre: " . $row["nombre_ranking"]. " - Name: " . $row["id_ranking"]. ;
+  }
+}
+
+// header('Content-Type: application/json');
+// echo json_encode($query->num_rows);
