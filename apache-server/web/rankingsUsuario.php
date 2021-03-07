@@ -13,7 +13,7 @@ require("db.php"); // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
 $conexion = conexion(); // CREA LA CONEXION
 
 
-$query = mysqli_query($conexion, "SELECT r.nombre_ranking , r.id_ranking FROM rankings r , usuariosranking u WHERE u.idUsuario = '$params->idUser'");
+$query = mysqli_query($conexion, "SELECT r.nombre_ranking , r.id_ranking FROM rankings r , usuariosranking u WHERE u.idUsuario = $params->idUser");
 
 header('Content-Type: application/json');
 echo json_encode($query);

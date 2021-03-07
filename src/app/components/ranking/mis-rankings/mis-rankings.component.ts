@@ -9,6 +9,7 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class MisRankingsComponent implements OnInit {
   idUser: string;
+  user;
 
   constructor(
     private AuthService: AuthService
@@ -16,8 +17,9 @@ export class MisRankingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.idUser = localStorage.getItem('idUser')
-    const user = new consultarRankings(this.idUser)
-    this.AuthService.consultarRankings(user)
+    this.user = new consultarRankings(this.idUser)
+    console.log(this.user)
+    this.AuthService.consultarRankings(this.user)
     .subscribe (
       datos => {
         console.log(datos)
