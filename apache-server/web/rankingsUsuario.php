@@ -25,5 +25,5 @@ if (mysqli_num_rows($result) > 0) {
   }
 }
 
-// header('Content-Type: application/json');
-// echo json_encode($query->num_rows);
+header('Content-Type: application/json');
+echo json_encode($result);
