@@ -12,18 +12,22 @@
 
   $mysqli = new mysqli('192.168.3.26', 'DAW2_GamifikG6', 'aGamifikG61', 'daw2_gamifikg6');
 
-  $x=0;
 
+    $x=0;
 
 $query = $mysqli -> query ("SELECT r.nombre_ranking
                             FROM rankings r
                             INNER JOIN  usuariosranking u
                             ON u.idRanking = r.id_ranking
                             where u.idUsuario = 37");
-$valores = mysqli_fetch_array($query);
+// $valores = mysqli_fetch_array($query);
+
+// foreach (mysqli_fetch_array($query) as &$valor) {
+//   echo $valor;
+// }
 
 while ($valores = mysqli_fetch_array($query)) {
-  echo $valores[$x] ;
+  $array[$x]=$valores[0] ;
   $x++;
 }
 
@@ -37,6 +41,6 @@ while ($valores = mysqli_fetch_array($query)) {
 //     header('Content-Type: application/json');
 //     echo json_encode ($row["nombre_ranking"]) ;
 //   }
-// }
-// header('Content-Type: application/json');
-// echo json_encode($valores[0]);
+
+header('Content-Type: application/json');
+echo json_encode($array);
