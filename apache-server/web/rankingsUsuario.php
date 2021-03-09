@@ -15,7 +15,7 @@ $conexion = conexion(); // CREA LA CONEXION
 
 
 
-$query = "SELECT r.nombre_ranking FROM rankings r , usuariosranking u WHERE u.idUsuario = $params->idUser";
+$query = "SELECT rankings.nombre_ranking FROM rankings INNER JOIN  usuariosranking ON usuariosranking.idRanking = rankings.id_ranking where usuariosranking.idUsuario = $params->idUser";
 $result = mysqli_query($conexion, $query);
 
 
@@ -31,4 +31,4 @@ for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
 //   }
 // }
 header('Content-Type: application/json');
-echo json_encode($set[]);
+echo json_encode($result);
