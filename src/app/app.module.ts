@@ -19,6 +19,7 @@ import { ModificarContrasenaComponent } from './components/perfiles/modificar-co
 import { GenerarRankingComponent } from './components/ranking/generar-ranking/generar-ranking.component';
 import { EasterEggComponent } from './components/easter-egg/easter-egg.component';
 import { MisRankingsComponent } from './components/ranking/mis-rankings/mis-rankings.component';
+import { RankingComponent } from './components/ranking/ranking/ranking.component';
 
 
 
@@ -38,6 +39,7 @@ import { MisRankingsComponent } from './components/ranking/mis-rankings/mis-rank
     GenerarRankingComponent,
     EasterEggComponent,
     MisRankingsComponent,
+    RankingComponent,
   ],
   imports: [
     BrowserModule,

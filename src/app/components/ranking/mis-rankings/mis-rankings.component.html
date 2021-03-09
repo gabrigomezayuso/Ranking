@@ -1,34 +1,60 @@
 <app-nav-usuarios></app-nav-usuarios>
 <div class="banner text-left">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <h6 class="text-muted">Tus rankings</h6>
-                <ul class="list-group">
-                    <li class="list-group-item">Ranking</li>
-                    <li class="list-group-item">Ranking</li>
-                    <li class="list-group-item">Ranking</li>
-                    <li class="list-group-item">Ranking</li>
-                </ul>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <table class="table">
+        <!-- <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col">Ver</th>
+            <th scope="col">Borrar</th>
+          </tr>
+        </thead> -->
+        <tbody *ngFor="let item of ranking">
+          <tr>
+            <td>{{item}}</td>
+            <td>
+              <div class="mr-5">
+                <div class="mr-5">
+                  <div class="mr-5">
+                    <div class="mr-5">
+                      <div class="mr-5">
+                        <div class="mr-5">
+                          <div class="mr-5">
+                            <div class="mr-5">
+                              <div class="mr-5">
+                                <div class="mr-5">
+                                  <div class="mr-5">
+                                    <div class="mr-5">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <button class="btn btn-opacity-light mr-3">
+                Visualizar
+              </button>
+              <button class="btn btn-opacity-danger">
+                Borrar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+  </div>
 </div>

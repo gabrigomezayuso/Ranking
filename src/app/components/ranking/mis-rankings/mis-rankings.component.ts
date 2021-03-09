@@ -10,6 +10,7 @@ import { AuthService } from '../../../services/auth.service';
 export class MisRankingsComponent implements OnInit {
   idUser: string;
   user;
+  ranking;
 
   constructor(
     private AuthService: AuthService
@@ -23,6 +24,7 @@ export class MisRankingsComponent implements OnInit {
     .subscribe (
       datos => {
         console.log(datos)
+        this.ranking = Object.values(datos)
       })
 
   }
