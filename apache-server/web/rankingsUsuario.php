@@ -19,7 +19,7 @@ $query = $mysqli -> query ("SELECT r.nombre_ranking
                             FROM rankings r
                             INNER JOIN  usuariosranking u
                             ON u.idRanking = r.id_ranking
-                            where u.idUsuario = 37");
+                            where u.idUsuario = $params->idUser");
 // $valores = mysqli_fetch_array($query);
 
 // foreach (mysqli_fetch_array($query) as &$valor) {
