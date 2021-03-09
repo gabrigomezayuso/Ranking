@@ -1,25 +1,33 @@
 <?php
-header('Access-Control-Allow-Origin: *');
-header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+  header('Access-Control-Allow-Origin: *');
+  header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+
+  $json = file_get_contents('php://input'); // RECIBE EL JSON DE ANGULAR
+
+  $params = json_decode($json); // DECODIFICA EL JSON Y LO GUARADA EN LA VARIABLE
+
+  require("db.php"); // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
+
+  $conexion = conexion(); // CREA LA CONEXION
+
+  $mysqli = new mysqli('192.168.3.26', 'DAW2_GamifikG6', 'aGamifikG61', 'daw2_gamifikg6');
+
+  $x=0;
 
 
+$query = $mysqli -> query ("SELECT r.nombre_ranking
+                            FROM rankings r
+                            INNER JOIN  usuariosranking u
+                            ON u.idRanking = r.id_ranking
+                            where u.idUsuario = 37");
+$valores = mysqli_fetch_array($query);
 
-$json = file_get_contents('php://input'); // RECIBE EL JSON DE ANGULAR
+while ($valores = mysqli_fetch_array($query)) {
+  echo $valores[$x] ;
+  $x++;
+}
 
-$params = json_decode($json); // DECODIFICA EL JSON Y LO GUARADA EN LA VARIABLE
-
-
-require("db.php"); // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
-$conexion = conexion(); // CREA LA CONEXION
-
-
-
-
-$query = "SELECT rankings.nombre_ranking FROM rankings INNER JOIN  usuariosranking ON usuariosranking.idRanking = rankings.id_ranking where usuariosranking.idUsuario = $params->idUser";
-$result = mysqli_query($conexion, $query);
-
-
-for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
+// for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
 
 
 // if (mysqli_num_rows($result) > 0) {
@@ -30,5 +38,5 @@ for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
 //     echo json_encode ($row["nombre_ranking"]) ;
 //   }
 // }
-header('Content-Type: application/json');
-echo json_encode($result);
+// header('Content-Type: application/json');
+// echo json_encode($valores[0]);
