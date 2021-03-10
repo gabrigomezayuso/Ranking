@@ -21,7 +21,7 @@ const routes: Routes = [
  { path: 'register-admin', component: RegisterAdminComponent },
  { path: 'try-again', component: EasterEggComponent },
  { path: 'usuario', component: PerfilAlumnoComponent, canActivate: [AuthGuard] },
- { path: 'ranking/p:1', component: RankingComponent, canActivate: [AuthGuard] },
+ { path: 'ranking/:id', component: RankingComponent, canActivate: [AuthGuard] },
  { path: 'mis-rankings', component: MisRankingsComponent, canActivate: [AuthGuard] },
  { path: 'home', component: HomeComponent} , //HOME es un componente que requiere ser identificado, debido a esto, le introducimos un "guardian" para controlar su acceso
  { path: 'generar-ranking', component: GenerarRankingComponent, canActivate: [AuthGuard, AdminGuard]} , //HOME es un componente que requiere ser identificado, debido a esto, le introducimos un "guardian" para controlar su acceso

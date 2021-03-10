@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../services/auth.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { RouterModule, Routes } from '@angular/router';
+import { consultaNombre } from 'src/app/models/consultaNombre';
 
 @Component({
   selector: 'app-ranking',
@@ -7,9 +12,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RankingComponent implements OnInit {
 
-  constructor() { }
+  nombre_ranking: string;
+  Ranking;
+
+
+
+  constructor( private AuthService: AuthService,private router: Router) {
+    this.Ranking = new consultaNombre(
+      this.nombre_ranking,
+      // ''
+    );
+    console.log(this.router.url);
+    this.Ranking.nombre_ranking=this.router.url.split('/')[2];
+    console.log(this.Ranking);
+   }
+
+  myParam: string;
 
   ngOnInit(): void {
+    this.AuthService.datosRanking(this.Ranking) .subscribe (
+      datos => {
+        console.log(datos)
+      })
+
+
   }
+
+
+
+
+
 
 }

@@ -7,6 +7,8 @@ import { environment } from 'src/environments/environment';
 import { usuario } from '../models/user';
 import { unirmeRanking } from '../models/unirmeRanking';
 import { consultarRankings } from '../models/consultarRankings';
+import { datosRanking } from '../models/datosRanking';
+import { consultaNombre } from '../models/consultaNombre';
 
 @Injectable({
   providedIn: 'root'
@@ -39,18 +41,18 @@ export class AuthService {
   }
 
 
-  isLogged(){
-    if(localStorage.getItem('currentUser')){
+  isLogged() {
+    if (localStorage.getItem('currentUser')) {
       return true;
-    }else{
+    } else {
       return false
     }
   }
 
-  isAdmin(){
-    if(localStorage.getItem('role') === "21232f297a57a5a743894a0e4a801fc3"){
+  isAdmin() {
+    if (localStorage.getItem('role') === "21232f297a57a5a743894a0e4a801fc3") {
       return true;
-    }else{
+    } else {
       return false
     }
   }
@@ -94,11 +96,17 @@ export class AuthService {
     return this.http.post(`${environment.apiUrl}/register-alumno.php`, JSON.stringify(alumno));
   }
 
-  unirmeRanking(unirmeRanking2){
+  unirmeRanking(unirmeRanking2) {
     return this.http.post<unirmeRanking>(`${environment.apiUrl}/unirRanking.php`, JSON.stringify(unirmeRanking2))
-    }
+  }
 
-    consultarRankings(consultarRanking){
-      return this.http.post<consultarRankings>(`${environment.apiUrl}/rankingsUsuario.php`, JSON.stringify(consultarRanking))
-      }
+  consultarRankings(consultarRanking) {
+    return this.http.post<consultarRankings>(`${environment.apiUrl}/rankingsUsuario.php`, JSON.stringify(consultarRanking))
+  }
+
+  datosRanking(ranking) {
+    console.log(ranking);
+
+    return this.http.post<consultaNombre>(`${environment.apiUrl}/datos-ranking.php`, JSON.stringify(ranking))
+  }
 }

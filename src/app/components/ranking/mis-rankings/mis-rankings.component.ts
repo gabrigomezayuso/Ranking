@@ -12,6 +12,7 @@ export class MisRankingsComponent implements OnInit {
   idUser: string;
   user;
   ranking;
+  datosRanking;
 
   constructor(
     private AuthService: AuthService,
@@ -27,11 +28,17 @@ export class MisRankingsComponent implements OnInit {
       datos => {
         console.log(datos)
         this.ranking = Object.values(datos)
+        console.log(this.ranking);
       })
   }
 
   onClick(){
-    this._router.navigate(['../../../ranking',{p1: '5' }]);
+  //this._router.navigate(['../../ranking', this.ranking[0]]);
+
+
+
+
+
 
 
   }
