@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { consultarRankings } from 'src/app/models/consultarRankings';
 import { AuthService } from '../../../services/auth.service';
 
@@ -13,7 +14,8 @@ export class MisRankingsComponent implements OnInit {
   ranking;
 
   constructor(
-    private AuthService: AuthService
+    private AuthService: AuthService,
+    private _router: Router
     ) { }
 
   ngOnInit(): void {
@@ -26,6 +28,11 @@ export class MisRankingsComponent implements OnInit {
         console.log(datos)
         this.ranking = Object.values(datos)
       })
+  }
+
+  onClick(){
+    this._router.navigate(['../../../ranking',{p1: '5' }]);
+
 
   }
 
