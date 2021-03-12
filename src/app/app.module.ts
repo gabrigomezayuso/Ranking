@@ -24,6 +24,7 @@ import { ModificarRankingsComponent } from './components/ranking/modificar-ranki
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { ModificarRankingsComponent } from './components/ranking/modificar-ranki
     MisRankingsComponent,
     RankingComponent,
     ModificarRankingsComponent,
+
   ],
   imports: [
     BrowserModule,

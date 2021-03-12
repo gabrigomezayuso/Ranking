@@ -4,6 +4,7 @@ export class datosRanking {
   public puntuacion: string,
   public apellido: string,
   public nombre: string,
+  public nombre_equipo: string,
   ){}
 
 }
