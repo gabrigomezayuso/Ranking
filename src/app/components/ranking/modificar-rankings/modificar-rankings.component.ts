@@ -7,7 +7,7 @@ import { AuthService } from '../../../services/auth.service';
 @Component({
   selector: 'app-modificar-rankings',
   templateUrl: './modificar-rankings.component.html',
-  styleUrls: ['./modificar-rankings.component.css']
+  styleUrls: ['./modificar-rankings.component.css',  '../../home/home.component.css']
 })
 export class ModificarRankingsComponent implements OnInit {
 
