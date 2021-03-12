@@ -1,6 +1,7 @@
 <app-nav-usuarios></app-nav-usuarios>
 
 
+<form [formGroup]="Ranking_modificar">
 <div class="leaderboard">
   <h1 class="text-white">
     <svg class="ico-cup text-white">
@@ -9,15 +10,17 @@
     {{datos[0][0]}}
   </h1>
   <ol >
+
     <li *ngFor="let item of datos;index as i ">
       <mark><span>{{datos[i]['nombre']}} {{datos[i]['apellido']}}</span></mark>
-      <small><input type="number" name="puntuacion" value="{{datos[i]['puntuacion']}}"></small><br><br>
-      <small><input type="text" name="puntuacion" value="{{datos[i]['nombreEquipo']}}"></small>
+      <small><input type="number" formControlName="puntuacion" name="puntuacion" value="{{datos[i]['puntuacion']}}"></small><br><br>
+      <small><input type="text" formControlName="nombreEquipo"  name="nombreEquipo" value="{{datos[i]['nombreEquipo']}}"></small>
       <small>{{datos[i]['usuario']}}</small>
     </li>
   </ol>
+  <button (click)="guardarDatos(Ranking_modificar)">Guardar</button>
 </div>
-<button (click)="guardarDatos()">Guardar</button>
+</form>
 
 
 <svg style="display: none;">

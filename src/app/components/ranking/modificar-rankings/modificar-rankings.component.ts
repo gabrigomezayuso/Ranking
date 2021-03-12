@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { consultaNombre } from 'src/app/models/consultaNombre';
 import { ModificarRanking } from 'src/app/models/ModificarRanking';
@@ -9,17 +10,28 @@ import { AuthService } from '../../../services/auth.service';
   styleUrls: ['./modificar-rankings.component.css']
 })
 export class ModificarRankingsComponent implements OnInit {
-  Ranking_modificar;
+
   Ranking;
+  Ranking_modificar:FormGroup
   nombre_ranking: string;
   nombreEquipo: string;
   puntuacion: number;
   constructor(private AuthService: AuthService,private router: Router) {
 
-    this.Ranking_modificar = new ModificarRanking(
-      this.nombreEquipo,
-      this.puntuacion,
-    );
+    this.Ranking_modificar = new FormGroup(
+      {
+        nombreEquipo: new FormControl(this.nombreEquipo, [
+          Validators.minLength(2),
+          Validators.maxLength(15),
+          Validators.required,
+        ]),
+        puntuacion: new FormControl(this.puntuacion, [
+          Validators.minLength(2),
+          Validators.maxLength(15),
+          Validators.required,
+        ])
+      });
+
 
     this.Ranking = new consultaNombre(
       this.nombre_ranking,
@@ -40,7 +52,8 @@ export class ModificarRankingsComponent implements OnInit {
       })
   }
 
-  guardarDatos(){
+  guardarDatos(Ranking_modificar){
+  console.log(Ranking_modificar);
 
 
   }
