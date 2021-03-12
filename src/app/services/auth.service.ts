@@ -105,7 +105,6 @@ export class AuthService {
   }
 
   datosRanking(ranking) {
-    console.log(ranking);
 
     return this.http.post<consultaNombre>(`${environment.apiUrl}/datos-ranking.php`, JSON.stringify(ranking))
   }

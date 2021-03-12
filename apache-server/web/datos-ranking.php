@@ -15,17 +15,24 @@
 
     $x=0;
 
-$query = $mysqli -> query ("SELECT id_ranking
-FROM rankings
-where nombre_ranking = '$params->nombre_ranking'");
+$query = $mysqli -> query ("select a.nombre ,a.usuario,a.apellido, u2.puntuacion
+from rankings r
+inner join usuariosranking u2 on u2.idRanking = r.id_ranking
+inner join alumnos a on a.idUsuario = u2.idUsuario
+where r.nombre_ranking ='$params->nombre_ranking'
+order by u2.puntuacion desc");
 // $valores = mysqli_fetch_array($query);
 
 // foreach (mysqli_fetch_array($query) as &$valor) {
 //   echo $valor;
 // }
 
-$valores = mysqli_fetch_array($query);
 
+
+while ($valores = mysqli_fetch_array($query)) {
+  $array[$x]=$valores;
+  $x++;
+}
 
 
 // for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
@@ -40,4 +47,4 @@ $valores = mysqli_fetch_array($query);
 //   }
 
 header('Content-Type: application/json');
-echo json_encode($valores);
+echo json_encode($array);
