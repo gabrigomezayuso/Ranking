@@ -1,14 +1,9 @@
 <app-nav-usuarios></app-nav-usuarios>
 
+<br>
+<br>
+<br>
 
-<!--
-
-Follow me on
-Dribbble: https://dribbble.com/supahfunk
-Twitter: https://twitter.com/supahfunk
-Codepen: https://codepen.io/supah/
-
--->
 <div class="leaderboard">
   <h1 class="text-white">
     <svg class="ico-cup text-white">
@@ -16,7 +11,7 @@ Codepen: https://codepen.io/supah/
     </svg>
     {{datos[0][0]}}
   </h1>
-  <ol >
+  <ol class="list-group" style="list-style-type:none;">
     <li *ngFor="let item of datos;index as i ">
       <mark><span>{{datos[i]['nombre']}} {{datos[i]['apellido']}}</span></mark>
       <small>{{datos[i]['puntuacion']}}</small>
@@ -48,3 +43,7 @@ Codepen: https://codepen.io/supah/
 	c0-1.097,0.908-1.99,2.024-1.99c1.117,0,2.025,0.893,2.025,1.99C23.241,6.246,22.333,7.138,21.215,7.138z" />
   </symbol>
 </svg>
+
+<br>
+<br>
+<br>
