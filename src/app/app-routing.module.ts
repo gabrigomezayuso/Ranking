@@ -13,7 +13,7 @@ import { EasterEggComponent } from './components/easter-egg/easter-egg.component
 import { MisRankingsComponent } from './components/ranking/mis-rankings/mis-rankings.component';
 import { RankingComponent } from './components/ranking/ranking/ranking.component';
 import { ModificarRankingsComponent } from './components/ranking/modificar-rankings/modificar-rankings.component';
-
+import { RankingsAdminComponent } from './components/ranking/rankings-admin/rankings-admin.component';
 
 const routes: Routes = [
  { path: '', component: HomeComponent },
@@ -27,7 +27,8 @@ const routes: Routes = [
  { path: 'mis-rankings', component: MisRankingsComponent, canActivate: [AuthGuard] },
  { path: 'home', component: HomeComponent} , //HOME es un componente que requiere ser identificado, debido a esto, le introducimos un "guardian" para controlar su acceso
  { path: 'generar-ranking', component: GenerarRankingComponent, canActivate: [AuthGuard, AdminGuard]} , //HOME es un componente que requiere ser identificado, debido a esto, le introducimos un "guardian" para controlar su acceso
- { path: 'modificar-rankings', component: ModificarRankingsComponent, canActivate: [AuthGuard, AdminGuard]} ,
+ { path: 'modificar-rankings/:id', component: ModificarRankingsComponent, canActivate: [AuthGuard, AdminGuard]} ,
+ { path: 'mis-rankings-admin', component: RankingsAdminComponent, canActivate: [AuthGuard, AdminGuard]} ,
  { path: '**', redirectTo: 'home' }
 
 ];

@@ -1,0 +1,36 @@
+<app-nav-usuarios></app-nav-usuarios>
+<div class="banner text-left">
+  <div class="row justify-content-center">
+    <div class="col-auto">
+      <table class="table table-responsive">
+        <!-- <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col">Ver</th>
+            <th scope="col">Borrar</th>
+          </tr>
+        </thead> -->
+        <tbody *ngFor="let item of ranking">
+          <tr>
+            <td>{{item[0]}}</td>
+
+            <td>
+              <button class="btn btn-opacity-light mr-3"   [routerLink]="['../modificar-rankings', item[1]] " >
+                Visualizar
+              </button>
+              <button class="btn btn-opacity-danger">
+                Borrar
+              </button>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

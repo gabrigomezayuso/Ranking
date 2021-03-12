@@ -21,6 +21,7 @@ import { EasterEggComponent } from './components/easter-egg/easter-egg.component
 import { MisRankingsComponent } from './components/ranking/mis-rankings/mis-rankings.component';
 import { RankingComponent } from './components/ranking/ranking/ranking.component';
 import { ModificarRankingsComponent } from './components/ranking/modificar-rankings/modificar-rankings.component';
+import { RankingsAdminComponent } from './components/ranking/rankings-admin/rankings-admin.component';
 
 
 
@@ -43,6 +44,7 @@ import { ModificarRankingsComponent } from './components/ranking/modificar-ranki
     MisRankingsComponent,
     RankingComponent,
     ModificarRankingsComponent,
+    RankingsAdminComponent,
 
   ],
   imports: [

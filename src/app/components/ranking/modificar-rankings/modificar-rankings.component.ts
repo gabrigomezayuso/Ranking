@@ -40,4 +40,9 @@ export class ModificarRankingsComponent implements OnInit {
       })
   }
 
+  guardarDatos(){
+
+
+  }
+
 }

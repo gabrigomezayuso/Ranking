@@ -1,14 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { consultarRankings } from 'src/app/models/consultarRankings';
 import { AuthService } from '../../../services/auth.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { RouterModule, Routes } from '@angular/router';
+import { consultaNombre } from 'src/app/models/consultaNombre';
+import { datosRanking } from 'src/app/models/datosRanking';
+import { consultarRankings } from 'src/app/models/consultarRankings';
 
 @Component({
-  selector: 'app-mis-rankings-admin',
-  templateUrl: './mis-rankings-admin.component.html',
-  styleUrls: ['./mis-rankings-admin.component.css']
+  selector: 'app-rankings-admin',
+  templateUrl: './rankings-admin.component.html',
+  styleUrls: ['./rankings-admin.component.css',  '../../home/home.component.css']
 })
-export class MisRankingsAdminComponent implements OnInit {
+export class RankingsAdminComponent implements OnInit {
   idUser: string;
   user;
   ranking;
