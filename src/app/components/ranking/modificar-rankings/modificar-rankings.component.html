@@ -8,13 +8,28 @@
     </svg>
     {{datos[0][0]}}
   </h1>
-  <ol >
-    <li *ngFor="let item of datos;index as i ">
-      <mark><span>{{datos[i]['nombre']}} {{datos[i]['apellido']}}</span></mark>
-      <small><input type="number" name="puntuacion" value="{{datos[i]['puntuacion']}}"></small><br><br>
-      <small><input type="text" name="puntuacion" value="{{datos[i]['nombreEquipo']}}"></small>
-      <small>{{datos[i]['usuario']}}</small>
-    </li>
+
+  <ol class="list-group">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Nombre</th>
+          <th scope="col"></th>
+          <th scope="col">Equipo</th>
+          <th scope="col">Puntuacion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of datos;index as i ">
+          <th scope="row">{{i+1}}</th>
+          <td>{{datos[i]['nombre']}} {{datos[i]['apellido']}}</td>
+          <th><div class="mr-5"></div></th>
+          <td><input type="text" name="puntuacion" value="{{datos[i]['nombreEquipo']}}"></td>
+          <td><input type="number" name="puntuacion" value="{{datos[i]['puntuacion']}}"></td>
+        </tr>
+      </tbody>
+    </table>
   </ol>
 </div>
 <button (click)="guardarDatos()">Guardar</button>
