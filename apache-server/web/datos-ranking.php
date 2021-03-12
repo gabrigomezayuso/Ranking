@@ -20,7 +20,7 @@
 $query = $mysqli -> query ("select r.nombre_ranking, a.nombre ,a.usuario,a.apellido, u2.puntuacion, e2.nombreEquipo
 from rankings r
 inner join usuariosranking u2 on u2.idRanking = r.id_ranking
-inner join equiposranking e2  on e2.idRanking = r.id_ranking
+inner join equiposranking e2  on e2.idUsuario = u2.idUsuario
 inner join alumnos a on a.idUsuario = u2.idUsuario
 where r.id_ranking ='$params->nombre_ranking'
 order by u2.puntuacion desc ");
@@ -43,6 +43,5 @@ while ($valores = mysqli_fetch_array($query)) {
 //     header('Content-Type: application/json');
 //     echo json_encode ($row["nombre_ranking"]) ;
 //   }
-
 header('Content-Type: application/json');
 echo json_encode($array);

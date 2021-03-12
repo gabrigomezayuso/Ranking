@@ -12,11 +12,38 @@ import { AuthService } from '../../../services/auth.service';
 export class ModificarRankingsComponent implements OnInit {
 
   Ranking;
-  Ranking_modificar:FormGroup
+  Ranking_modificar:FormGroup;
   nombre_ranking: string;
   nombreEquipo: string;
   puntuacion: number;
+  x: number =0;
+  casa: boolean=true;
   constructor(private AuthService: AuthService,private router: Router) {
+
+
+
+
+    this.Ranking = new consultaNombre(
+      this.nombre_ranking,
+      // ''
+    );
+    this.Ranking.nombre_ranking=this.router.url.split('/')[2];
+  }
+  object;
+  ngOnInit(): void {
+
+
+
+    this.AuthService.datosRanking(this.Ranking) .subscribe (
+      datos => {
+
+        this.Ranking=datos;
+        this.object=datos;
+        this.nombreEquipo=this.Ranking[0]['nombreEquipo'];
+        console.log(this.Ranking);
+        this.puntuacion=parseInt(this.Ranking[0]['puntuacion']);
+        console.log(this.nombreEquipo);
+
 
     this.Ranking_modificar = new FormGroup(
       {
@@ -31,29 +58,39 @@ export class ModificarRankingsComponent implements OnInit {
           Validators.required,
         ])
       });
-
-
-    this.Ranking = new consultaNombre(
-      this.nombre_ranking,
-      // ''
-    );
-    this.Ranking.nombre_ranking=this.router.url.split('/')[2];
-  }
-  datos;
-  ngOnInit(): void {
-
-    this.AuthService.datosRanking(this.Ranking) .subscribe (
-      datos => {
-        console.log(datos);
-        console.log(datos[0]['nombre']);
-
-        this.datos=datos;
-
       })
+
+
+
   }
 
   guardarDatos(Ranking_modificar){
   console.log(Ranking_modificar);
+
+
+  }
+
+  test(){
+
+    this.nombreEquipo=this.Ranking[1]['nombreEquipo'];
+    console.log(this.Ranking);
+    this.puntuacion=parseInt(this.Ranking[1]['puntuacion']);
+    console.log(this.nombreEquipo);
+
+
+this.Ranking_modificar = new FormGroup(
+  {
+    nombreEquipo: new FormControl(this.nombreEquipo, [
+      Validators.minLength(2),
+      Validators.maxLength(15),
+      Validators.required,
+    ]),
+    puntuacion: new FormControl(this.puntuacion, [
+      Validators.minLength(2),
+      Validators.maxLength(15),
+      Validators.required,
+    ])
+  });
 
 
   }

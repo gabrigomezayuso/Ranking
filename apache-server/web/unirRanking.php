@@ -29,6 +29,8 @@ if ($resultadoNoRepetir2->num_rows <1) {
     // REALIZA LA QUERY A LA DB
     $resultado = mysqli_query($conexion, "INSERT INTO `usuariosranking`(`idUsuario`, `idRanking`, `puntuacion`)
     VALUES ('$params->idUser','$params->id',0)");
+     $resultado3 = mysqli_query($conexion, "INSERT INTO `equiposranking`(`idUsuario`, `idRanking`, `nombreEquipo`)
+     VALUES ('$params->idUser','$params->id','Equipo')");
     header('Content-Type: application/json');
     echo json_encode('Te has unido perfectamente');
 }

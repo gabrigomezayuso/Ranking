@@ -1,23 +1,14 @@
 <app-nav-usuarios></app-nav-usuarios>
 
 
-<form [formGroup]="Ranking_modificar">
+<form >
 <div class="leaderboard">
   <h1 class="text-white">
     <svg class="ico-cup text-white">
       <use xlink:href="#cup"></use>
     </svg>
-    {{datos[0][0]}}
+    {{nombre_ranking}}
   </h1>
-  <!-- <ol >
-
-    <li *ngFor="let item of datos;index as i ">
-      <mark><span>{{datos[i]['nombre']}} {{datos[i]['apellido']}}</span></mark>
-      <small><input type="number" formControlName="puntuacion" name="puntuacion" value="{{datos[i]['puntuacion']}}"></small><br><br>
-      <small><input type="text" formControlName="nombreEquipo"  name="nombreEquipo" value="{{datos[i]['nombreEquipo']}}"></small>
-      <small>{{datos[i]['usuario']}}</small>
-    </li> -->
-
   <ol class="list-group">
     <table class="table">
       <thead>
@@ -29,14 +20,15 @@
           <th scope="col">Puntuacion</th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let item of datos;index as i ">
+      <tbody *ngFor="let item of object;index as i "[formGroup]="Ranking_modificar" >
+        <tr>
           <th scope="row">{{i+1}}</th>
-          <td>{{datos[i]['nombre']}} {{datos[i]['apellido']}}</td>
+          <td>{{object[i]['nombre']}} {{object[i]['apellido']}}</td>
           <th><div class="mr-5"></div></th>
-          <td><input type="text"   formControlName="nombreEquipo" name="puntuacion" value="{{datos[i]['nombreEquipo']}}"></td>
-          <td><input type="number" formControlName="puntuacion" name="puntuacion" value="{{datos[i]['puntuacion']}}"></td>
+          <td><input type="text"  formControlName="nombreEquipo" name="nombreEquipo"></td>
+          <td><input type="number"  formControlName="puntuacion" name="puntuacion" value="{{object[i][4]}}"></td>
         </tr>
+        <span *ngIf="casa">{{test()}} </span>
       </tbody>
     </table>
   </ol>
