@@ -28,7 +28,6 @@ export class MisRankingsComponent implements OnInit {
       datos => {
         console.log(datos)
         this.ranking = Object.values(datos)
-        console.log(this.ranking);
       })
   }
 

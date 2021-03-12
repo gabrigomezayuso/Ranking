@@ -1,0 +1,194 @@
+/*-------------------- Body --------------------*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+body {
+  min-height: 450px;
+  height: 100vh;
+  margin: 0;
+  background: #f7f8fa;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+}
+
+ol{
+  background: white;
+
+}
+/*-------------------- Leaderboard --------------------*/
+.leaderboard {
+  position: relative;
+  top: 10%;
+  width: 80%;
+  border: 0;
+  margin: 0 auto;
+  background: #1967f8;
+  box-shadow: 0 7px 30px rgba(0, 0, 0, 0.23);
+  border-radius: 10px;
+}
+.leaderboard h1 {
+  font-size: 21px;
+  line-height: 32px;
+  font-weight: 600;
+  padding: 12px 13px 18px;
+}
+.leaderboard h1 svg {
+  width: 25px;
+  height: 26px;
+  position: relative;
+  top: 3px;
+  margin-right: 6px;
+  vertical-align: baseline;
+}
+.leaderboard ol {
+  counter-reset: leaderboard;
+}
+.leaderboard ol li {
+  position: relative;
+  z-index: 1;
+  font-size: 14px;
+  counter-increment: leaderboard;
+  padding: 18px 10px 18px 50px;
+  cursor: pointer;
+  backface-visibility: hidden;
+  transform: translateZ(0) scale(1, 1);
+  color: #000;
+}
+.leaderboard ol li::before {
+  content: counter(leaderboard);
+  position: absolute;
+  z-index: 2;
+  top: 23px;
+  left: 14px;
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  color: #fff;
+  background: #000;
+  border-radius: 20px;
+  text-align: center;
+}
+.leaderboard ol li mark {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 18px 10px 18px 50px;
+  margin: 0;
+  background: none;
+  color: #000;
+}
+.leaderboard ol li mark span {
+  line-height: 35px;
+  font-size: 20px;
+}
+.leaderboard ol li mark::before, .leaderboard ol li mark::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  bottom: -11px;
+  left: -9px;
+  border-top: 10px solid #fff;
+  border-left: 10px solid transparent;
+  transition: all 0.1s ease-in-out;
+  opacity: 0;
+}
+.leaderboard ol li mark::after {
+  left: auto;
+  right: -9px;
+  border-left: none;
+  border-right: 10px solid transparent;
+}
+.leaderboard ol li small {
+  position: relative;
+  z-index: 2;
+  display: block;
+  text-align: right;
+  font-size: 16px;
+}
+.leaderboard ol li small:nth-child(3) {
+  padding-top: 5px;
+}
+.leaderboard ol li::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, .08);
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+}
+.leaderboard ol li:nth-child(1) {
+  background: #fff;
+}
+.leaderboard ol li:nth-child(1)::after {
+  background: #fff;
+}
+.leaderboard ol li:nth-child(2) {
+  background: #fff;
+}
+.leaderboard ol li:nth-child(2)::after {
+  background: #fff;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, .08);
+}
+.leaderboard ol li:nth-child(2) mark::before, .leaderboard ol li:nth-child(2) mark::after {
+  border-top: 6px solid #fff;
+  bottom: -7px;
+}
+.leaderboard ol li:nth-child(3) {
+  background: #fff;
+}
+.leaderboard ol li:nth-child(3)::after {
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .11);
+}
+.leaderboard ol li:nth-child(3) mark::before, .leaderboard ol li:nth-child(3) mark::after {
+  border-top: 2px solid #fff;
+  bottom: -3px;
+}
+.leaderboard ol li:nth-child(4) {
+  background: #fff;
+}
+.leaderboard ol li:nth-child(4)::after {
+  background: #fff;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, .15);
+}
+.leaderboard ol li:nth-child(4) mark::before, .leaderboard ol li:nth-child(4) mark::after {
+  top: -7px;
+  bottom: auto;
+  border-top: none;
+  border-bottom: 6px solid #fff;
+}
+.leaderboard ol li:nth-child(5) {
+  background: #fff;
+  border-radius: 0 0 10px 10px;
+}
+.leaderboard ol li:nth-child(5)::after {
+  background: #fff;
+  box-shadow: 0 -2.5px 0 rgba(0, 0, 0, .12);
+  border-radius: 0 0 10px 10px;
+}
+.leaderboard ol li:nth-child(5) mark::before, .leaderboard ol li:nth-child(5) mark::after {
+  top: -9px;
+  bottom: auto;
+  border-top: none;
+  border-bottom: 8px solid #fff;
+}
+.leaderboard ol li:hover {
+  z-index: 2;
+  overflow: visible;
+}
+/* .leaderboard ol li:hover::after {
+  opacity: 1;
+  transform: scaleX(1.02) scaleY(1.03);
+} */
+/* .leaderboard ol li:hover mark::before, .leaderboard ol li:hover mark::after {
+  opacity: 1;
+  transition: all 0.35s ease-in-out;
+} */

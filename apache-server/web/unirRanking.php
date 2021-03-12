@@ -20,8 +20,10 @@ $resultadoNoRepetir2 = mysqli_query($conexion, "SELECT * FROM rankings WHERE id_
 
 
 if ($resultadoNoRepetir2->num_rows <1) {
+  header('Content-Type: application/json');
   echo json_encode('ERROR. Este ranking no existe');
 }else if ($resultadoNoRepetir->num_rows >=1) {
+  header('Content-Type: application/json');
   echo json_encode('ERROR. Ya estas en este Ranking');
 }else {
     // REALIZA LA QUERY A LA DB
