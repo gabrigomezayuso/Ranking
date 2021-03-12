@@ -14,6 +14,7 @@ import { MisRankingsComponent } from './components/ranking/mis-rankings/mis-rank
 import { RankingComponent } from './components/ranking/ranking/ranking.component';
 import { ModificarRankingsComponent } from './components/ranking/modificar-rankings/modificar-rankings.component';
 
+
 const routes: Routes = [
  { path: '', component: HomeComponent },
  { path: 'login', component: LoginComponent },
