@@ -1,1 +1,14 @@
-<p>modificar-rankings works!</p>
+<app-nav-usuarios></app-nav-usuarios>
+
+<table>
+  <tr *ngFor="let item of datos;index as i ">
+    <td>
+            {{i+1}}
+            {{datos[i]['nombre']}}
+            {{datos[i]['apellido']}}
+            {{datos[i]['puntuacion']}}
+            {{datos[i]['usuario']}}
+            {{datos[i]['nombreEquipo']}}
+  </td>
+    </tr>
+</table>

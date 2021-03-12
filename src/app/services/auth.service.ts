@@ -108,4 +108,15 @@ export class AuthService {
 
     return this.http.post<consultaNombre>(`${environment.apiUrl}/datos-ranking.php`, JSON.stringify(ranking))
   }
+
+
+  modificarPerfil(datosRanking) {
+    return this.http.post<datosRanking>(`${environment.apiUrl}/datos-ranking.php`, JSON.stringify(datosRanking))
+      .pipe(map(datosRanking => {
+        console.log(datosRanking);
+        // Router['/alumnos'];
+        return datosRanking;
+      }));
+  }
+
 }
