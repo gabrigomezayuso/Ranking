@@ -5,6 +5,7 @@ export class datosRanking {
   public apellido: string,
   public nombre: string,
   public nombre_equipo: string,
+  public id: string,
   ){}
 
 }

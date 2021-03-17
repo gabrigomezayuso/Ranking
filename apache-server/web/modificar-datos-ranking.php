@@ -12,11 +12,17 @@
 
   $mysqli = new mysqli('192.168.3.26', 'DAW2_GamifikG6', 'aGamifikG61', 'daw2_gamifikg6');
 
+  $length = count($params);
+  for ($i = 0; $i < $length; $i++) {
+    $equipo=$params[$i];
+    $query = $mysqli -> query ("UPDATE daw2_gamifikg6.usuariosranking SET  puntuacion = '$equipo->puntuacion' WHERE idUsuario= '$equipo->idUsuario'");
+    $query = $mysqli -> query ("UPDATE daw2_gamifikg6.equiposranking SET  nombreEquipo = '$equipo->nombreEquipo' WHERE idUsuario= '$equipo->idUsuario'");
+  }
 
-$query = $mysqli -> query ("UPDATE daw2_gamifikg6.alumnos SET  nombre_equipo = '$params->nombre_equipo' ,puntuacion = '$params->puntuacion' WHERE idUsuario= $params->id");
+  // $query = $mysqli -> query ("UPDATE daw2_gamifikg6.usuariosranking SET  puntuacion = 500 WHERE idUsuario= 37");
     // UPDATE alumnos  WHERE idUsuario = ";
 
 
 
 header('Content-Type: application/json');
-echo json_encode($array);
+echo json_encode($equipo);

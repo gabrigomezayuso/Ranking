@@ -20,20 +20,21 @@
           <th scope="col">Puntuacion</th>
         </tr>
       </thead>
-      <tbody *ngFor="let item of object;index as i "[formGroup]="Ranking_modificar" >
+
+      <tbody *ngFor="let item of Ranking_modificarArray.controls;index as i " [formGroup]="Ranking_modificarArray.controls[i]"  >
         <tr>
           <th scope="row">{{i+1}}</th>
-          <td>{{object[i]['nombre']}} {{object[i]['apellido']}}</td>
+          <td>{{Ranking_modificarArray.value[i]["nombre"]}}</td>
           <th><div class="mr-5"></div></th>
-          <td><input type="text"  formControlName="nombreEquipo" name="nombreEquipo"></td>
-          <td><input type="number"  formControlName="puntuacion" name="puntuacion" value="{{object[i][4]}}"></td>
+          <td><input type="text"   name="nombreEquipo" formControlName="nombreEquipo"></td>
+          <td><input type="number"   name="puntuacion" formControlName="puntuacion" ></td>
         </tr>
-        <span *ngIf="casa">{{test()}} </span>
+
       </tbody>
     </table>
   </ol>
   <br>
-  <button class="btn btn-success mr-5 ml-5" (click)="guardarDatos(Ranking_modificar)">Guardar</button>
+  <button class="btn btn-success mr-5 ml-5" [disabled]="Ranking_modificarArray.invalid" type="button" (click)="guardarDatos()" >Guardar</button>
   <br>
   <br>
 </div>

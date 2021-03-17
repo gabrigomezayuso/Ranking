@@ -9,6 +9,7 @@ import { unirmeRanking } from '../models/unirmeRanking';
 import { consultarRankings } from '../models/consultarRankings';
 import { datosRanking } from '../models/datosRanking';
 import { consultaNombre } from '../models/consultaNombre';
+import { Ranking_modificarArray } from '../models/Ranking_modificarArray';
 
 @Injectable({
   providedIn: 'root'
@@ -117,6 +118,13 @@ export class AuthService {
         // Router['/alumnos'];
         return datosRanking;
       }));
+  }
+
+  modificarRanking(Ranking_modificarArray){
+    console.log("guardar2");
+
+    console.log(Ranking_modificarArray.value);
+    return this.http.post<Ranking_modificarArray>(`${environment.apiUrl}/modificar-datos-ranking.php`, JSON.stringify(Ranking_modificarArray.value))
   }
 
 }

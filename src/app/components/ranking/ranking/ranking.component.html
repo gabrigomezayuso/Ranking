@@ -13,7 +13,7 @@
   </h1>
   <ol class="list-group" style="list-style-type:none;">
     <li *ngFor="let item of datos;index as i ">
-      <mark><span>{{datos[i]['nombre']}} {{datos[i]['apellido']}}</span></mark>
+      <mark><span>{{datos[i]['nombre']}} {{datos[i]['apellido']}} <b>{{datos[i]['nombreEquipo']}}</b></span></mark>
       <small>{{datos[i]['puntuacion']}}</small>
       <small>{{datos[i]['usuario']}}</small>
     </li>
