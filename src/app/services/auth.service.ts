@@ -154,4 +154,6 @@ export class AuthService {
 generarNuevoCodigoRanking(generarRankings) {
   return this.http.post<generarRanking>(`${environment.apiUrl}/generarNuevoCodigo.php`, JSON.stringify(generarRankings))
 }
+
+
 }

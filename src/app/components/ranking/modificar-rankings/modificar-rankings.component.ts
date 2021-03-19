@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { consultaNombre } from 'src/app/models/consultaNombre';
+import { generarRanking } from 'src/app/models/generarRanking';
 import { ModificarRanking } from 'src/app/models/ModificarRanking';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../../services/auth.service';
@@ -22,6 +23,8 @@ export class ModificarRankingsComponent implements OnInit {
   casa: boolean = true;
   longitud;
   object;
+
+  model;
 
   constructor(private AuthService: AuthService, private router: Router) {
     this.Ranking = new consultaNombre(
@@ -103,7 +106,8 @@ export class ModificarRankingsComponent implements OnInit {
       })
     }
     nuevoCodigo() {
-      this.AuthService.generarNuevoCodigoRanking(this.nombre_ranking).subscribe(
+      this.model= new generarRanking(this.object[0][7], this.object[0][0])
+      this.AuthService.generarNuevoCodigoRanking(this.model).subscribe(
         (datos) => {
           console.log(datos)
           Swal.fire('El nuevo codigo es  '+datos)

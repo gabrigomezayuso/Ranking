@@ -15,7 +15,7 @@ $ranking="";
 $resultadoNoRepetir2="";
 //Funcion aleatoria
 
-$resultadoNoRepetir = mysqli_query($conexion, "SELECT idUsuario, idRanking  FROM usuariosranking WHERE idRanking='$params->id' AND idUsuario='$params->idUser' ");
+$resultadoNoRepetir = mysqli_query($conexion, "SELECT idUsuario, codigo  FROM usuariosranking WHERE codigo='$params->id' AND idUsuario='$params->idUser' ");
 $resultadoNoRepetir3 = mysqli_query($conexion, "SELECT DISTINCT id_ranking  FROM rankings WHERE codigo='$params->id'");
 $resultadoNoRepetir2 = mysqli_query($conexion, "SELECT * FROM rankings WHERE codigo='$params->id'");
 
