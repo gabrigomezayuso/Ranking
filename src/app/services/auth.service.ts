@@ -10,6 +10,7 @@ import { consultarRankings } from '../models/consultarRankings';
 import { datosRanking } from '../models/datosRanking';
 import { consultaNombre } from '../models/consultaNombre';
 import { Ranking_modificarArray } from '../models/Ranking_modificarArray';
+import { cambiarEquipo } from '../models/cambiarEquipo';
 
 @Injectable({
   providedIn: 'root'
@@ -129,6 +130,13 @@ export class AuthService {
 
     console.log(Ranking_modificarArray.value);
     return this.http.post<Ranking_modificarArray>(`${environment.apiUrl}/modificar-datos-ranking.php`, JSON.stringify(Ranking_modificarArray.value))
+  }
+
+  modificarEquipoRanking(cambiarEquipo){
+
+
+    return this.http.post<cambiarEquipo>(`${environment.apiUrl}/cambiarEquipo.php`, JSON.stringify(cambiarEquipo))
+
   }
 
 }
