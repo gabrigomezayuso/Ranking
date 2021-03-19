@@ -16,8 +16,13 @@ $resultadoNoRepetir2="";
 //Funcion aleatoria
 
 $resultadoNoRepetir = mysqli_query($conexion, "SELECT idUsuario, idRanking  FROM usuariosranking WHERE idRanking='$params->id' AND idUsuario='$params->idUser' ");
-$resultadoNoRepetir2 = mysqli_query($conexion, "SELECT * FROM rankings WHERE id_ranking='$params->id'");
+$resultadoNoRepetir3 = mysqli_query($conexion, "SELECT DISTINCT id_ranking  FROM rankings WHERE codigo='$params->id'");
+$resultadoNoRepetir2 = mysqli_query($conexion, "SELECT * FROM rankings WHERE codigo='$params->id'");
 
+$query = $mysqli -> query ("SELECT id_ranking  FROM rankings WHERE codigo='$params->id'");
+          while ($valores = mysqli_fetch_array($query)) {
+           $idRanking = $valores['id_ranking'];
+          }
 
 if ($resultadoNoRepetir2->num_rows <1) {
   header('Content-Type: application/json');
@@ -26,11 +31,15 @@ if ($resultadoNoRepetir2->num_rows <1) {
   header('Content-Type: application/json');
   echo json_encode('ERROR. Ya estas en este Ranking');
 }else {
+
     // REALIZA LA QUERY A LA DB
     $resultado = mysqli_query($conexion, "INSERT INTO `usuariosranking`(`idUsuario`, `idRanking`, `puntuacion`)
-    VALUES ('$params->idUser','$params->id',0)");
+    VALUES ('$params->idUser',$idRanking,0)");
      $resultado3 = mysqli_query($conexion, "INSERT INTO `equiposranking`(`idUsuario`, `idRanking`, `nombreEquipo`)
-     VALUES ('$params->idUser','$params->id','Equipo')");
+     VALUES ('$params->idUser',$idRanking,'Equipo')");
+
+
+
     header('Content-Type: application/json');
     echo json_encode('Te has unido perfectamente');
 }

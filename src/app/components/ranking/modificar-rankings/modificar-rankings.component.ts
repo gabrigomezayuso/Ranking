@@ -102,7 +102,13 @@ export class ModificarRankingsComponent implements OnInit {
         Swal.fire('Datos actualizados correctamente')
       })
     }
-
+    nuevoCodigo() {
+      this.AuthService.generarNuevoCodigoRanking(this.nombre_ranking).subscribe(
+        (datos) => {
+          console.log(datos)
+          Swal.fire('El nuevo codigo es  '+datos)
+        })
+      }
 
 
   test() {

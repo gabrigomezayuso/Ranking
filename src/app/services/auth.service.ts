@@ -11,6 +11,7 @@ import { datosRanking } from '../models/datosRanking';
 import { consultaNombre } from '../models/consultaNombre';
 import { Ranking_modificarArray } from '../models/Ranking_modificarArray';
 import { cambiarEquipo } from '../models/cambiarEquipo';
+import { generarRanking } from '../models/generarRanking';
 
 @Injectable({
   providedIn: 'root'
@@ -137,6 +138,10 @@ export class AuthService {
 
     return this.http.post<cambiarEquipo>(`${environment.apiUrl}/cambiarEquipo.php`, JSON.stringify(cambiarEquipo))
 
+  }
+
+  generarNuevoCodigoRanking(generarRankings) {
+    return this.http.post<generarRanking>(`${environment.apiUrl}/generarNuevoCodigo.php`, JSON.stringify(generarRankings))
   }
 
 }
