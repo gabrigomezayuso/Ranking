@@ -27,7 +27,7 @@ export class RankingsAdminComponent implements OnInit {
     this.idUser = localStorage.getItem('idUser')
     this.user = new consultarRankings(this.idUser)
     console.log(this.user)
-    this.AuthService.consultarRankings(this.user)
+    this.AuthService.consultarRankingsAdmin(this.user)
     .subscribe (
       datos => {
         console.log(datos)

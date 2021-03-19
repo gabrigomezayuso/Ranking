@@ -15,11 +15,9 @@
 
     $x=0;
 
-$query = $mysqli -> query ("SELECT r.nombre_ranking,r.id_ranking
-                            FROM rankings r
-                            INNER JOIN  usuariosranking u
-                            ON u.idRanking = r.id_ranking
-                            where u.idUsuario = $params->idUser");
+$query = $mysqli -> query ("SELECT id_ranking, nombre_ranking FROM rankings WHERE administrador= 20");
+
+
 // $valores = mysqli_fetch_array($query);
 
 // foreach (mysqli_fetch_array($query) as &$valor) {

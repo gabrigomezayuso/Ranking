@@ -47,7 +47,7 @@ export class GenerarRankingComponent implements OnInit {
     console.log(this.generarRanking2)
 
     try {
-      this.ProfesorService.actualizarPerfil(this.generarRanking2).subscribe(
+      this.ProfesorService.generarRanking(this.generarRanking2).subscribe(
         (datos) => {
           console.log(datos)
           if(datos[0]=='ERROR'){
