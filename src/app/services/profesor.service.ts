@@ -28,4 +28,7 @@ export class ProfesorService {
   generarRanking(generarRankings) {
     return this.http.post<generarRanking>(`${environment.apiUrl}/generarRanking.php`, JSON.stringify(generarRankings))
 }
+
+
+
 }

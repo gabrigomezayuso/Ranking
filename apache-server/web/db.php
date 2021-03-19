@@ -16,4 +16,7 @@ function conexion(){
    return $enlace;
 }
 
+$mysqli = new mysqli('192.168.3.26', 'DAW2_GamifikG6', 'aGamifikG61', 'daw2_gamifikg6');
+
+
 ?>
