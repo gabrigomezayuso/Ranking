@@ -139,4 +139,13 @@ export class AuthService {
 
   }
 
+
+  eliminarRanking(id_ranking){
+
+
+    return this.http.post<number>(`${environment.apiUrl}/cambiarEquipo.php`, JSON.stringify(id_ranking))
+
+
+  }
+
 }

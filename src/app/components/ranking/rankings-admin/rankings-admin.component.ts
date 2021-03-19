@@ -70,4 +70,16 @@ export class RankingsAdminComponent implements OnInit {
 
   }
 
+  eliminar(i){
+    console.log(this.ranking[i])
+    this.AuthService.eliminarRanking(this.ranking[i][1]) .subscribe (
+      datos => {
+        console.log(datos)
+
+      })
+
+  }
+
+
+
 }
