@@ -7,9 +7,11 @@
     <svg class="ico-cup text-white">
       <use xlink:href="#cup"></use>
     </svg>
-    {{nombre_ranking}}
+
   </h1>
+
   <ol class="list-group">
+    {{nombre_ranking}}
     <table class="table">
       <thead>
         <tr>
@@ -25,7 +27,7 @@
         <tr>
           <th scope="row">{{i+1}}</th>
           <td>{{Ranking_modificarArray.value[i]["nombre"]}}</td>
-          <th><div class="mr-5"></div></th>
+          <td>{{Ranking_modificarArray.value[i]["apellido"]}}</td>
           <td><input type="text"   name="nombreEquipo" formControlName="nombreEquipo"></td>
           <td><input type="number"   name="puntuacion" formControlName="puntuacion" ></td>
         </tr>

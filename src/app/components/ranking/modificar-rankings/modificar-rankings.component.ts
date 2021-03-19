@@ -32,6 +32,10 @@ export class ModificarRankingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+
+    console.log(this.Ranking.nombre_ranking);
+
     this.AuthService.datosRanking(this.Ranking).subscribe(
       datos => {
         this.Ranking = datos;
@@ -60,6 +64,11 @@ export class ModificarRankingsComponent implements OnInit {
                 Validators.required,
               ]),
               nombre: new FormControl(this.Ranking[index]['nombre'], [
+                Validators.minLength(2),
+                Validators.maxLength(15),
+                Validators.required,
+              ]),
+              apellido: new FormControl(this.Ranking[index]['apellido'], [
                 Validators.minLength(2),
                 Validators.maxLength(15),
                 Validators.required,
