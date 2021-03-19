@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { consultaNombre } from 'src/app/models/consultaNombre';
 import { datosRanking } from 'src/app/models/datosRanking';
 import { consultarRankings } from 'src/app/models/consultarRankings';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-rankings-admin',
   templateUrl: './rankings-admin.component.html',
@@ -48,10 +48,25 @@ export class RankingsAdminComponent implements OnInit {
 
   }
 
+
   changed(evt) {
     this.isChecked = evt.target.checked;
-    alert(evt.target.checked)
-    alert()
+
+    if (evt.target.checked){
+      Swal.fire(
+
+        'Ranking modificado',
+        'Grupos activados',
+        'success'
+      )
+    }
+    else{
+      Swal.fire(
+        'Ranking modificado',
+        'Grupos desactivados',
+        'success'
+      )
+    }
 
   }
 
