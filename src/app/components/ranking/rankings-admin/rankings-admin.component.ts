@@ -17,6 +17,7 @@ export class RankingsAdminComponent implements OnInit {
   user;
   ranking;
   datosRanking;
+  isChecked
 
   constructor(
     private AuthService: AuthService,
@@ -44,6 +45,13 @@ export class RankingsAdminComponent implements OnInit {
 
 
 
+
+  }
+
+  changed(evt) {
+    this.isChecked = evt.target.checked;
+    alert(evt.target.checked)
+    alert()
 
   }
 
