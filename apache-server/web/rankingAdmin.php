@@ -15,7 +15,7 @@
 
     $x=0;
 
-$query = $mysqli -> query ("SELECT nombre_ranking, id_ranking FROM rankings WHERE administrador= $params->idUser");
+$query = $mysqli -> query ("SELECT nombre_ranking, id_ranking, equipos FROM rankings WHERE administrador= $params->idUser");
 
 
 // $valores = mysqli_fetch_array($query);
@@ -27,6 +27,7 @@ $query = $mysqli -> query ("SELECT nombre_ranking, id_ranking FROM rankings WHER
 while ($valores = mysqli_fetch_array($query)) {
   $array[$x][0]=$valores[0];
   $array[$x][1]=$valores[1];
+  $array[$x][2]=$valores[2];
   $x++;
 }
 
