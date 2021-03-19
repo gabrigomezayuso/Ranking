@@ -106,7 +106,7 @@ export class AuthService {
   }
 
   consultarRankingsAdmin(consultarRanking) {
-    return this.http.post<consultarRankings>(`${environment.apiUrl}/rankingsAdmin.php`, JSON.stringify(consultarRanking))
+    return this.http.post<consultarRankings>(`${environment.apiUrl}/rankingAdmin.php`, JSON.stringify(consultarRanking))
   }
 
   datosRanking(ranking) {

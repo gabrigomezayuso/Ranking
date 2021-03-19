@@ -15,7 +15,7 @@
 
     $x=0;
 
-$query = $mysqli -> query ("SELECT id_ranking, nombre_ranking FROM rankings WHERE administrador= 20");
+$query = $mysqli -> query ("SELECT nombre_ranking, id_ranking FROM rankings WHERE administrador= $params->idUser");
 
 
 // $valores = mysqli_fetch_array($query);
