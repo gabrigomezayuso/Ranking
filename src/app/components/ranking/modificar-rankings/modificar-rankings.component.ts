@@ -6,6 +6,7 @@ import { consultaNombre } from 'src/app/models/consultaNombre';
 import { generarRanking } from 'src/app/models/generarRanking';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../../services/auth.service';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-modificar-rankings',
   templateUrl: './modificar-rankings.component.html',
@@ -28,7 +29,7 @@ export class ModificarRankingsComponent implements OnInit {
   ArrayPracticas;
   model;
   idUser: string;
-seleccion;
+seleccion: string;
 
   constructor(private AuthService: AuthService, private router: Router) {
     this.Ranking = new consultaNombre(
