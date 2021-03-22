@@ -28,6 +28,7 @@ export class ModificarRankingsComponent implements OnInit {
   ArrayPracticas;
   model;
   idUser: string;
+seleccion;
 
   constructor(private AuthService: AuthService, private router: Router) {
     this.Ranking = new consultaNombre(
