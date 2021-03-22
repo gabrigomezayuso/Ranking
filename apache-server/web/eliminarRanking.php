@@ -16,17 +16,16 @@
     $x=0;
 
 
+    $query = $mysqli -> query ("DELETE FROM equiposranking
+    where idRanking =$params");
 
-$query = $mysqli -> query ("DELETE FROM equiposranking
-where idRanking =$params->id_ranking");
+    $query = $mysqli -> query ("DELETE FROM usuariosranking
+    where idRanking = $params");
 
-$query = $mysqli -> query ("DELETE FROM usuariosranking
-where idRanking = $params->id_ranking");
-
-$query = $mysqli -> query ("DELETE FROM rankings
-WHERE id_ranking=$params->id_ranking");
+    $query = $mysqli -> query ("DELETE FROM rankings
+    WHERE id_ranking=$params");
 
 
 
 header('Content-Type: application/json');
-echo json_encode($id_ranking);
+echo json_encode($params);

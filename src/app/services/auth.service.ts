@@ -12,6 +12,8 @@ import { consultaNombre } from '../models/consultaNombre';
 import { Ranking_modificarArray } from '../models/Ranking_modificarArray';
 import { cambiarEquipo } from '../models/cambiarEquipo';
 import { generarRanking } from '../models/generarRanking';
+import { EliminarRanking } from '../models/EliminarRanking';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -142,12 +144,8 @@ export class AuthService {
 
 
   eliminarRanking(id_ranking){
-
-
-    return this.http.post<number>(`${environment.apiUrl}/cambiarEquipo.php`, JSON.stringify(id_ranking))
-
-
-
+    console.log(id_ranking);
+    return this.http.post<EliminarRanking>(`${environment.apiUrl}/eliminarRanking.php`, JSON.stringify(id_ranking))
 
 }
 

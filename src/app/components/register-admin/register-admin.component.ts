@@ -60,13 +60,14 @@ export class RegisterAdminComponent implements OnInit {
         datos => {
           if(datos['resultado'] == 'OK') {
             Swal.fire({
-              position: 'top-end',
               icon: 'success',
               title: datos['mensaje'],
               showConfirmButton: false,
               timer: 1500
           })
-          this.router.navigate['login-profesor']
+          .then((result) => {
+            this.router.navigate(['login-profesor'])
+          })
 
         } else {
             Swal.fire({

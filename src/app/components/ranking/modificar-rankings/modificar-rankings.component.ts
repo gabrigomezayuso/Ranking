@@ -41,6 +41,13 @@ export class ModificarRankingsComponent implements OnInit {
 
     this.AuthService.datosRanking(this.Ranking).subscribe(
       datos => {
+
+        datos.sort(function(a, b) {
+          var textA = a.apellido.toUpperCase();
+          var textB = b.apellido.toUpperCase();
+          return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+      });
+
         this.Ranking = datos;
         this.object = datos;
         console.log(this.object);
@@ -66,6 +73,11 @@ export class ModificarRankingsComponent implements OnInit {
                 Validators.maxLength(15),
                 Validators.required,
               ]),
+              nick: new FormControl(this.Ranking[index]['usuario'], [
+                Validators.minLength(2),
+                Validators.maxLength(15),
+                Validators.required,
+              ]),
               nombre: new FormControl(this.Ranking[index]['nombre'], [
                 Validators.minLength(2),
                 Validators.maxLength(15),
@@ -87,6 +99,7 @@ export class ModificarRankingsComponent implements OnInit {
 
 
         }
+        console.log(this.Ranking_modificarArray);
 
 
       })

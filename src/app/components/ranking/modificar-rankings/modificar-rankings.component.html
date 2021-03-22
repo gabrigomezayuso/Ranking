@@ -15,6 +15,7 @@
       <thead>
         <tr>
           <th scope="col"></th>
+          <th scope="col">Nick</th>
           <th scope="col">Nombre</th>
           <th scope="col">Apellidos</th>
           <th scope="col">Equipo</th>
@@ -25,6 +26,7 @@
       <tbody *ngFor="let item of Ranking_modificarArray.controls;index as i " [formGroup]="Ranking_modificarArray.controls[i]"  >
         <tr>
           <th scope="row">{{i+1}}</th>
+          <td>{{Ranking_modificarArray.value[i]["nick"]}}</td>
           <td>{{Ranking_modificarArray.value[i]["nombre"]}}</td>
           <td>{{Ranking_modificarArray.value[i]["apellido"]}}</td>
           <td><input type="text"   name="nombreEquipo" formControlName="nombreEquipo"></td>

@@ -21,7 +21,6 @@ export class RankingsAdminComponent implements OnInit {
 
   constructor(
     private AuthService: AuthService,
-    private _router: Router
     ) { }
 
   ngOnInit(): void {
@@ -71,13 +70,21 @@ export class RankingsAdminComponent implements OnInit {
   }
 
   eliminar(i){
-    console.log(this.ranking[i])
-    this.AuthService.eliminarRanking(this.ranking[i][1]) .subscribe (
-      datos => {
-        console.log(datos)
 
+    console.log(i[1])
+    this.AuthService.eliminarRanking(i[1]).subscribe (
+      datos => {
+
+        console.log(datos)
+        location.reload();
       })
 
+  }
+
+  showCode(i){
+  console.log(i);
+
+    alert(i[3]);
   }
 
 
