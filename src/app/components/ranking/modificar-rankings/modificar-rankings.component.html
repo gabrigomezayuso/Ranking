@@ -8,6 +8,7 @@
       <use xlink:href="#cup"></use>
     </svg>
     {{object[0][0]}}
+    {{object[0][8]}}
   </h1>
 
   <ol class="list-group">
@@ -19,6 +20,20 @@
           <th scope="col">Nombre</th>
           <th scope="col">Apellidos</th>
           <th scope="col">Equipo</th>
+
+
+          <select  class="custom-select mr-sm-2" id="inlineFormCustomSelect" >
+            <option selected>Choose...</option>
+
+            <option *ngFor="let item of ArrayPracticas" value="{{ArrayPracticas[0]['NombreEntrega']}}">{{ArrayPracticas[0]['NombreEntrega']}}</option>
+
+          </select>
+
+
+
+
+          <input type="text"   name="nombreEquipo" >
+          <button>aceptar</button>
           <th scope="col">Puntuacion</th>
         </tr>
       </thead>

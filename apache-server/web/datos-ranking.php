@@ -17,7 +17,7 @@
 
 
 
-$query = $mysqli -> query ("select  DISTINCT r.nombre_ranking, a.nombre ,a.idUsuario,a.usuario,a.apellido, u2.puntuacion, e2.nombreEquipo, r.id_ranking
+$query = $mysqli -> query ("select  DISTINCT r.nombre_ranking, a.nombre ,a.idUsuario,a.usuario,a.apellido, u2.puntuacion, e2.nombreEquipo, r.id_ranking, r.codigo
 from rankings r
 inner join usuariosranking u2 on u2.idRanking = r.id_ranking
 inner join equiposranking e2  on e2.idUsuario = u2.idUsuario
