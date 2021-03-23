@@ -27,16 +27,16 @@ function generateRandomString($length)
 }
 
 $ranking = generateRandomString(6);
+$x=0;
 
 
-//   $query = $mysqli -> query ("SELECT id_ranking  FROM rankings WHERE codigo='$params'");
-//           while ($valores = mysqli_fetch_array($query)) {
-//            $idRanking = $valores['id_ranking'];
-//           }
-//   // REALIZA LA QUERY A LA DB
-// $resultado = mysqli_query($conexion, "UPDATE daw2_gamifikg6.rankings SET codigo=$ranking WHERE id_ranking=$idRanking");
+$mysqli = new mysqli('192.168.3.26', 'DAW2_GamifikG6', 'aGamifikG61', 'daw2_gamifikg6');
+
+
+  // REALIZA LA QUERY A LA DB
+$resultado = mysqli_query($conexion, "UPDATE daw2_gamifikg6.rankings SET codigo=$ranking WHERE id_ranking=$params->nombre");
 header('Content-Type: application/json');
-echo json_encode($params);
+echo json_encode($ranking);
 
 
 

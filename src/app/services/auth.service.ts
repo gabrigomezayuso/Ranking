@@ -12,6 +12,8 @@ import { consultaNombre } from '../models/consultaNombre';
 import { Ranking_modificarArray } from '../models/Ranking_modificarArray';
 import { cambiarEquipo } from '../models/cambiarEquipo';
 import { generarRanking } from '../models/generarRanking';
+import { EliminarRanking } from '../models/EliminarRanking';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -140,8 +142,28 @@ export class AuthService {
 
   }
 
-  generarNuevoCodigoRanking(generarRankings) {
-    return this.http.post<generarRanking>(`${environment.apiUrl}/generarNuevoCodigo.php`, JSON.stringify(generarRankings))
-  }
+
+  eliminarRanking(id_ranking){
+    console.log(id_ranking);
+    return this.http.post<EliminarRanking>(`${environment.apiUrl}/eliminarRanking.php`, JSON.stringify(id_ranking))
+
+}
+
+generarNuevoCodigoRanking(generarRankings) {
+  return this.http.post<generarRanking>(`${environment.apiUrl}/generarNuevoCodigo.php`, JSON.stringify(generarRankings))
+}
+
+getEntregas(id_ranking) {
+  console.log(id_ranking);
+
+  return this.http.post(`${environment.apiUrl}/getEntregas.php`, JSON.stringify(id_ranking))
+}
+
+crearEntregas(id_ranking) {
+  console.log(id_ranking);
+
+  return this.http.post(`${environment.apiUrl}/createEntregas.php`, JSON.stringify(id_ranking))
+}
+
 
 }

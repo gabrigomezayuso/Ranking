@@ -8,6 +8,7 @@
       <use xlink:href="#cup"></use>
     </svg>
     {{object[0][0]}}
+    {{object[0][8]}}
   </h1>
 
   <ol class="list-group">
@@ -15,16 +16,33 @@
       <thead>
         <tr>
           <th scope="col"></th>
+          <th scope="col">Nick</th>
           <th scope="col">Nombre</th>
           <th scope="col">Apellidos</th>
           <th scope="col">Equipo</th>
+
           <th scope="col">Puntuacion</th>
+          <th scope="col">Puntuacion</th>
+          <select [formControl]="selectControl"   class="custom-select mr-sm-2" id="inlineFormCustomSelect" >
+            <option selected>Choose...</option>
+
+            <option *ngFor="let item of ArrayPracticas" value="{{ArrayPracticas[0]['NombreEntrega']}}">{{ArrayPracticas[0]['NombreEntrega']}}</option>
+
+          </select>
+          <p><span>You selected: </span><b>{{selectControl.value}}</b></p>
+
+
+          <button (click)="crearEntregas()">Crear</button>
+          <input type="text"   name="nombreEquipo" >
+
+
         </tr>
       </thead>
 
       <tbody *ngFor="let item of Ranking_modificarArray.controls;index as i " [formGroup]="Ranking_modificarArray.controls[i]"  >
         <tr>
           <th scope="row">{{i+1}}</th>
+          <td>{{Ranking_modificarArray.value[i]["nick"]}}</td>
           <td>{{Ranking_modificarArray.value[i]["nombre"]}}</td>
           <td>{{Ranking_modificarArray.value[i]["apellido"]}}</td>
           <td><input type="text"   name="nombreEquipo" formControlName="nombreEquipo"></td>

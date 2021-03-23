@@ -46,7 +46,6 @@ export class RegisterComponent implements OnInit {
         datos => {
           if(datos['resultado'] == 'OK') {
             Swal.fire({
-              position: 'top-end',
               icon: 'success',
               title: datos['mensaje'],
               showConfirmButton: false,

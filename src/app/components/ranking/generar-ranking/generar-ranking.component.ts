@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { generarRanking } from 'src/app/models/generarRanking';
 import { ProfesorService } from 'src/app/services/profesor.service';
 import Swal from 'sweetalert2';
@@ -17,6 +18,7 @@ export class GenerarRankingComponent implements OnInit {
 
   constructor(
     private ProfesorService: ProfesorService,
+    private router: Router,
   ) { }
 
   myForm: FormGroup;
@@ -25,6 +27,7 @@ export class GenerarRankingComponent implements OnInit {
   idProfesor: string;
 
   ngOnInit(): void {
+
     this.idProfesor = localStorage.getItem('idUser');
     this.myForm = new FormGroup(
       {
@@ -54,6 +57,9 @@ export class GenerarRankingComponent implements OnInit {
             Swal.fire('ERROR. Este ranking ya existe')
           }
           Swal.fire('Su codigo de ranking es '+datos)
+          .then((result)  => {
+            this.router.navigate(['/']);
+        });
         }
       );
     }

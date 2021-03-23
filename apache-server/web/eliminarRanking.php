@@ -15,22 +15,17 @@
 
     $x=0;
 
-$query = $mysqli -> query ("SELECT nombre_ranking, id_ranking, equipos, codigo FROM rankings WHERE administrador= $params->idUser");
+
+    $query = $mysqli -> query ("DELETE FROM equiposranking
+    where idRanking =$params");
+
+    $query = $mysqli -> query ("DELETE FROM usuariosranking
+    where idRanking = $params");
+
+    $query = $mysqli -> query ("DELETE FROM rankings
+    WHERE id_ranking=$params");
 
 
-// $valores = mysqli_fetch_array($query);
-
-// foreach (mysqli_fetch_array($query) as &$valor) {
-//   echo $valor;
-// }
-
-while ($valores = mysqli_fetch_array($query)) {
-  $array[$x][0]=$valores[0];
-  $array[$x][1]=$valores[1];
-  $array[$x][2]=$valores[2];
-  $array[$x][3]=$valores[3];
-  $x++;
-}
 
 header('Content-Type: application/json');
-echo json_encode($array);
+echo json_encode($params);
