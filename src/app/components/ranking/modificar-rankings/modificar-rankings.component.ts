@@ -29,7 +29,15 @@ export class ModificarRankingsComponent implements OnInit {
   ArrayPracticas;
   model;
   idUser: string;
-seleccion: string;
+
+  selectControl:FormControl = new FormControl()
+
+
+  options = [
+    { name: "option1", value: 1 },
+    { name: "option2", value: 2 }
+  ]
+
 
   constructor(private AuthService: AuthService, private router: Router) {
     this.Ranking = new consultaNombre(
@@ -126,7 +134,12 @@ seleccion: string;
 
   }
 
+  click(){
+
+
+  }
   guardarDatos() {
+
     console.log("guardar");
 
     this.AuthService.modificarRanking(this.Ranking_modificarArray).subscribe(
@@ -156,6 +169,8 @@ seleccion: string;
 
 
   }
+
+
 
 
 }
