@@ -1,16 +1,208 @@
 [
+  [
+    {
+      "0": "alex",
+      "nombre_ranking": "alex",
+      "1": "zorro nombre",
+      "nombre": "zorro nombre",
+      "2": "42",
+      "idUsuario": "42",
+      "3": "zorro",
+      "usuario": "zorro",
+      "4": "zorro apellido",
+      "apellido": "zorro apellido",
+      "5": "300",
+      "puntuacion": "300",
+      "6": "Equipo",
+      "nombreEquipo": "Equipo",
+      "7": "429583",
+      "id_ranking": "429583"
+    },
+    {
+      "0": "alex",
+      "nombre_ranking": "alex",
+      "1": "usuario",
+      "nombre": "usuario",
+      "2": "37",
+      "idUsuario": "37",
+      "3": "user",
+      "usuario": "user",
+      "4": "user",
+      "apellido": "user",
+      "5": "200",
+      "puntuacion": "200",
+      "6": "Equipo",
+      "nombreEquipo": "Equipo",
+      "7": "429583",
+      "id_ranking": "429583"
+    },
+    {
+      "0": "alex",
+      "nombre_ranking": "alex",
+      "1": "sergi",
+      "nombre": "sergi",
+      "2": "41",
+      "idUsuario": "41",
+      "3": "sergi",
+      "usuario": "sergi",
+      "4": "bertran",
+      "apellido": "bertran",
+      "5": "10",
+      "puntuacion": "10",
+      "6": "Equipo",
+      "nombreEquipo": "Equipo",
+      "7": "429583",
+      "id_ranking": "429583"
+    },
+    {
+      "0": "alex",
+      "nombre_ranking": "alex",
+      "1": "alejandro",
+      "nombre": "alejandro",
+      "2": "43",
+      "idUsuario": "43",
+      "3": "alex1",
+      "usuario": "alex1",
+      "4": "alejandria",
+      "apellido": "alejandria",
+      "5": "0",
+      "puntuacion": "0",
+      "6": "Equipo",
+      "nombreEquipo": "Equipo",
+      "7": "429583",
+      "id_ranking": "429583"
+    }
+  ],
   {
-    "0": "seryi",
-    "usuario": "seryi",
-    "1": "123",
-    "contrasena": "123",
-    "2": "seryi@serwi.com",
-    "email": "seryi@serwi.com",
-    "3": "seryi",
-    "nombre": "seryi",
-    "4": "gey",
-    "apellido": "gey",
-    "5": "1",
-    "idUsuario": "1"
+    "4": {
+      "2": {
+        "0": "alejandria",
+        "apellido": "alejandria",
+        "1": "43",
+        "idUsuario": "43",
+        "2": "429583",
+        "id_ranking": "429583",
+        "3": "coldwar",
+        "nentrega": "coldwar",
+        "4": null,
+        "puntuacion": null
+      },
+      "3": {
+        "0": "alejandria",
+        "apellido": "alejandria",
+        "1": "43",
+        "idUsuario": "43",
+        "2": "429583",
+        "id_ranking": "429583",
+        "3": "Prueba primera entrega",
+        "nentrega": "Prueba primera entrega",
+        "4": null,
+        "puntuacion": null
+      }
+    },
+    "5": {
+      "4": {
+        "0": "bertran",
+        "apellido": "bertran",
+        "1": "41",
+        "idUsuario": "41",
+        "2": "429583",
+        "id_ranking": "429583",
+        "3": "Prueba primera entrega",
+        "nentrega": "Prueba primera entrega",
+        "4": null,
+        "puntuacion": null
+      },
+      "5": {
+        "0": "bertran",
+        "apellido": "bertran",
+        "1": "41",
+        "idUsuario": "41",
+        "2": "429583",
+        "id_ranking": "429583",
+        "3": "coldwar",
+        "nentrega": "coldwar",
+        "4": null,
+        "puntuacion": null
+      }
+    },
+    "6": {
+      "6": {
+        "0": "user",
+        "apellido": "user",
+        "1": "37",
+        "idUsuario": "37",
+        "2": "429583",
+        "id_ranking": "429583",
+        "3": "coldwar",
+        "nentrega": "coldwar",
+        "4": "100",
+        "puntuacion": "100"
+      },
+      "7": {
+        "0": "user",
+        "apellido": "user",
+        "1": "37",
+        "idUsuario": "37",
+        "2": "429583",
+        "id_ranking": "429583",
+        "3": "coldwar",
+        "nentrega": "coldwar",
+        "4": "200",
+        "puntuacion": "200"
+      }
+    },
+    "7": {
+      "8": {
+        "0": "user",
+        "apellido": "user",
+        "1": "37",
+        "idUsuario": "37",
+        "2": "429583",
+        "id_ranking": "429583",
+        "3": "Prueba primera entrega",
+        "nentrega": "Prueba primera entrega",
+        "4": "100",
+        "puntuacion": "100"
+      },
+      "9": {
+        "0": "user",
+        "apellido": "user",
+        "1": "37",
+        "idUsuario": "37",
+        "2": "429583",
+        "id_ranking": "429583",
+        "3": "Prueba primera entrega",
+        "nentrega": "Prueba primera entrega",
+        "4": "200",
+        "puntuacion": "200"
+      }
+    },
+    "8": {
+      "10": {
+        "0": "zorro apellido",
+        "apellido": "zorro apellido",
+        "1": "42",
+        "idUsuario": "42",
+        "2": "429583",
+        "id_ranking": "429583",
+        "3": "coldwar",
+        "nentrega": "coldwar",
+        "4": null,
+        "puntuacion": null
+      },
+      "11": {
+        "0": "zorro apellido",
+        "apellido": "zorro apellido",
+        "1": "42",
+        "idUsuario": "42",
+        "2": "429583",
+        "id_ranking": "429583",
+        "3": "Prueba primera entrega",
+        "nentrega": "Prueba primera entrega",
+        "4": null,
+        "puntuacion": null
+      }
+    }
   }
 ]
