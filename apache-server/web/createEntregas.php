@@ -8,8 +8,6 @@
 
   $params = json_decode($json); // DECODIFICA EL JSON Y LO GUARADA EN LA VARIABLE
 
-
-
   require("db.php"); // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
 
   $conexion = conexion(); // CREA LA CONEXION
@@ -22,8 +20,6 @@
     $array[$x]=$registros;
     $x++;
   }
-
-
 
     header('Content-Type: application/json');
 

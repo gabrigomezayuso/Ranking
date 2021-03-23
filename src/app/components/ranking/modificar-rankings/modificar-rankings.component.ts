@@ -33,10 +33,6 @@ export class ModificarRankingsComponent implements OnInit {
   selectControl:FormControl = new FormControl()
 
 
-  options = [
-    { name: "option1", value: 1 },
-    { name: "option2", value: 2 }
-  ]
 
 
   constructor(private AuthService: AuthService, private router: Router) {
@@ -170,7 +166,15 @@ export class ModificarRankingsComponent implements OnInit {
 
   }
 
+  crearEntregas(){
+    this.AuthService.crearEntregas(this.id_Ranking).subscribe(
+      (datos) => {
+        console.log(datos)
+        Swal.fire('Datos creados')
+      })
 
+
+  }
 
 
 }

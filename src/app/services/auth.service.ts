@@ -159,4 +159,11 @@ getEntregas(id_ranking) {
   return this.http.post(`${environment.apiUrl}/getEntregas.php`, JSON.stringify(id_ranking))
 }
 
+crearEntregas(id_ranking) {
+  console.log(id_ranking);
+
+  return this.http.post(`${environment.apiUrl}/createEntregas.php`, JSON.stringify(id_ranking))
+}
+
+
 }
