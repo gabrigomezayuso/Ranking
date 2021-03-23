@@ -9,13 +9,13 @@
     <svg class="ico-cup text-white">
       <use xlink:href="#cup"></use>
     </svg>
-    {{datos[0][0]}}
+    {{datos[0][0][0]}}
   </h1>
   <ol class="list-group" style="list-style-type:none;">
-    <li *ngFor="let item of datos;index as i ">
-      <mark><span>{{datos[i]['nombre']}} {{datos[i]['apellido']}} <b>{{datos[i]['nombreEquipo']}}</b></span></mark>
-      <small>{{datos[i]['puntuacion']}}</small>
-      <small>{{datos[i]['usuario']}}</small>
+    <li *ngFor="let item of datos[0];index as i ">
+      <mark><span>{{datos[0][i]['nombre']}} {{datos[0][i]['apellido']}} <b>{{datos[0][i]['nombreEquipo']}}</b></span></mark>
+      <small>{{datos[0][i]['puntuacion']}}</small>
+      <small>{{datos[0][i]['usuario']}}</small>
     </li>
   </ol>
 </div>
