@@ -26,14 +26,15 @@
           <select [formControl]="selectControl"   class="custom-select mr-sm-2" id="inlineFormCustomSelect" >
             <option selected>Choose...</option>
 
-            <option *ngFor="let item of ArrayPracticas" value="{{ArrayPracticas[0]['NombreEntrega']}}">{{ArrayPracticas[0]['NombreEntrega']}}</option>
+            <option *ngFor="let item of ArrayNombrePracticas ;index as i"  value="{{this.ArrayNombrePracticas[i][0]}}">{{this.ArrayNombrePracticas[i][0]}}</option>
 
           </select>
+
           <p><span>You selected: </span><b>{{selectControl.value}}</b></p>
 
-
-          <button (click)="crearEntregas()">Crear</button>
-          <input type="text"   name="nombreEquipo" >
+          <input [formControl]="FormEntregasControl" type="text"   name="nombreEquipo" >
+          <button (click)="crearEntregas(FormEntregasControl.value)">Crear</button>
+          {{FormEntregasControl.value}}
 
 
         </tr>

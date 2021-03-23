@@ -33,6 +33,7 @@ while ($valores = mysqli_fetch_array($query)) {
 }
 
 
+
 // for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
 
 

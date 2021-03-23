@@ -8,17 +8,24 @@
 
   $params = json_decode($json); // DECODIFICA EL JSON Y LO GUARADA EN LA VARIABLE
 
+
+
   require("db.php"); // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
 
   $conexion = conexion(); // CREA LA CONEXION
 
-  $resultadoNoRepetir = mysqli_query($conexion, "INSERT INTO entrega values (null,$params->$idRanking,$params->$nombreEntrega) '");
+
+
+
+  $resultadoNoRepetir = mysqli_query($conexion, "SELECT DISTINCT nentrega FROM entrega WHERE idRanking='$params'");
 
 
   while ($registros = mysqli_fetch_array($resultadoNoRepetir)) {
     $array[$x]=$registros;
     $x++;
   }
+
+
 
     header('Content-Type: application/json');
 

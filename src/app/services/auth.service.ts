@@ -14,6 +14,7 @@ import { cambiarEquipo } from '../models/cambiarEquipo';
 import { generarRanking } from '../models/generarRanking';
 import { EliminarRanking } from '../models/EliminarRanking';
 import { Router } from '@angular/router';
+import { datosEntrega } from '../models/datosEntrega';
 
 @Injectable({
   providedIn: 'root'
@@ -159,10 +160,19 @@ getEntregas(id_ranking) {
   return this.http.post(`${environment.apiUrl}/getEntregas.php`, JSON.stringify(id_ranking))
 }
 
-crearEntregas(id_ranking) {
+getEntregasNombre(id_ranking) {
   console.log(id_ranking);
 
-  return this.http.post(`${environment.apiUrl}/createEntregas.php`, JSON.stringify(id_ranking))
+  return this.http.post(`${environment.apiUrl}/getEntregasNombre.php`, JSON.stringify(id_ranking))
+}
+
+
+
+
+crearEntregas(datosEntrega) {
+  console.log(datosEntrega);
+//falta pasar datosEntrega q es un formgroup a array
+  return this.http.post<datosEntrega>(`${environment.apiUrl}/createEntregas.php`, JSON.stringify(datosEntrega))
 }
 
 
