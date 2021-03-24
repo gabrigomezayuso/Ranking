@@ -168,6 +168,7 @@ export class ModificarPerfilComponent implements OnInit {
   }
 
   EnviarDatos() {
+
     this.ModificarValores();
     this.GetModificarAlumno();
     Swal.fire({

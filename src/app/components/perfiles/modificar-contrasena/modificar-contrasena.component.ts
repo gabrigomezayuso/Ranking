@@ -6,6 +6,8 @@ import {
   Validators
 } from '@angular/forms';
 import { perfilAlumno } from 'src/app/models/perfilAlumno';
+import { Cambiarcontrasena } from 'src/app/models/Cambiarcontrasena';
+import { AlumnosService } from 'src/app/services/alumnos.service';
 @Component({
   selector: 'app-modificar-contrasena',
   templateUrl: './modificar-contrasena.component.html',
@@ -13,7 +15,11 @@ import { perfilAlumno } from 'src/app/models/perfilAlumno';
 })
 export class ModificarContrasenaComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+
+    private AlumnosService: AlumnosService
+
+  ) { }
 
   Atras:boolean=false;
   Todo:boolean=false;
@@ -25,6 +31,7 @@ export class ModificarContrasenaComponent implements OnInit {
   contrasena: string;
   id: string;
   role:string;
+  cambiarcontrasena;
   perfilalumno = new perfilAlumno('', '', '', '', '', '','','');
   ngOnInit(): void {
 
@@ -76,6 +83,16 @@ export class ModificarContrasenaComponent implements OnInit {
 
 
 EnviarDatos(){
+
+  this.cambiarcontrasena = new Cambiarcontrasena
+  ( this.usuario,this.contrasenas.controls.contrasenavieja.value, this.contrasenas.controls.contrasena.value, this.id, this.role );
+
+  console.log(this.cambiarcontrasena);
+
+  this.AlumnosService.actualizarContrasena(this.cambiarcontrasena)
+  console.log();
+
+
 
 }
 
