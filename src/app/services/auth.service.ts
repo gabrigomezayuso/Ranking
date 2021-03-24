@@ -15,6 +15,7 @@ import { generarRanking } from '../models/generarRanking';
 import { EliminarRanking } from '../models/EliminarRanking';
 import { Router } from '@angular/router';
 import { datosEntrega } from '../models/datosEntrega';
+import { consultaEntrega } from '../models/consutaEntrega';
 
 @Injectable({
   providedIn: 'root'
@@ -117,6 +118,11 @@ export class AuthService {
   datosRanking(ranking) {
 
     return this.http.post<consultaNombre>(`${environment.apiUrl}/datos-ranking.php`, JSON.stringify(ranking))
+  }
+
+  datosEntrega(ranking) {
+
+    return this.http.post<consultaEntrega>(`${environment.apiUrl}/datos-ranking-entrega.php`, JSON.stringify(ranking))
   }
 
 

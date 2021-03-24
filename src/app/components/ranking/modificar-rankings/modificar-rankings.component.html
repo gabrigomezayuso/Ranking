@@ -23,11 +23,8 @@
 
           <th scope="col">Puntuacion</th>
           <th scope="col">Puntuacion</th>
-          <select [formControl]="selectControl"   class="custom-select mr-sm-2" id="inlineFormCustomSelect" >
-            <option selected>Choose...</option>
-
-            <option *ngFor="let item of ArrayNombrePracticas ;index as i"  value="{{this.ArrayNombrePracticas[i][0]}}">{{this.ArrayNombrePracticas[i][0]}}</option>
-
+          <select [formControl]="selectControl" (ngModelChange)="mySelectHandler($event)"  class="custom-select mr-sm-2" id="inlineFormCustomSelect" >
+            <option   *ngFor="let item of ArrayNombrePracticas ;index as i"   value="{{this.ArrayNombrePracticas[i][0]}}">{{this.ArrayNombrePracticas[i][0]}} </option>
           </select>
 
           <p><span>You selected: </span><b>{{selectControl.value}}</b></p>
@@ -48,9 +45,6 @@
           <td>{{Ranking_modificarArray.value[i]["apellido"]}}</td>
           <td><input type="text"   name="nombreEquipo" formControlName="nombreEquipo"></td>
           <td><input type="number"   name="puntuacion" formControlName="puntuacion" ></td>
-
-
-
         </tr>
 
       </tbody>

@@ -7,6 +7,7 @@ import { generarRanking } from 'src/app/models/generarRanking';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../../services/auth.service';
 import { FormsModule } from '@angular/forms';
+import { consultaEntrega } from 'src/app/models/consutaEntrega';
 @Component({
   selector: 'app-modificar-rankings',
   templateUrl: './modificar-rankings.component.html',
@@ -16,6 +17,7 @@ export class ModificarRankingsComponent implements OnInit {
   [x: string]: any;
 
   Ranking;
+  RankingEntrega;
   lista: string[] = ["hola", "que", "tal", "estas"];
   Ranking_modificarArray = new FormArray([]);
   nombre_ranking: string;
@@ -54,8 +56,6 @@ export class ModificarRankingsComponent implements OnInit {
 
     this.AuthService.datosRanking(this.Ranking).subscribe(
       datos => {
-        console.log(datos);
-
         datos.sort(function (a, b) {
           var textA = a.apellido.toUpperCase();
           var textB = b.apellido.toUpperCase();
@@ -63,20 +63,10 @@ export class ModificarRankingsComponent implements OnInit {
         });
 
         this.Ranking = datos;
-        console.log(this.Ranking);
-
         this.object = datos;
-        console.log(this.object);
-        console.log( this.object[0][1]);
-
-        console.log(this.Ranking);
-        console.log(this.Ranking.length);
         this.longitud = this.Ranking.length;
-        console.log(this.longitud)
         this.nombreEquipo = this.Ranking[1]['nombreEquipo'];
-        console.log(this.Ranking);
         this.puntuacion = parseInt(this.Ranking[1]['puntuacion']);
-        console.log(this.nombreEquipo);
         this.id_Ranking
 
 
@@ -117,17 +107,7 @@ export class ModificarRankingsComponent implements OnInit {
                 Validators.required,
               ])
             }));
-
-
-
-
         }
-
-
-
-
-
-
 
         this.AuthService.getEntregas(this.object[0][7]).subscribe(
           datos => {
@@ -143,8 +123,6 @@ export class ModificarRankingsComponent implements OnInit {
             console.log(datos);
             this.ArrayNombrePracticas = Object.values(datos);
             console.log(this.ArrayNombrePracticas[0][0]);
-
-
           })
 
 
@@ -186,8 +164,6 @@ export class ModificarRankingsComponent implements OnInit {
   crearEntregas(name) {
 
 
-
-
     this.crearEntregasControl = this.formBuilder.group({
       idRanking: [this.object[0][7], [Validators.minLength(2), Validators.maxLength(30), Validators.required]],
       nombreEntrega: [name, [Validators.minLength(2), Validators.maxLength(15), Validators.required]],
@@ -203,6 +179,82 @@ export class ModificarRankingsComponent implements OnInit {
 
 
   }
+  mySelectHandler($event){
+    this.RankingEntrega = new consultaEntrega(
+      this.router.url.split('/')[2],
+            $event
+      // ''
+    );
 
+
+    console.log(this.RankingEntrega)
+
+    this.AuthService.datosEntrega(this.RankingEntrega).subscribe(
+      datos => {
+        console.log(datos)
+
+        // datos.sort(function (a, b) {
+        //   var textA = a.apellido.toUpperCase();
+        //   var textB = b.apellido.toUpperCase();
+        //   return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+        // });
+
+        this.Ranking = datos;
+        this.object = datos;
+        this.longitud = this.Ranking.length;
+        this.nombreEquipo = this.Ranking[1]['nombreEquipo'];
+        this.puntuacion = parseInt(this.Ranking[1]['puntuacion']);
+        this.id_Ranking
+
+
+        for (let index = 0; index < this.longitud; index++) {
+          this.Ranking_modificarArray.push(new FormGroup(
+            {
+              nombreEquipo: new FormControl(this.Ranking[index]['nombreEquipo'], [
+                Validators.minLength(2),
+                Validators.maxLength(15),
+                Validators.required,
+              ]),
+              idUsuario: new FormControl(this.Ranking[index]['idUsuario'], [
+                Validators.minLength(2),
+                Validators.maxLength(15),
+                Validators.required,
+              ]),
+              nick: new FormControl(this.Ranking[index]['usuario'], [
+                Validators.minLength(2),
+                Validators.maxLength(15),
+                Validators.required,
+              ]),
+              nombre: new FormControl(this.Ranking[index]['nombre'], [
+                Validators.minLength(2),
+                Validators.maxLength(15),
+                Validators.required,
+              ]),
+              apellido: new FormControl(this.Ranking[index]['apellido'], [
+                Validators.minLength(2),
+                Validators.maxLength(15),
+                Validators.required,
+              ]),
+              puntuacion: new FormControl(parseInt(this.Ranking[index]['puntuacion']), [
+                Validators.minLength(2),
+                Validators.maxLength(15),
+                Validators.required,
+              ])
+            }));
+                  }
+        this.AuthService.getEntregas(this.object[0][7]).subscribe(
+          datos => {
+            console.log(datos);
+            this.ArrayPracticas = Object.values(datos);
+            console.log(this.ArrayPracticas[0][3]);
+          })
+
+        this.AuthService.getEntregasNombre(this.object[0][7]).subscribe(
+          datos => {
+            console.log(datos);
+            this.ArrayNombrePracticas = Object.values(datos);
+            console.log(this.ArrayNombrePracticas[0][0]);
+          })
+      })}
 
 }
