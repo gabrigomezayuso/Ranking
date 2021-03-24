@@ -17,14 +17,14 @@ $x = 0;
 
 
 
-$query = $mysqli->query("select  DISTINCT r.nombre_ranking, a.nombre ,a.idUsuario,a.usuario,a.apellido, u2.puntuacion, e2.nombreEquipo, r.id_ranking
+$query = $mysqli->query("select  DISTINCT r.nombre_ranking, a.nombre ,a.idUsuario,a.usuario,a.apellido, p2.puntuacion ,  e2.nombreEquipo, r.id_ranking
 from rankings r
 inner join usuariosranking u2 on u2.idRanking = r.id_ranking
 inner join equiposranking e2  on e2.idUsuario = u2.idUsuario
 inner join entrega e3  on e3.idranking = r.id_ranking
-left join puntuacionentrega p2  on p2.idusuario = u2.idUsuario
+left join puntuacionentrega p2  on p2.identrega = e3.identrega and p2.idusuario = u2.idUsuario
 inner join alumnos a on a.idUsuario = u2.idUsuario
-where e2.idRanking = r.id_ranking and e2.idRanking = '$params->nombre_ranking'
+where e2.idRanking = r.id_ranking and e2.idRanking = 429583 and e3.nentrega = 'coldwar'
 order by u2.puntuacion desc");
 
 
