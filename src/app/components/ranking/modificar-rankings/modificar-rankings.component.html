@@ -8,7 +8,7 @@
       <use xlink:href="#cup"></use>
     </svg>
     {{object[0][0]}}
-    {{object[0][8]}}
+    {{object[0][7]}}
   </h1>
 
   <ol class="list-group">
@@ -43,11 +43,14 @@
       <tbody *ngFor="let item of Ranking_modificarArray.controls;index as i " [formGroup]="Ranking_modificarArray.controls[i]"  >
         <tr>
           <th scope="row">{{i+1}}</th>
-          <td>{{Ranking_modificarArray.value[i]["nick"]}}</td>
-          <td>{{Ranking_modificarArray.value[i]["nombre"]}}</td>
+          <td>{{Ranking_modificarArray.value[i][3]}}</td>
+          <td>{{Ranking_modificarArray.value[i]['nombre']}}</td>
           <td>{{Ranking_modificarArray.value[i]["apellido"]}}</td>
           <td><input type="text"   name="nombreEquipo" formControlName="nombreEquipo"></td>
           <td><input type="number"   name="puntuacion" formControlName="puntuacion" ></td>
+
+
+
         </tr>
 
       </tbody>

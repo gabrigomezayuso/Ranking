@@ -32,6 +32,8 @@ export class RankingComponent implements OnInit {
   myParam: string;
 
   ngOnInit(): void {
+    console.log(this.Ranking);
+
     this.AuthService.datosRanking(this.Ranking) .subscribe (
       datos => {
         console.log(datos);

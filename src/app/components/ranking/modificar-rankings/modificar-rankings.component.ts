@@ -34,7 +34,7 @@ export class ModificarRankingsComponent implements OnInit {
   FormEntregasControl: FormControl = new FormControl()
   crearEntregasControl: FormGroup;
   selectControl: FormControl = new FormControl()
-
+  PuntuacionPracticasmodificarArray = new FormArray([]);
 
 
 
@@ -54,6 +54,7 @@ export class ModificarRankingsComponent implements OnInit {
 
     this.AuthService.datosRanking(this.Ranking).subscribe(
       datos => {
+        console.log(datos);
 
         datos.sort(function (a, b) {
           var textA = a.apellido.toUpperCase();
@@ -62,8 +63,11 @@ export class ModificarRankingsComponent implements OnInit {
         });
 
         this.Ranking = datos;
+        console.log(this.Ranking);
+
         this.object = datos;
         console.log(this.object);
+        console.log( this.object[0][1]);
 
         console.log(this.Ranking);
         console.log(this.Ranking.length);
@@ -119,7 +123,11 @@ export class ModificarRankingsComponent implements OnInit {
 
         }
 
-        console.log(this.object[0][7]);
+
+
+
+
+
 
         this.AuthService.getEntregas(this.object[0][7]).subscribe(
           datos => {
