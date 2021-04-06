@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import { AuthService } from '../../../services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { consultaEntrega } from 'src/app/models/consutaEntrega';
+import { datosEntrega } from 'src/app/models/datosEntrega';
 @Component({
   selector: 'app-modificar-rankings',
   templateUrl: './modificar-rankings.component.html',
@@ -35,6 +36,7 @@ export class ModificarRankingsComponent implements OnInit {
   idUser: string;
   FormEntregasControl: FormControl = new FormControl()
   crearEntregasControl: FormGroup;
+  datosEntrega = new datosEntrega('','');
   selectControl: FormControl = new FormControl()
   PuntuacionPracticasmodificarArray = new FormArray([]);
 
@@ -134,9 +136,12 @@ export class ModificarRankingsComponent implements OnInit {
 
   guardarDatos() {
     console.log("guardar");
+    console.log(this.Ranking_modificarArray);
 
     this.AuthService.modificarRanking(this.Ranking_modificarArray).subscribe(
       (datos) => {
+        console.log("devuelve datos insertados");
+
         console.log(datos)
         Swal.fire('Datos actualizados correctamente')
       })
@@ -169,9 +174,10 @@ export class ModificarRankingsComponent implements OnInit {
       nombreEntrega: [name, [Validators.minLength(2), Validators.maxLength(15), Validators.required]],
     });
 
+    this.datosEntrega = new datosEntrega(this.object[0][7],name);
+    console.log( this.datosEntrega);
 
-
-    this.AuthService.crearEntregas(this.crearEntregasControl).subscribe(
+    this.AuthService.crearEntregas(this.datosEntrega).subscribe(
       (datos) => {
         console.log(datos)
         Swal.fire('Datos creados')
@@ -180,6 +186,9 @@ export class ModificarRankingsComponent implements OnInit {
 
   }
   mySelectHandler($event){
+
+
+
     this.RankingEntrega = new consultaEntrega(
       this.router.url.split('/')[2],
             $event
@@ -207,7 +216,17 @@ export class ModificarRankingsComponent implements OnInit {
         this.id_Ranking
 
 
+
+
+        this.Ranking_modificarArray.clear();
+
         for (let index = 0; index < this.longitud; index++) {
+          console.log("test");
+
+          console.log( this.Ranking_modificarArray);
+
+
+
           this.Ranking_modificarArray.push(new FormGroup(
             {
               nombreEquipo: new FormControl(this.Ranking[index]['nombreEquipo'], [

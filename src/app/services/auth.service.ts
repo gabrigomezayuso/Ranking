@@ -136,7 +136,7 @@ export class AuthService {
   }
 
   modificarRanking(Ranking_modificarArray){
-    console.log("guardar2");
+
 
     console.log(Ranking_modificarArray.value);
     return this.http.post<Ranking_modificarArray>(`${environment.apiUrl}/modificar-datos-ranking.php`, JSON.stringify(Ranking_modificarArray.value))
@@ -168,7 +168,6 @@ getEntregas(id_ranking) {
 
 getEntregasNombre(id_ranking) {
   console.log(id_ranking);
-
   return this.http.post(`${environment.apiUrl}/getEntregasNombre.php`, JSON.stringify(id_ranking))
 }
 
@@ -178,6 +177,7 @@ getEntregasNombre(id_ranking) {
 crearEntregas(datosEntrega) {
   console.log(datosEntrega);
 //falta pasar datosEntrega q es un formgroup a array
+
   return this.http.post<datosEntrega>(`${environment.apiUrl}/createEntregas.php`, JSON.stringify(datosEntrega))
 }
 
