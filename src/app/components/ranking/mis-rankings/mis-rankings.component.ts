@@ -13,6 +13,7 @@ export class MisRankingsComponent implements OnInit {
   user;
   ranking;
   datosRanking;
+  visualizarR: boolean;
 
   constructor(
     private AuthService: AuthService,
@@ -20,6 +21,8 @@ export class MisRankingsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+
+
     this.idUser = localStorage.getItem('idUser')
     this.user = new consultarRankings(this.idUser)
     console.log(this.user)
@@ -27,8 +30,18 @@ export class MisRankingsComponent implements OnInit {
     .subscribe (
       datos => {
         console.log(datos)
+        if(datos==null){
+          this.visualizarR=true;
+        }
+        else{
+          this.visualizarR=false
+        }
         this.ranking = Object.values(datos)
       })
+
+
+
+
   }
 
   onClick(){

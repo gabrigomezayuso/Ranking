@@ -2,6 +2,10 @@
 <div class="banner text-left">
   <div class="row justify-content-center">
     <div class="col-auto">
+      <div *ngIf="visualizarR">No estás en ningun ranking
+      </div>
+
+
       <table class="table table-responsive">
         <!-- <thead>
           <tr>
@@ -15,6 +19,8 @@
             <th scope="col">Borrar</th>
           </tr>
         </thead> -->
+
+
         <tbody *ngFor="let item of ranking">
           <tr>
             <td>{{item[0]}}</td>
