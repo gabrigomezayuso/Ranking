@@ -2,8 +2,6 @@
   header('Access-Control-Allow-Origin: *');
   header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
-
-
   $json = file_get_contents('php://input'); // RECIBE EL JSON DE ANGULAR
 
   $params = json_decode($json); // DECODIFICA EL JSON Y LO GUARADA EN LA VARIABLE
@@ -12,16 +10,12 @@
 
   $conexion = conexion(); // CREA LA CONEXION
 
-  $resultadoNoRepetir = mysqli_query($conexion, "INSERT INTO entrega values (null,$params->$idRanking,$params->$nombreEntrega) '");
+  $mysqli = new mysqli('192.168.3.26', 'DAW2_GamifikG6', 'aGamifikG61', 'daw2_gamifikg6');
 
-
-  while ($registros = mysqli_fetch_array($resultadoNoRepetir)) {
-    $array[$x]=$registros;
-    $x++;
-  }
+   $resultadoNoRepetir = mysqli_query($conexion, "INSERT INTO entrega (idranking, nentrega)  values ($params->idRanking,$params->nombreEntrega)");
 
     header('Content-Type: application/json');
 
-    echo json_encode($array); // MUESTRA EL JSON GENERADO
+    echo json_encode($params->idRanking); // MUESTRA EL JSON GENERADO
 
 ?>
