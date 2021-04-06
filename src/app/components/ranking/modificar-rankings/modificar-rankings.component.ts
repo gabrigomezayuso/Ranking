@@ -136,9 +136,12 @@ export class ModificarRankingsComponent implements OnInit {
 
   guardarDatos() {
     console.log("guardar");
+    console.log(this.Ranking_modificarArray);
 
     this.AuthService.modificarRanking(this.Ranking_modificarArray).subscribe(
       (datos) => {
+        console.log("devuelve datos insertados");
+
         console.log(datos)
         Swal.fire('Datos actualizados correctamente')
       })

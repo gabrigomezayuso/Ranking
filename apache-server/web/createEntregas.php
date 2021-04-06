@@ -11,11 +11,11 @@
   $nombre=$params->nombreEntrega;
   $conexion = conexion(); // CREA LA CONEXION
 
-   $resultadoNoRepetir = mysqli_query($conexion, " INSERT INTO daw2_gamifikg6.entrega ( idranking, nentrega) VALUES( $id,$nombre');");
+   $resultadoNoRepetir = mysqli_query($conexion, " INSERT INTO daw2_gamifikg6.entrega ( idranking, nentrega) VALUES( '$id','$nombre');");
 
 
     header('Content-Type: application/json');
 
-    echo json_encode($id+$nombre); // MUESTRA EL JSON GENERADO
+    echo json_encode($nombre); // MUESTRA EL JSON GENERADO
 
 ?>

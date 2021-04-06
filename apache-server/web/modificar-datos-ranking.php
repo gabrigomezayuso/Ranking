@@ -25,4 +25,4 @@
 
 
 header('Content-Type: application/json');
-echo json_encode($equipo);
+echo json_encode($params);
