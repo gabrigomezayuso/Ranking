@@ -18,11 +18,12 @@ $x = 0;
 
 
 
-$query = $mysqli->query("select r2.nombre_ranking,a2.nombre,a2.idUsuario, a2.usuario, a2.apellido, e2.nombreEquipo, r2.id_ranking, sum(puntuacion)
+$query = $mysqli->query("select r2.nombre_ranking,a2.nombre,a2.idUsuario, a2.usuario, a2.apellido, sum(puntuacion), e2.nombreEquipo, r2.id_ranking
 from puntuacionentrega p
 inner join rankings r2 on r2.id_ranking = p.idranking
 inner join alumnos a2 on a2.idUsuario = p.idusuario
 inner join equiposranking e2 on e2.idUsuario = p.idusuario
+where  r2.id_ranking = $params->nombre_ranking
 group by a2.idusuario ");
 
 // select  DISTINCT r.nombre_ranking, a.nombre ,a.idUsuario,a.usuario,a.apellido, p2.puntuacion ,  e2.nombreEquipo, r.id_ranking

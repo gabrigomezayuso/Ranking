@@ -62,13 +62,15 @@ export class ModificarRankingsComponent implements OnInit {
           var textA = a.apellido.toUpperCase();
           var textB = b.apellido.toUpperCase();
           return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+
         });
+        console.log(datos)
 
         this.Ranking = datos;
         this.object = datos;
         this.longitud = this.Ranking.length;
-        this.nombreEquipo = this.Ranking[1]['nombreEquipo'];
-        this.puntuacion = parseInt(this.Ranking[1]['puntuacion']);
+        this.nombreEquipo = this.Ranking[0]['nombreEquipo'];
+        this.puntuacion = parseInt(this.Ranking[0]['puntuacion']);
         this.id_Ranking
 
 
@@ -103,7 +105,7 @@ export class ModificarRankingsComponent implements OnInit {
                 Validators.maxLength(15),
                 Validators.required,
               ]),
-              puntuacion: new FormControl(parseInt(this.Ranking[index]['puntuacion']), [
+              puntuacion: new FormControl(parseInt(this.Ranking[index]['sum(puntuacion)']), [
                 Validators.minLength(2),
                 Validators.maxLength(15),
                 Validators.required,
@@ -116,8 +118,6 @@ export class ModificarRankingsComponent implements OnInit {
             console.log(datos);
             this.ArrayPracticas = Object.values(datos);
             console.log(this.ArrayPracticas[0][3]);
-
-
           })
 
         this.AuthService.getEntregasNombre(this.object[0][7]).subscribe(
