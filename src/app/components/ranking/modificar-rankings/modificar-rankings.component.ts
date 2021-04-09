@@ -107,6 +107,7 @@ export class ModificarRankingsComponent implements OnInit {
       }
     );
   }
+
   nuevoCodigo() {
     this.model = new generarRanking(this.object[0][7], this.object[0][0]);
     this.AuthService.generarNuevoCodigoRanking(this.model).subscribe(
