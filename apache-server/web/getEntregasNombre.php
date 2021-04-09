@@ -14,7 +14,7 @@
 
   $conexion = conexion(); // CREA LA CONEXION
 
-
+  $x=0;
 
 
   $resultadoNoRepetir = mysqli_query($conexion, "SELECT DISTINCT nentrega FROM entrega WHERE idRanking='$params'");

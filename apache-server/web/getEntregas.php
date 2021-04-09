@@ -14,7 +14,7 @@
 
   $conexion = conexion(); // CREA LA CONEXION
 
-
+  $x=0;
 
 
   $resultadoNoRepetir = mysqli_query($conexion, "  select  distinct a.apellido , u2.idUsuario , r.id_ranking, e3.nentrega , p2.puntuacion
