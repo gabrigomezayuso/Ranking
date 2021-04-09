@@ -18,6 +18,7 @@ export class ModificarRankingsComponent implements OnInit {
   [x: string]: any;
 
   Ranking;
+  RankingModificado;
   RankingEntrega;
   lista: string[] = ["hola", "que", "tal", "estas"];
   Ranking_modificarArray = new FormArray([]);
@@ -101,7 +102,6 @@ export class ModificarRankingsComponent implements OnInit {
     this.AuthService.modificarRanking(this.Ranking_modificarArray).subscribe(
       (datos) => {
         console.log("devuelve datos insertados");
-
         console.log(datos)
         Swal.fire('Datos actualizados correctamente')
       })
@@ -119,7 +119,6 @@ export class ModificarRankingsComponent implements OnInit {
 
 
   test() {
-
     this.nombreEquipo = this.Ranking[1]['nombreEquipo'];
     console.log(this.Ranking);
     this.puntuacion = parseInt(this.Ranking[1]['puntuacion']);
@@ -129,8 +128,6 @@ export class ModificarRankingsComponent implements OnInit {
   }
 
   crearEntregas(name) {
-
-
     this.crearEntregasControl = this.formBuilder.group({
       idRanking: [this.object[0][7], [Validators.minLength(2), Validators.maxLength(30), Validators.required]],
       nombreEntrega: [name, [Validators.minLength(2), Validators.maxLength(15), Validators.required]],
@@ -144,8 +141,6 @@ export class ModificarRankingsComponent implements OnInit {
         console.log(datos)
         Swal.fire('Datos creados')
       })
-
-
   }
 
 
@@ -222,7 +217,7 @@ export class ModificarRankingsComponent implements OnInit {
                 Validators.maxLength(15),
                 Validators.required,
               ]),
-              nentrega: new FormControl(parseInt(this.Ranking[index]['nentrega']), [
+              nentrega: new FormControl((this.Ranking[index]['nentrega']), [
                 Validators.minLength(2),
                 Validators.maxLength(15),
                 Validators.required,
@@ -232,8 +227,7 @@ export class ModificarRankingsComponent implements OnInit {
         console.log('DESPUES SELECCIONAR');
         console.log(this.Ranking_modificarArray);
         console.log(this.Ranking);
-
-
+        this.RankingModificado=this.Ranking;
         this.AuthService.getEntregas(this.object[0][7]).subscribe(
           datos => {
             console.log(datos);
