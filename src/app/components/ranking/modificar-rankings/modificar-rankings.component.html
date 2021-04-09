@@ -1,61 +1,72 @@
 <app-nav-usuarios></app-nav-usuarios>
 
 
-<form >
-<div class="leaderboard">
-  <h1 class="text-white">
-    <svg class="ico-cup text-white">
+<form>
+    <div class="leaderboard">
+        <h1 class="text-white">
+            <svg class="ico-cup text-white">
       <use xlink:href="#cup"></use>
-    </svg>
-    {{object[0][0]}}
-    {{object[0][7]}}
-  </h1>
+    </svg> {{object[0][0]}} {{object[0][7]}}
+        </h1>
 
-  <ol class="list-group">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">Nick</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellidos</th>
-          <th scope="col">Equipo</th>
+        <ol class="list-group">
 
-          <th scope="col">Puntuacion</th>
-          <th scope="col">Puntuacion</th>
-          <select [formControl]="selectControl" (ngModelChange)="mySelectHandler($event)"  class="custom-select mr-sm-2" id="inlineFormCustomSelect" >
+            <br>
+            <div class="container form-inline">
+                <div class="form-group  mx-sm-3 mb-2">
+                    <h5>Seleccionar entrega</h5>
+                    <select [formControl]="selectControl" (ngModelChange)="mySelectHandler($event)" class="form-control  mx-sm-3 mb-2" id="inlineFormCustomSelect">
             <option   *ngFor="let item of ArrayNombrePracticas ;index as i"   value="{{this.ArrayNombrePracticas[i][0]}}">{{this.ArrayNombrePracticas[i][0]}} </option>
           </select>
+                </div>
 
-          <p><span>You selected: </span><b>{{selectControl.value}}</b></p>
+                <div class="form-group mx-sm-3 mb-2">
+                    <h5>Crear entrega</h5>
+                    <input [formControl]="FormEntregasControl" type="text" name="nombreEquipo" class="form-control  mx-sm-3 mb-2" placeholder="Nombre entrega">
+                    <button (click)="crearEntregas(FormEntregasControl.value)" class="btn btn-success  mx-sm-3 mb-2">Crear</button> {{FormEntregasControl.value}}
+                </div>
+                <br>
+                <br>
 
-          <input [formControl]="FormEntregasControl" type="text"   name="nombreEquipo" >
-          <button (click)="crearEntregas(FormEntregasControl.value)">Crear</button>
-          {{FormEntregasControl.value}}
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Nick</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">Equipo</th>
+                        <th scope="col">Puntuacion</th>
 
 
-        </tr>
-      </thead>
+                        <p><span>You selected: </span><b>{{selectControl.value}}</b></p>
 
-      <tbody *ngFor="let item of Ranking_modificarArray.controls;index as i " [formGroup]="Ranking_modificarArray.controls[i]"  >
-        <tr>
-          <th scope="row">{{i+1}}</th>
-          <td>{{Ranking_modificarArray.value[i][3]}}</td>
-          <td>{{Ranking_modificarArray.value[i]['nombre']}}</td>
-          <td>{{Ranking_modificarArray.value[i]["apellido"]}}</td>
-          <td><input type="text"   name="nombreEquipo" formControlName="nombreEquipo"></td>
-          <td><input type="number"   name="puntuacion" formControlName="puntuacion" ></td>
-        </tr>
 
-      </tbody>
-    </table>
-  </ol>
-  <br>
-  <button class="btn btn-success mr-5 ml-5" [disabled]="Ranking_modificarArray.invalid" type="button" (click)="guardarDatos()" >Guardar</button>
-  <button class="btn btn-success mr-5 ml-5" [disabled]="Ranking_modificarArray.invalid" type="button" (click)="nuevoCodigo()" >Generar nuevo código</button>
-  <br>
-  <br>
-</div>
+
+
+                    </tr>
+                </thead>
+
+                <tbody *ngFor="let item of Ranking_modificarArray.controls;index as i " [formGroup]="Ranking_modificarArray.controls[i]">
+                    <tr>
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{Ranking_modificarArray.value[i]['nick']}}</td>
+                        <td>{{Ranking_modificarArray.value[i]['nombre']}}</td>
+                        <td>{{Ranking_modificarArray.value[i]["apellido"]}}</td>
+                        <td><input type="text" name="nombreEquipo" formControlName="nombreEquipo"></td>
+                        <td><input type="number" name="puntuacion" formControlName="puntuacion"></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </ol>
+        <br>
+        <button class="btn btn-success mr-5 ml-5" [disabled]="Ranking_modificarArray.invalid" type="button" (click)="guardarDatos()">Guardar</button>
+        <button class="btn btn-success mr-5 ml-5" [disabled]="Ranking_modificarArray.invalid" type="button" (click)="nuevoCodigo()">Generar nuevo código</button>
+        <br>
+        <br>
+    </div>
 </form>
 
 
