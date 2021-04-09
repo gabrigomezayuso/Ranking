@@ -121,7 +121,6 @@ export class AuthService {
   }
 
   datosEntrega(ranking) {
-
     return this.http.post<consultaEntrega>(`${environment.apiUrl}/datos-ranking-entrega.php`, JSON.stringify(ranking))
   }
 
@@ -136,8 +135,6 @@ export class AuthService {
   }
 
   modificarRanking(Ranking_modificarArray){
-
-
     console.log(Ranking_modificarArray.value);
     return this.http.post<Ranking_modificarArray>(`${environment.apiUrl}/modificar-datos-ranking.php`, JSON.stringify(Ranking_modificarArray.value))
   }

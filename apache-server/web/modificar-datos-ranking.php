@@ -15,7 +15,7 @@
   $length = count($params);
   for ($i = 0; $i < $length; $i++) {
     $equipo=$params[$i];
-    $query = $mysqli -> query ("UPDATE daw2_gamifikg6.puntuacionesentrega SET  puntuacion = '$equipo->puntuacion' WHERE idUsuario= '$equipo->idUsuario' and identrega = '$equipo->identrega'");
+    $query = $mysqli -> query ("UPDATE daw2_gamifikg6.puntuacionesentrega SET  puntuacion = '$equipo->puntuacion' WHERE idUsuario= '$equipo->idUsuario' and nentrega = '$equipo->identrega'");
     $query = $mysqli -> query ("UPDATE daw2_gamifikg6.equiposranking SET  nombreEquipo = '$equipo->nombreEquipo' WHERE idUsuario= '$equipo->idUsuario' and idranking = '$equipo->idranking'");
   }
 
