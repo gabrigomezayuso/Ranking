@@ -11,28 +11,26 @@ require("db.php"); // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
 $conexion = conexion(); // CREA LA CONEXION
 
 $mysqli = new mysqli('oracle.ilerna.com', 'DAW2_GamifikG6', 'aGamifikG61', 'daw2_gamifikg6');
-$datos[]=null;
-$x = 0;
+$datos;
+$x = 1;
 $length = count($params);
 for ($i = 0; $i < $length; $i++) {
   $equipo = $params[$i];
 
-  $instruccion = " SELECT identrega, idusuario, idranking, idpuntuacion, puntuacion FROM puntuacionentrega WHERE idusuario= '$equipo->idUsuario' and identrega = '$equipo->identrega'";
-  $resultado = mysqli_query($conexion, $instruccion);
-  while ($registros = mysqli_fetch_array($resultado))
-  {
-    $datos[] = $registros;
-  }
-  if (empty($datos[$i])){
-    $query= $mysqli->query("INSERT INTO puntuacionentrega (identrega, idusuario, idranking, puntuacion) VALUES($equipo->identrega, $equipo->idUsuario, $equipo->idranking, $equipo->puntuacion)");
-  }else{
+
+
+  $resultadoNoRepetir = mysqli_query($conexion, "SELECT identrega, idusuario, idranking, idpuntuacion, puntuacion FROM puntuacionentrega WHERE idusuario= '$equipo->idUsuario' and identrega = '$equipo->identrega'");
+
+  if($resultadoNoRepetir->num_rows >= 1) {
     $instruccion = "UPDATE puntuacionentrega p2 SET  puntuacion='$equipo->puntuacion' WHERE idUsuario= '$equipo->idUsuario' and identrega = '$equipo->identrega'";
     $resultado = mysqli_query($conexion, $instruccion);
-  }
 
+  }else{
+    $query= $mysqli->query("INSERT INTO puntuacionentrega (identrega, idusuario, idranking, puntuacion) VALUES($equipo->identrega, $equipo->idUsuario, $equipo->idranking, $equipo->puntuacion)");
+  }
 
 }
 
 
 header('Content-Type: application/json');
-echo json_encode($params);
+echo json_encode('OK');

@@ -1,9 +1,9 @@
 <app-nav-usuarios></app-nav-usuarios>
 <div class="banner text-left">
-  <div class="row justify-content-center">
-    <div class="col-auto">
-      <table class="table table-responsive">
-        <!-- <thead>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <table class="table table-responsive">
+                <!-- <thead>
           <tr>
             <th scope="col">Nombre</th>
             <th scope="col"></th>
@@ -15,47 +15,55 @@
             <th scope="col">Borrar</th>
           </tr>
         </thead> -->
-        <thead>
-          <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Visualizar</th>
-            <th scope="col">Borrar</th>
-            <th scope="col">Equipos</th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let item of ranking">
-          <tr>
-            <td><b>{{item[0]}}</b></td>
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Visualizar</th>
+                        <th scope="col">Modificar</th>
+                        <th scope="col">Borrar</th>
+                        <th scope="col">Equipos</th>
+                        <th scope="col">Mostrar codigo</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let item of ranking">
+                    <tr>
+                        <td><b>{{item[0]}}</b></td>
 
-            <td>
-              <button class="btn btn-opacity-light mr-3"   [routerLink]="['../modificar-rankings', item[1]] " >
-                Visualizar
+                        <td>
+                            <button class="btn btn-opacity-light mr-3" [routerLink]="['../ranking', item[1]] ">Visualizar</button>
+                        </td>
+
+
+                        <td>
+                            <button class="btn btn-opacity-warning mr-3" [routerLink]="['../modificar-rankings', item[1]] ">
+                Modificar
               </button>
-            </td>
-            <td>
+                        </td>
 
-              <button class="btn btn-opacity-danger" (click)="eliminar(item)">
+
+                        <td>
+                            <button class="btn btn-opacity-danger" (click)="eliminar(item)">
                 Borrar
               </button>
-            </td>
+                        </td>
 
 
-              <td>
-              <div class="form-check">
-                <input class="form-check-input text-center justify-content-center" (change)="changed($event)" type="checkbox" value="{{item[2]}}" id="defaultCheck1">
-              </div>
-            </td>
-            <td>
+                        <td>
+                            <div class="form-check align-center text-center">
+                                <input class="form-check-input text-center justify-content-center" (change)="changed($event)" type="checkbox" value="{{item[2]}}" id="defaultCheck1">
+                            </div>
+                        </td>
+                        <td>
 
-              <button class="btn btn-opacity-success" (click)="showCode(item)">
-                Show code
+                            <button class="btn btn-opacity-success" (click)="showCode(item)">
+                              Mostrar codigo
               </button>
-            </td>
+                        </td>
 
 
-          </tr>
-        </tbody>
-      </table>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-  </div>
 </div>

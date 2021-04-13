@@ -35,9 +35,8 @@ inner join alumnos a on a.idUsuario = u2.idUsuario
 left join (SELECT idusuario ,sum(puntuacion) as puntuacion
 FROM daw2_gamifikg6.puntuacionentrega
 group by idusuario)as sumatotal on u2.idUsuario = sumatotal.idUsuario
-where e2.idRanking = r.id_ranking and e2.idRanking = 429583 and e3.nentrega = 'coldwar'
-group by idusuario
-");
+where e2.idRanking = r.id_ranking and e2.idRanking = '$params->nombre_ranking'
+order by sumatotal.puntuacion desc");
 
 
 

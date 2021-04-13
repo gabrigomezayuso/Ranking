@@ -24,9 +24,7 @@ export class RankingComponent implements OnInit {
       this.nombre_ranking,
       // ''
     );
-    console.log(this.router.url);
     this.Ranking.nombre_ranking=this.router.url.split('/')[2];
-    console.log(this.Ranking);
    }
 
   myParam: string;

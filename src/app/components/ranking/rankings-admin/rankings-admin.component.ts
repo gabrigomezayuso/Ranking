@@ -83,7 +83,6 @@ export class RankingsAdminComponent implements OnInit {
 
   showCode(i){
   console.log(i);
-
     alert(i[3]);
   }
 
