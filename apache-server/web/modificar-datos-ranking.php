@@ -16,17 +16,20 @@ $x = 0;
 $length = count($params);
 for ($i = 0; $i < $length; $i++) {
   $equipo = $params[$i];
-  $instruccion = "UPDATE puntuacionentrega p2 SET  puntuacion='$equipo->puntuacion' WHERE idUsuario= '$equipo->idUsuario' and identrega = '$equipo->identrega'";
+
+  $instruccion = " SELECT identrega, idusuario, idranking, idpuntuacion, puntuacion FROM puntuacionentrega WHERE idusuario= '$equipo->idUsuario' and identrega = '$equipo->identrega'";
   $resultado = mysqli_query($conexion, $instruccion);
-
-  if(!$resultado){
+  if (mysqli_fetch_lengths($resultado)>0){
+    $instruccion = "UPDATE puntuacionentrega p2 SET  puntuacion='$equipo->puntuacion' WHERE idUsuario= '$equipo->idUsuario' and identrega = '$equipo->identrega'";
+    $resultado = mysqli_query($conexion, $instruccion);
+  }else{
     $query= $mysqli->query("INSERT INTO puntuacionentrega (identrega, idusuario, idranking, puntuacion)
-      VALUES( '$equipo->identrega','$equipo->idUsuario','$equipo->idranking','$equipo->puntuacion'");
-
+    VALUES( '$equipo->identrega','$equipo->idUsuario','$equipo->idranking','$equipo->puntuacion'");
   }
+
 
 }
 
 
 header('Content-Type: application/json');
-echo json_encode($params);
+echo json_encode($resultado);
