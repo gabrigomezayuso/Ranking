@@ -88,9 +88,13 @@ export class ModificarRankingsComponent implements OnInit {
           datos => {
             console.log(datos);
             this.ArrayNombrePracticas = Object.values(datos);
-            console.log(this.ArrayNombrePracticas[0][0]);
+            this.selectControl.setValue(this.ArrayNombrePracticas[0][0]) ;
+            this.mySelectHandler(this.ArrayNombrePracticas[0][0]);
           })
       })
+
+
+
 
   }
 
@@ -145,14 +149,12 @@ export class ModificarRankingsComponent implements OnInit {
 
 
   mySelectHandler($event) {
-
-
-
     this.RankingEntrega = new consultaEntrega(
       this.router.url.split('/')[2],
       $event
       // ''
     );
+      console.log($event);
 
 
 
@@ -217,7 +219,7 @@ export class ModificarRankingsComponent implements OnInit {
                 Validators.maxLength(15),
                 Validators.required,
               ]),
-              nentrega: new FormControl((this.Ranking[index]['nentrega']), [
+              identrega: new FormControl(parseInt(this.Ranking[index]['identrega']), [
                 Validators.minLength(2),
                 Validators.maxLength(15),
                 Validators.required,

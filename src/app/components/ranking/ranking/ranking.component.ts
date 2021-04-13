@@ -37,7 +37,7 @@ export class RankingComponent implements OnInit {
     this.AuthService.datosRanking(this.Ranking) .subscribe (
       datos => {
         console.log(datos);
-        console.log(datos[0]['nombre']);
+
 
         this.datos=datos;
 
