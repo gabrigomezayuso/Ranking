@@ -50,17 +50,17 @@
                         <td>{{Ranking_modificarArray.value[i]['nick']}}</td>
                         <td>{{Ranking_modificarArray.value[i]['nombre']}}</td>
                         <td>{{Ranking_modificarArray.value[i]["apellido"]}}</td>
-                        <td><input type="text" name="nombreEquipo" formControlName="nombreEquipo"></td>
-                        <td><input type="number" name="puntuacion" formControlName="puntuacion"></td>
+                        <td><input type="text" name="nombreEquipo" class="form-control" formControlName="nombreEquipo"></td>
+                        <td><input type="number" name="puntuacion" class="form-control" formControlName="puntuacion"></td>
                     </tr>
 
                 </tbody>
             </table>
         </ol>
         <br>
-        <button class="btn btn-success mr-5 ml-5" type="button" (click)="guardarDatos()">Guardar</button>
-        <button class="btn btn-warning mr-2 ml-2" type="button" (click)="nuevoCodigo()">Generar nuevo código</button>
-        <button class="btn btn-opacity-light mr-3" [routerLink]="['../ranking', object[0][7]]">Visualizar</button>
+        <button class="btn btn-opacity-success mr-2 ml-5 " [routerLink]="['../ranking', object[0][7]]">Visualizar</button>
+        <button class="btn btn-opacity-warning mr-2 ml-2" type="button" (click)="nuevoCodigo()">Generar nuevo código</button>
+        <button class="btn btn-opacity-danger mr-2" type="button" (click)="guardarDatos()">Guardar</button>
         <br>
         <br>
     </div>
