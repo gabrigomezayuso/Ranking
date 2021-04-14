@@ -47,8 +47,11 @@ if ($resultadoNoRepetir->num_rows >= 1) {
     }
   }
   // REALIZA LA QUERY A LA DB
-$resultado = mysqli_query($conexion, "INSERT INTO `rankings`(`id_ranking`, `nombre_ranking`, `administrador`,`equipos`, codigo)
-VALUES ('$ranking','$params->nombre','$params->idProfesor', 0, $ranking )");
+  $resultado = mysqli_query($conexion, "INSERT INTO `rankings`(`id_ranking`, `nombre_ranking`, `administrador`,`equipos`, codigo)
+  VALUES ('$ranking','$params->nombre','$params->idProfesor', 0, $ranking )");
+  $resultado = mysqli_query($conexion, "INSERT INTO entrega (idranking, nentrega) VALUES( $ranking, 'Primera entrega')");
+  ;
+
 header('Content-Type: application/json');
 echo json_encode($ranking);
 }

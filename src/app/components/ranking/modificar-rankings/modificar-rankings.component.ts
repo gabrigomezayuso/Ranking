@@ -74,7 +74,7 @@ export class ModificarRankingsComponent implements OnInit {
         this.puntuacion = parseInt(this.Ranking[0]['puntuacion']);
         this.id_Ranking
 
-        console.log(this.Ranking)
+        console.log(this.object)
 
 
         this.AuthService.getEntregas(this.object[0][7]).subscribe(
@@ -172,8 +172,8 @@ export class ModificarRankingsComponent implements OnInit {
         this.Ranking = datos;
         this.object = datos;
         this.longitud = this.Ranking.length;
-        this.nombreEquipo = this.Ranking[1]['nombreEquipo'];
-        this.puntuacion = parseInt(this.Ranking[1]['puntuacion']);
+        this.nombreEquipo = this.Ranking[0]['nombreEquipo'];
+        this.puntuacion = parseInt(this.Ranking[0]['puntuacion']);
         this.id_Ranking
 
 

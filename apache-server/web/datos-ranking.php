@@ -16,7 +16,7 @@ $conexion = conexion(); // CREA LA CONEXION
 
 $x = 0;
 
-
+$array[]=null;
 
 
 $query = $mysqli->query("SELECT idusuario ,sum(puntuacion)
