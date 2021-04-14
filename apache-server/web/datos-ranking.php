@@ -19,9 +19,9 @@ $x = 0;
 $array[]=null;
 
 
-$query = $mysqli->query("SELECT idusuario ,sum(puntuacion)
-FROM daw2_gamifikg6.puntuacionentrega
-group by idusuario ");
+// $query = $mysqli->query("SELECT idusuario ,sum(puntuacion)
+// FROM daw2_gamifikg6.puntuacionentrega
+// group by idusuario ");
 
 
 

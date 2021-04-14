@@ -115,9 +115,9 @@ export class AuthService {
     return this.http.post<consultarRankings>(`${environment.apiUrl}/rankingAdmin.php`, JSON.stringify(consultarRanking))
   }
 
-  datosRanking(ranking) {
+  datosRanking(idUrl) {
 
-    return this.http.post<consultaNombre>(`${environment.apiUrl}/datos-ranking.php`, JSON.stringify(ranking))
+    return this.http.post<consultaNombre>(`${environment.apiUrl}/datos-ranking.php`, JSON.stringify(idUrl))
   }
 
   datosEntrega(ranking) {
@@ -128,14 +128,14 @@ export class AuthService {
   modificarPerfil(datosRanking) {
     return this.http.post<datosRanking>(`${environment.apiUrl}/datos-ranking.php`, JSON.stringify(datosRanking))
       .pipe(map(datosRanking => {
-        console.log(datosRanking);
+
         // Router['/alumnos'];
         return datosRanking;
       }));
   }
 
   modificarRanking(Ranking_modificarArray){
-    console.log(Ranking_modificarArray.value);
+
     return this.http.post<Ranking_modificarArray>(`${environment.apiUrl}/modificar-datos-ranking.php`, JSON.stringify(Ranking_modificarArray.value))
   }
 
@@ -148,7 +148,7 @@ export class AuthService {
 
 
   eliminarRanking(id_ranking){
-    console.log(id_ranking);
+
     return this.http.post<EliminarRanking>(`${environment.apiUrl}/eliminarRanking.php`, JSON.stringify(id_ranking))
 
 }
@@ -158,21 +158,21 @@ generarNuevoCodigoRanking(generarRankings) {
 }
 
 getEntregas(id_ranking) {
-  console.log(id_ranking);
+
 
   return this.http.post(`${environment.apiUrl}/getEntregas.php`, JSON.stringify(id_ranking))
 }
 
 getEntregasNombre(id_ranking) {
-  console.log(id_ranking);
+
   return this.http.post(`${environment.apiUrl}/getEntregasNombre.php`, JSON.stringify(id_ranking))
 }
 
 
 
 
-crearEntregas(datosEntrega) {
-  console.log(datosEntrega);
+crearEntrega(datosEntrega) {
+
 //falta pasar datosEntrega q es un formgroup a array
 
   return this.http.post<datosEntrega>(`${environment.apiUrl}/createEntregas.php`, JSON.stringify(datosEntrega))
