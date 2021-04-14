@@ -13,13 +13,18 @@
   </h1>
   <ol class="list-group" style="list-style-type:none;">
     <li *ngFor="let item of datos;index as i ">
+      <div [ngStyle]="{'background': datos[i]['idUsuario'] == idUsuario ? 'blue' : 'unset'}">
       <mark><span>{{datos[i]['nombre']}} {{datos[i]['apellido']}} <b >{{datos[i]['nombreEquipo']}}</b></span></mark>
       <small  *ngIf="datos[i]['puntuacion']!=null">{{datos[i]['puntuacion']}}</small>
       <small  *ngIf="datos[i]['puntuacion']===null">{{0}}</small>
       <small>{{datos[i]['usuario']}}</small>
+    </div>
     </li>
   </ol>
 </div>
+
+
+
 
 
 <svg style="display: none;">

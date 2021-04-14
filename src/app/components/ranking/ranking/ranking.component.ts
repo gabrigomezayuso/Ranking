@@ -17,6 +17,7 @@ export class RankingComponent implements OnInit {
   Ranking;
   datosRanking: datosRanking;
   datos;
+  idUsuario;
 
 
   constructor( private AuthService: AuthService,private router: Router) {
@@ -25,6 +26,10 @@ export class RankingComponent implements OnInit {
       // ''
     );
     this.Ranking.nombre_ranking=this.router.url.split('/')[2];
+
+    this.idUsuario=localStorage.getItem('idUser')
+      console.log(this.idUsuario);
+
    }
 
   myParam: string;
