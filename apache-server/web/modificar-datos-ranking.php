@@ -17,7 +17,8 @@ $length = count($params);
 for ($i = 0; $i < $length; $i++) {
   $equipo = $params[$i];
 
-
+  $instruccion = "UPDATE equiposranking SET  nombreEquipo='$equipo->nombreEquipo' WHERE idUsuario= '$equipo->idUsuario' and idRanking = $equipo->idranking";
+  $resultado = mysqli_query($conexion, $instruccion);
 
   $resultadoNoRepetir = mysqli_query($conexion, "SELECT identrega, idusuario, idranking, idpuntuacion, puntuacion FROM puntuacionentrega WHERE idusuario= '$equipo->idUsuario' and identrega = '$equipo->identrega'");
 
