@@ -5,22 +5,21 @@
 <br>
 
 <div class="leaderboard">
-  <h1 class="text-white">
-    <svg class="ico-cup text-white">
+    <h1 class="text-white">
+        <svg class="ico-cup text-white">
       <use xlink:href="#cup"></use>
-    </svg>
-    {{datos[0][0]}}
-  </h1>
-  <ol class="list-group" style="list-style-type:none;">
-    <li *ngFor="let item of datos;index as i ">
-      <div [ngStyle]="{'background': datos[i]['idUsuario'] == idUsuario ? 'blue' : 'unset'}">
-      <mark><span>{{datos[i]['nombre']}} {{datos[i]['apellido']}} <b >{{datos[i]['nombreEquipo']}}</b></span></mark>
-      <small  *ngIf="datos[i]['puntuacion']!=null">{{datos[i]['puntuacion']}}</small>
-      <small  *ngIf="datos[i]['puntuacion']===null">{{0}}</small>
-      <small>{{datos[i]['usuario']}}</small>
-    </div>
-    </li>
-  </ol>
+    </svg> {{datos[0][0]}}
+    </h1>
+    <ol class="list-group" style="list-style-type:none;">
+        <li *ngFor="let item of datos;index as i ">
+            <div class="border-user" [ngStyle]="{'background': datos[i]['idUsuario'] == idUsuario ? 'radial-gradient(circle, rgba(25,103,248,0.2189250700280112) 0%, rgba(252,70,107,0) 100%)' : 'unset'}">
+                <mark><span>{{datos[i]['nombre']}} {{datos[i]['apellido']}} <b >{{datos[i]['nombreEquipo']}}</b></span></mark>
+                <small *ngIf="datos[i]['puntuacion']!=null">{{datos[i]['puntuacion']}}</small>
+                <small *ngIf="datos[i]['puntuacion']===null">{{0}}</small>
+                <small>{{datos[i]['usuario']}}</small>
+            </div>
+        </li>
+    </ol>
 </div>
 
 
