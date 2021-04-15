@@ -39,6 +39,8 @@ export class ModificarRankingsComponent implements OnInit {
   crearEntregaControl: FormGroup;
   datosEntrega = new datosEntrega('', '');
   selectControl: FormControl = new FormControl();
+  saved: boolean;
+  RankingSimple: consultaNombre;
 
   constructor(
     private AuthService: AuthService,
@@ -54,37 +56,38 @@ export class ModificarRankingsComponent implements OnInit {
   ngOnInit(): void {
 
 
-    this.AuthService.datosRanking(this.Ranking).subscribe((datos) => {
+    this.AuthService.datosRankingSimple(this.Ranking).subscribe((datos) => {
       datos.sort(function (a, b) {
         var textA = a.apellido.toUpperCase();
         var textB = b.apellido.toUpperCase();
         return textA < textB ? -1 : textA > textB ? 1 : 0;
       });
 
+      console.log(datos);
 
       this.Ranking = datos;
+      this.RankingSimple = datos;
       this.longitud = this.Ranking.length;
-      this.nombreEquipo = this.Ranking[0]['nombreEquipo'];
-      this.puntuacion = parseInt(this.Ranking[0]['puntuacion']);
+      this.saved=true;
 
+      console.log(this.Ranking);
 
+      console.log(this.Ranking[0]['id_ranking']);
 
-      this.AuthService.getEntregas(this.Ranking[0][7]).subscribe((datos) => {
-
-        this.ArrayPracticas = Object.values(datos);
-
-      });
-
-      this.AuthService.getEntregasNombre(this.Ranking[0][7]).subscribe(
+      this.AuthService.getEntregasNombre(this.Ranking[0]['id_ranking']).subscribe(
         (datos) => {
+          console.log(datos);
 
           this.ArrayNombrePracticas = Object.values(datos);
           this.selectControl.setValue(this.ArrayNombrePracticas[0][0]);
           this.mySelectHandler(this.ArrayNombrePracticas[0][0]);
         }
       );
+
     });
   }
+
+
 
   guardarDatos() {
 
@@ -98,7 +101,7 @@ export class ModificarRankingsComponent implements OnInit {
   }
 
   nuevoCodigo() {
-    this.model = new generarRanking(this.Ranking[0][7], this.Ranking[0][0]);
+    this.model = new generarRanking(this.Ranking[0]['id_ranking'], this.Ranking[0][0]);
     this.AuthService.generarNuevoCodigoRanking(this.model).subscribe(
       (datos) => {
 
@@ -108,9 +111,13 @@ export class ModificarRankingsComponent implements OnInit {
   }
 
   crearEntrega(name) {
+    console.log("aaa");
+
+    console.log(this.Ranking);
+
     this.crearEntregaControl = this.formBuilder.group({
       idRanking: [
-        this.Ranking[0][7],
+        this.RankingSimple[0]['id_ranking'],
         [
           Validators.minLength(2),
           Validators.maxLength(30),
@@ -127,8 +134,9 @@ export class ModificarRankingsComponent implements OnInit {
       ],
     });
 
-    this.datosEntrega = new datosEntrega(this.Ranking[0][7], name);
+    this.datosEntrega = new datosEntrega(this.RankingSimple[0]['id_ranking'], name);
 
+    console.log(this.datosEntrega);
 
     this.AuthService.crearEntrega(this.datosEntrega).subscribe((datos) => {
       this.ArrayNombrePracticas = Object.values(datos);
@@ -155,6 +163,7 @@ export class ModificarRankingsComponent implements OnInit {
       // });
 
       this.Ranking = datos;
+
 
       this.longitud = this.Ranking.length;
       this.nombreEquipo = this.Ranking[0]['nombreEquipo'];
@@ -219,13 +228,13 @@ export class ModificarRankingsComponent implements OnInit {
       }
 
 
-      this.AuthService.getEntregas(this.Ranking[0][7]).subscribe((datos) => {
+      this.AuthService.getEntregas(this.Ranking[0]['id_ranking']).subscribe((datos) => {
 
         this.ArrayPracticas = Object.values(datos);
 
       });
 
-      this.AuthService.getEntregasNombre(this.Ranking[0][7]).subscribe(
+      this.AuthService.getEntregasNombre(this.Ranking[0]['id_ranking']).subscribe(
         (datos) => {
 
           this.ArrayNombrePracticas = Object.values(datos);

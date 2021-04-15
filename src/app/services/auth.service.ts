@@ -119,6 +119,10 @@ export class AuthService {
 
     return this.http.post<consultaNombre>(`${environment.apiUrl}/datos-ranking.php`, JSON.stringify(idUrl))
   }
+  datosRankingSimple(idUrl) {
+
+    return this.http.post<consultaNombre>(`${environment.apiUrl}/datos-ranking-simple.php`, JSON.stringify(idUrl))
+  }
 
   datosEntrega(ranking) {
     return this.http.post<consultaEntrega>(`${environment.apiUrl}/datos-ranking-entrega.php`, JSON.stringify(ranking))

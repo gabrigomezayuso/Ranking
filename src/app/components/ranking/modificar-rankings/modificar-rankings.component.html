@@ -3,11 +3,11 @@
 
 <form>
   <!-- sha d fer be el ngif -->
-    <div class="leaderboard" *ngIf="this.Ranking[0][0]!=0">
+    <div class="leaderboard" *ngIf="saved==true">
         <h1 class="text-white">
             <svg class="ico-cup text-white">
       <use xlink:href="#cup"></use>
-    </svg> {{Ranking[0][0]}} {{Ranking[0][7]}}
+    </svg>
         </h1>
 
         <ol class="list-group">
