@@ -1,3 +1,8 @@
 .padding{
   margin-right: 75%;
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+}
