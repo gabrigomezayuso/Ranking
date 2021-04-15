@@ -16,15 +16,16 @@
         <tbody *ngFor="let item of ranking">
           <tr>
             <td>
-              <button class="btn btn-opacity-light mr-3"   [routerLink]="['../ranking', item[1]] " >
-                {{item[0]}}
-              </button>
+              <button type="button"  [routerLink]="['../ranking', item[1]] " class="btn btn-primary btn-lg"> {{item[0]}}</button>
+
+
 
             </td>
 
           </tr>
         </tbody>
       </table>
+      <button class="btn btn-opacity-light mr-1" [routerLink]="['../home']" routerLinkActive="active">Volver al HOME</button>
     </div>
   </div>
 </div>
