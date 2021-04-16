@@ -9,7 +9,7 @@ import { datosRanking } from 'src/app/models/datosRanking';
 @Component({
   selector: 'app-ranking',
   templateUrl: './ranking.component.html',
-  styleUrls: ['./ranking.component.css']
+  styleUrls: ['./ranking.component.css','../../home/home.component.css']
 })
 export class RankingComponent implements OnInit {
 

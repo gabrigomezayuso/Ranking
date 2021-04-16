@@ -52,13 +52,8 @@ export class MisRankingsComponent implements OnInit {
   }
   onClick(){
   //this._router.navigate(['../../ranking', this.ranking[0]]);
-
-
-
-
-
-
-
   }
-
+  goBack() {
+    this._router.navigate(['/../home']);
+    }
 }

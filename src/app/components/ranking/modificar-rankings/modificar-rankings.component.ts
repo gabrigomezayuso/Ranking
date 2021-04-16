@@ -141,8 +141,10 @@ export class ModificarRankingsComponent implements OnInit {
     this.AuthService.crearEntrega(this.datosEntrega).subscribe((datos) => {
       this.ArrayNombrePracticas = Object.values(datos);
 
-      Swal.fire('Datos creados');
     });
+    Swal.fire('Datos creados');
+
+    this.FormEntregasControl.reset();
   }
 
   mySelectHandler($event) {

@@ -1,34 +1,76 @@
 <app-nav-usuarios></app-nav-usuarios>
+<div class="banner text-left">
 
-<br>
-<br>
-<br>
-
-<div class="leaderboard">
-    <h1 class="text-white">
-        <svg class="ico-cup text-white">
+    <br>
+    <br>
+    <br>
+    <button class="btn btn-light mr-1 ml-5" [routerLink]="['../../home']" routerLinkActive="active">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+  <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+</svg>
+</button>
+    <!-- <div class="leaderboard">
+        <h1 class="text-white">
+            <svg class="ico-cup text-white">
       <use xlink:href="#cup"></use>
     </svg> {{datos[0][0]}}
-    </h1>
-    <ol class="list-group" style="list-style-type:none;">
-        <li *ngFor="let item of datos;index as i ">
-            <div class="border-user" [ngStyle]="{'background': datos[i]['idUsuario'] == idUsuario ? 'radial-gradient(circle, rgba(25,103,248,0.2189250700280112) 0%, rgba(252,70,107,0) 100%)' : 'unset'}">
-                <mark><span>{{datos[i]['nombre']}} {{datos[i]['apellido']}} <b >{{datos[i]['nombreEquipo']}}</b></span></mark>
-                <small *ngIf="datos[i]['puntuacion']!=null">{{datos[i]['puntuacion']}}</small>
-                <small *ngIf="datos[i]['puntuacion']===null">{{0}}</small>
-                <small>{{datos[i]['usuario']}}</small>
-            </div>
-        </li>
-    </ol>
-
-    <button class="btn btn-primary btn-lg " [routerLink]="['../../mis-rankings']" routerLinkActive="active">Volver a mis rankings</button>
-</div>
+        </h1>
+        <ol class="list-group" style="list-style-type:none;">
+            <li *ngFor="let item of datos;index as i ">
+                <div class="border-user" [ngStyle]="{'background': datos[i]['idUsuario'] == idUsuario ? 'radial-gradient(circle, rgba(25,103,248,0.2189250700280112) 0%, rgba(252,70,107,0) 100%)' : 'unset'}">
+                    <mark><span>{{datos[i]['nombre']}} {{datos[i]['apellido']}} <b >{{datos[i]['nombreEquipo']}}</b></span></mark>
+                    <small *ngIf="datos[i]['puntuacion']!=null">{{datos[i]['puntuacion']}}</small>
+                    <small *ngIf="datos[i]['puntuacion']===null">{{0}}</small>
+                    <small>{{datos[i]['usuario']}}</small>
+                </div>
+            </li>
+        </ol>
+    </div> -->
 
 
 
+    <!-- sha d fer be el ngif -->
+    <div class="leaderboard">
+        <h1 class="text-white">
+            <svg class="ico-cup text-white">
+  <use xlink:href="#cup"></use>
+</svg> {{datos[0][0]}}
+        </h1>
+        <ol class="list-group">
+            <table class="table">
+
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <!-- <th scope="col">Nick</th> -->
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">Equipo</th>
+                        <th scope="col">Puntuacion</th>
+                    </tr>
+                </thead>
+
+                <tbody *ngFor="let item of datos;index as i ">
+                    <tr [ngStyle]="{'background': datos[i]['idUsuario'] == idUsuario ? 'radial-gradient(circle, rgba(25,103,248,0.2189250700280112) 0%, rgba(252,70,107,0) 100%)' : 'unset'}">
+                        <th scope="row">{{i+1}}</th>
+                        <!-- <td>{{datos[i]['usuario']}}</td> -->
+                        <td>{{datos[i]['nombre']}}</td>
+                        <td>{{datos[i]['apellido']}}</td>
+                        <td><input disabled type="text" name="nombreEquipo" class="form-control" value="{{datos[i]['nombreEquipo']}}"></td>
+                        <td><input disabled type="number" name="puntuacion" class="form-control" value="{{datos[i]['puntuacion']}}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </ol>
+        <br>
+        <br>
+        <br>
+    </div>
 
 
-<svg style="display: none;">
+
+
+    <svg style="display: none;">
   <symbol id="cup" x="0px" y="0px" width="25px" height="26px" viewBox="0 0 25 26" enable-background="new 0 0 25 26"
     xml:space="preserve">
     <path fill="#FFF" d="M21.215,1.428c-0.744,0-1.438,0.213-2.024,0.579V0.865c0-0.478-0.394-0.865-0.88-0.865H6.69
@@ -51,6 +93,9 @@
   </symbol>
 </svg>
 
-<br>
-<br>
-<br>
+
+
+
+    <br>
+    <br>
+    <br> </div>

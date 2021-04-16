@@ -4201,6 +4201,7 @@ input[type="button"].btn-block {
     align-items: center;
 }
 
+
 /* .navbar-toggler {
     padding: 0.25rem 0.75rem;
     font-size: 1.25rem;
@@ -4210,10 +4211,12 @@ input[type="button"].btn-block {
     border-radius: 0.1875rem;
 } */
 
+
 /* .navbar-toggler:hover,
 .navbar-toggler:focus {
     text-decoration: none;
 } */
+
 
 /* .navbar-toggler-icon {
     display: inline-block;
@@ -4403,6 +4406,7 @@ input[type="button"].btn-block {
     flex-basis: auto;
 }
 
+
 /* .navbar-expand .navbar-toggler {
     display: none;
 } */
@@ -4436,10 +4440,12 @@ input[type="button"].btn-block {
     color: rgba(0, 0, 0, 0.9);
 }
 
+
 /* .navbar-light .navbar-toggler {
     color: rgba(0, 0, 0, 0.5);
     border-color: rgba(0, 0, 0, 0.1);
 } */
+
 
 /* .navbar-light .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
@@ -4486,11 +4492,14 @@ input[type="button"].btn-block {
 .navbar-dark .navbar-nav .nav-link.active {
     color: #fff;
 }
+
+
 /*
 .navbar-dark .navbar-toggler {
     color: rgba(255, 255, 255, 0.5);
     border-color: rgba(255, 255, 255, 0.1);
 } */
+
 
 /* .navbar-dark .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
@@ -10125,6 +10134,7 @@ footer a:hover {
     padding: 49px 0px 63px 0px;
 }
 
+
 /* .navbar .navbar-toggler {
     line-height: inherit;
 }
@@ -10394,7 +10404,7 @@ footer a:hover {
 }
 
 .btn-opacity-warning {
-    color: #ffad00;
+    color: #000;
     background-color: #ffd170;
     border: 2px solid transparent;
     transition: all 0.5s ease-in-out;
@@ -10407,7 +10417,7 @@ footer a:hover {
 }
 
 .btn-opacity-danger {
-    color: #ff0000;
+    color: #000;
     background-color: #ff7070;
     border: 2px solid transparent;
     transition: all 0.5s ease-in-out;
@@ -10592,13 +10602,14 @@ footer a:hover {
     justify-content: flex-start;
     padding: 5px 0px 20px 39px;
 }
-.curva{
-  border-radius: 27.5px;
-  box-shadow: 0 10px 30px 0 rgb(172 168 168 / 43%);
+
+.curva {
+    border-radius: 27.5px;
+    box-shadow: 0 10px 30px 0 rgb(172 168 168 / 43%);
 }
 
-.bordd{
-  border-radius: 27.5px;
+.bordd {
+    border-radius: 27.5px;
     /* box-shadow: 0 10px 30px 0 rgb(172 168 168 / 43%); */
     border: none;
 }
