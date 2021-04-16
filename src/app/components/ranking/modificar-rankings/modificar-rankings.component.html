@@ -38,7 +38,7 @@
             <h5>Crear entrega</h5>
             <input [formControl]="FormEntregasControl" type="text" name="nombreEquipo"
               class="form-control  mx-sm-3 mb-2" placeholder="Nombre entrega">
-            <button (click)="crearEntrega(FormEntregasControl.value)"
+            <button [disabled]="FormEntregasControl.invalid" (click)="crearEntrega(FormEntregasControl.value)"
               class="btn btn-success  mx-sm-3 mb-2">Crear</button>
           </div>
           <br>
