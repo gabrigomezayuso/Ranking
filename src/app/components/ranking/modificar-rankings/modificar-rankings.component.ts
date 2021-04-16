@@ -63,20 +63,19 @@ export class ModificarRankingsComponent implements OnInit {
         return textA < textB ? -1 : textA > textB ? 1 : 0;
       });
 
-      console.log(datos);
+
 
       this.Ranking = datos;
       this.RankingSimple = datos;
       this.longitud = this.Ranking.length;
       this.saved=true;
 
-      console.log(this.Ranking);
 
-      console.log(this.Ranking[0]['id_ranking']);
+
 
       this.AuthService.getEntregasNombre(this.Ranking[0]['id_ranking']).subscribe(
         (datos) => {
-          console.log(datos);
+
 
           this.ArrayNombrePracticas = Object.values(datos);
           this.selectControl.setValue(this.ArrayNombrePracticas[0][0]);
@@ -111,9 +110,7 @@ export class ModificarRankingsComponent implements OnInit {
   }
 
   crearEntrega(name) {
-    console.log("aaa");
 
-    console.log(this.Ranking);
 
     this.crearEntregaControl = this.formBuilder.group({
       idRanking: [
@@ -136,7 +133,7 @@ export class ModificarRankingsComponent implements OnInit {
 
     this.datosEntrega = new datosEntrega(this.RankingSimple[0]['id_ranking'], name);
 
-    console.log(this.datosEntrega);
+
 
     this.AuthService.crearEntrega(this.datosEntrega).subscribe((datos) => {
       this.ArrayNombrePracticas = Object.values(datos);
