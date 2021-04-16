@@ -26,7 +26,7 @@ inner join entrega e3  on e3.idranking = r.id_ranking
 left join puntuacionentrega p2  on p2.identrega = e3.identrega and p2.idusuario = u2.idUsuario
 inner join alumnos a on a.idUsuario = u2.idUsuario
 where e2.idRanking = r.id_ranking and e2.idRanking = $params->nombre_ranking and e3.nentrega = '$params->nombre_entrega'
-order by u2.puntuacion desc");
+order by a.apellido asc");
 
 
 
