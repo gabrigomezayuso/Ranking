@@ -22,8 +22,12 @@
     $query = $mysqli -> query ("DELETE FROM usuariosranking
     where idRanking = $params");
 
+    $query = $mysqli -> query ("DELETE FROM puntuacionentrega
+    WHERE idranking=$params");
+
     $query = $mysqli -> query ("DELETE FROM rankings
     WHERE id_ranking=$params");
+
 
 
 
