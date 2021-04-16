@@ -35,7 +35,7 @@ export class ModificarRankingsComponent implements OnInit {
   ArrayNombrePracticas = [];
   model: generarRanking;
   idUser: string;
-  FormEntregasControl: FormControl = new FormControl();
+  FormEntregasControl: FormControl = new FormControl('', [ Validators.required]);
   crearEntregaControl: FormGroup;
   datosEntrega = new datosEntrega('', '');
   selectControl: FormControl = new FormControl();
