@@ -16,8 +16,9 @@ export class RankingComponent implements OnInit {
   nombre_ranking: string;
   Ranking;
   datosRanking: datosRanking;
-  datos;
+  datosUser;
   idUsuario;
+  RankingSimple: consultaNombre;
 
 
   constructor( private AuthService: AuthService,private router: Router) {
@@ -35,22 +36,35 @@ export class RankingComponent implements OnInit {
   myParam: string;
 
   ngOnInit(): void {
-    console.log(this.Ranking);
+
+
+
+    this.AuthService.datosRankingSimple(this.Ranking).subscribe((datos) => {
+
+      this.RankingSimple = datos;
+
+
+    });
+
+console.log(this.Ranking);
 
     this.AuthService.datosRanking(this.Ranking) .subscribe (
       datos => {
+        if(datos[0]===null){
+          datos=null;
+
+        }
         console.log(datos);
-
-
-        this.datos=datos;
+        this.datosUser=datos;
 
       })
 
 
+
+
+
+
   }
-
-
-
 
 
 
