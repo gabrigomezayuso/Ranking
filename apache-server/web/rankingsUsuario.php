@@ -10,7 +10,7 @@
 
   $conexion = conexion(); // CREA LA CONEXION
 
-  $mysqli = new mysqli('oracle.ilerna.com', 'DAW2_GamifikG6', 'aGamifikG61', 'daw2_gamifikg6');
+  $mysqli = new mysqli('192.168.3.26', 'DAW2_GamifikG6', 'aGamifikG61', 'daw2_gamifikg6');
 
 
     $x=0;
